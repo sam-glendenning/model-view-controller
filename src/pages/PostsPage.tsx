@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Container,
   Typography,
@@ -16,22 +16,27 @@ import { CreatePostDialog } from '@/components/CreatePostDialog';
 export const PostsPage: React.FC = () => {
   const {
     posts,
-    isLoading,
-    error,
-    openCreateDialog,
-    dialogOpen,
-    closeDialog,
-    formData,
-    updateFormField,
-    submitForm,
-    isSubmitDisabled,
+    postsLoading,
+    postsError,
     snackbar,
     closeSnackbar,
+    showSuccessMessage,
+    showErrorMessage,
     onPostDeleted,
     onPostUpdated,
   } = usePostsController();
 
-  if (isLoading) {
+  const [isCreateDialogOpen, setIsCreateDialogOpen] = useState<boolean>(false);
+
+  const handleOpenCreateDialog = () => {
+    setIsCreateDialogOpen(true);
+  };
+
+  const handleCloseCreateDialog = () => {
+    setIsCreateDialogOpen(false);
+  };
+
+  if (postsLoading) {
     return (
       <Container maxWidth="md" sx={{ py: 4, display: 'flex', justifyContent: 'center' }}>
         <CircularProgress />
@@ -39,11 +44,11 @@ export const PostsPage: React.FC = () => {
     );
   }
 
-  if (error) {
+  if (postsError) {
     return (
       <Container maxWidth="md" sx={{ py: 4 }}>
         <Alert severity="error">
-          Error loading posts: {error.message}
+          Error loading posts: {postsError.message}
         </Alert>
       </Container>
     );
@@ -75,12 +80,17 @@ export const PostsPage: React.FC = () => {
       <Fab
         color="primary"
         aria-label="add post"
-        onClick={openCreateDialog}
+        onClick={handleOpenCreateDialog}
       >
         <Add />
       </Fab>
 
-      <CreatePostDialog dialogOpen={dialogOpen} closeDialog={closeDialog} formData={formData} updateFormField={updateFormField} submitForm={submitForm} isSubmitDisabled={isSubmitDisabled} />
+      <CreatePostDialog 
+        isOpen={isCreateDialogOpen} 
+        onClose={handleCloseCreateDialog}
+        onSuccess={showSuccessMessage}
+        onError={showErrorMessage}
+      />
 
       <Snackbar
         open={snackbar.open}

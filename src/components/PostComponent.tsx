@@ -8,17 +8,22 @@ import {
   TextField,
   Box,
   Chip,
-  Alert,
-  Snackbar,
   CircularProgress,
 } from '@mui/material';
 import { Edit, Delete, Save, Cancel } from '@mui/icons-material';
 import {
-  usePostController,
-  UsePostControllerProps,
-} from '@/controllers/usePostController';
+  usePostUpdateController,
+  UsePostUpdateControllerProps,
+} from '@/controllers/usePostUpdateController';
+import {
+  usePostDeleteController,
+  UsePostDeleteControllerProps,
+} from '@/controllers/usePostDeleteController';
 
-interface PostComponentProps extends UsePostControllerProps {
+interface PostComponentProps {
+  post: UsePostUpdateControllerProps['post'];
+  onPostDeleted?: UsePostDeleteControllerProps['onPostDeleted'];
+  onPostUpdated?: UsePostUpdateControllerProps['onPostUpdated'];
   elevation?: number;
   sx?: object;
 }
@@ -31,30 +36,35 @@ export const PostComponent: React.FC<PostComponentProps> = ({
   sx = {},
 }) => {
   const {
-    isEditing,
+    isEditingPost,
     formData,
-    snackbar,
-    isSubmitDisabled,
-    isLoading,
+    isUpdateSubmitDisabled,
     startEditing,
     cancelEditing,
-    updateFormField,
-    savePost,
-    deletePost,
-    closeSnackbar,
-  } = usePostController({ post, onPostDeleted, onPostUpdated });
+    updateTitle,
+    updateBody,
+    updateUserId,
+    updatePost,
+  } = usePostUpdateController({ post, onPostUpdated });
+
+  const { isDeleteSubmitDisabled, deletePost } = usePostDeleteController({
+    post,
+    onPostDeleted,
+  });
+
+  const isLoading = isUpdateSubmitDisabled || isDeleteSubmitDisabled;
 
   return (
     <>
       <Card elevation={elevation} sx={{ mb: 2, ...sx }}>
         <CardContent>
-          {isEditing ? (
+          {isEditingPost ? (
             <Box>
               <TextField
                 fullWidth
                 label="Title"
                 value={formData.title}
-                onChange={e => updateFormField('title', e.target.value)}
+                onChange={e => updateTitle(e.target.value)}
                 sx={{ mb: 2 }}
                 disabled={isLoading}
               />
@@ -64,7 +74,7 @@ export const PostComponent: React.FC<PostComponentProps> = ({
                 multiline
                 rows={4}
                 value={formData.body}
-                onChange={e => updateFormField('body', e.target.value)}
+                onChange={e => updateBody(e.target.value)}
                 sx={{ mb: 2 }}
                 disabled={isLoading}
               />
@@ -73,9 +83,7 @@ export const PostComponent: React.FC<PostComponentProps> = ({
                 label="User ID"
                 type="number"
                 value={formData.userId}
-                onChange={e =>
-                  updateFormField('userId', parseInt(e.target.value) || 1)
-                }
+                onChange={e => updateUserId(parseInt(e.target.value) || 1)}
                 disabled={isLoading}
               />
             </Box>
@@ -119,16 +127,16 @@ export const PostComponent: React.FC<PostComponentProps> = ({
         </CardContent>
 
         <CardActions sx={{ justifyContent: 'space-between', px: 2, pb: 2 }}>
-          {isEditing ? (
+          {isEditingPost ? (
             <Box sx={{ display: 'flex', gap: 1 }}>
               <Button
                 startIcon={
                   isLoading ? <CircularProgress size={16} /> : <Save />
                 }
-                onClick={savePost}
+                onClick={updatePost}
                 variant="contained"
                 color="primary"
-                disabled={isSubmitDisabled || isLoading}
+                disabled={isUpdateSubmitDisabled || isLoading}
                 size="small"
               >
                 Save
@@ -171,20 +179,6 @@ export const PostComponent: React.FC<PostComponentProps> = ({
           </Button>
         </CardActions>
       </Card>
-
-      <Snackbar
-        open={snackbar.open}
-        autoHideDuration={4000}
-        onClose={closeSnackbar}
-      >
-        <Alert
-          onClose={closeSnackbar}
-          severity={snackbar.severity}
-          sx={{ width: '100%' }}
-        >
-          {snackbar.message}
-        </Alert>
-      </Snackbar>
     </>
   );
 };

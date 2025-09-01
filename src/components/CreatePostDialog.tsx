@@ -1,4 +1,3 @@
-import type { CreatePostForm } from '@/types';
 import {
   Dialog,
   DialogTitle,
@@ -8,32 +7,42 @@ import {
   DialogActions,
   Button,
 } from '@mui/material';
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useCreatePostController } from '@/controllers/useCreatePostController';
 
 export interface CreatePostDialogProps {
-  dialogOpen: boolean;
-  closeDialog: () => void;
-  formData: CreatePostForm;
-  updateFormField: (
-    field: 'title' | 'body' | 'userId',
-    value: string | number,
-  ) => void;
-  submitForm: () => void;
-  isSubmitDisabled: boolean;
+  isOpen: boolean;
+  onClose: () => void;
+  onSuccess?: (message: string) => void;
+  onError?: (message: string) => void;
 }
 
-export const CreatePostDialog: React.FC<CreatePostDialogProps> = props => {
+export const CreatePostDialog: React.FC<CreatePostDialogProps> = ({
+  isOpen,
+  onClose,
+  onSuccess,
+  onError,
+}) => {
   const {
-    dialogOpen,
-    closeDialog,
     formData,
-    updateFormField,
-    submitForm,
     isSubmitDisabled,
-  } = props;
+    handleClose,
+    updateTitle,
+    updateBody,
+    updateUserId,
+    submitForm,
+  } = useCreatePostController({
+    onClose,
+    onSuccess,
+    onError,
+  });
+
+  const handleSubmit = useCallback(async () => {
+    await submitForm();
+  }, [submitForm]);
 
   return (
-    <Dialog open={dialogOpen} onClose={closeDialog} maxWidth="sm" fullWidth>
+    <Dialog open={isOpen} onClose={handleClose} maxWidth="sm" fullWidth>
       <DialogTitle>Create New Post</DialogTitle>
       <DialogContent>
         <Box sx={{ pt: 1 }}>
@@ -45,7 +54,7 @@ export const CreatePostDialog: React.FC<CreatePostDialogProps> = props => {
             fullWidth
             variant="outlined"
             value={formData.title}
-            onChange={e => updateFormField('title', e.target.value)}
+            onChange={e => updateTitle(e.target.value)}
             sx={{ mb: 2 }}
           />
           <TextField
@@ -57,7 +66,7 @@ export const CreatePostDialog: React.FC<CreatePostDialogProps> = props => {
             rows={4}
             variant="outlined"
             value={formData.body}
-            onChange={e => updateFormField('body', e.target.value)}
+            onChange={e => updateBody(e.target.value)}
             sx={{ mb: 2 }}
           />
           <TextField
@@ -67,16 +76,14 @@ export const CreatePostDialog: React.FC<CreatePostDialogProps> = props => {
             fullWidth
             variant="outlined"
             value={formData.userId}
-            onChange={e =>
-              updateFormField('userId', parseInt(e.target.value) || 1)
-            }
+            onChange={e => updateUserId(parseInt(e.target.value) ?? 1)}
           />
         </Box>
       </DialogContent>
       <DialogActions>
-        <Button onClick={closeDialog}>Cancel</Button>
+        <Button onClick={handleClose}>Cancel</Button>
         <Button
-          onClick={submitForm}
+          onClick={handleSubmit}
           variant="contained"
           disabled={isSubmitDisabled}
         >
