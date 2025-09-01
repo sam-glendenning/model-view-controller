@@ -1,0 +1,71 @@
+/* eslint-disable react-refresh/only-export-components */
+import React, { ReactElement } from 'react';
+import { render, RenderOptions } from '@testing-library/react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
+
+// Create a test theme
+const testTheme = createTheme({
+  palette: {
+    mode: 'light',
+  },
+});
+
+// Create a test query client
+const createTestQueryClient = () => new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+      cacheTime: 0,
+      staleTime: 0,
+      // Force immediate updates in tests
+      refetchOnWindowFocus: false,
+      refetchOnMount: true,
+    },
+    mutations: {
+      retry: false,
+    },
+  },
+});
+
+interface AllTheProvidersProps {
+  children: React.ReactNode;
+  queryClient?: QueryClient;
+}
+
+const AllTheProviders: React.FC<AllTheProvidersProps> = ({ 
+  children, 
+  queryClient = createTestQueryClient() 
+}) => {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={testTheme}>
+        <CssBaseline />
+        {children}
+      </ThemeProvider>
+    </QueryClientProvider>
+  );
+};
+
+interface CustomRenderOptions extends Omit<RenderOptions, 'wrapper'> {
+  queryClient?: QueryClient;
+}
+
+const customRender = (
+  ui: ReactElement,
+  options: CustomRenderOptions = {}
+) => {
+  const { queryClient, ...renderOptions } = options;
+  
+  const Wrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+    <AllTheProviders queryClient={queryClient}>
+      {children}
+    </AllTheProviders>
+  );
+
+  return render(ui, { wrapper: Wrapper, ...renderOptions });
+};
+
+// Re-export everything
+export * from '@testing-library/react';
+export { customRender as render, createTestQueryClient };

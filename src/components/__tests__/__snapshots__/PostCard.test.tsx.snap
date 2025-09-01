@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostCard Snapshot Tests renders populated post card correctly 1`] = `
+<div
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation2 MuiCard-root css-rpm3sl-MuiPaper-root-MuiCard-root"
+>
+  <div
+    class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
+  >
+    <h3
+      class="MuiTypography-root MuiTypography-h6 MuiTypography-gutterBottom css-1q6nwsw-MuiTypography-root"
+    >
+      Test Post Title
+    </h3>
+    <p
+      class="MuiTypography-root MuiTypography-body2 css-yb0dix-MuiTypography-root"
+    >
+      This is a test post body with some content to display.
+    </p>
+    <div
+      class="MuiBox-root css-1yuhvjn"
+    >
+      <span
+        class="MuiTypography-root MuiTypography-caption css-ol7wxs-MuiTypography-root"
+      >
+        Post ID: 
+        1
+         | User ID: 
+        1
+      </span>
+    </div>
+  </div>
+  <div
+    class="MuiCardActions-root MuiCardActions-spacing css-p5c1gw-MuiCardActions-root"
+  >
+    <div
+      class="MuiBox-root css-0"
+    >
+      <button
+        aria-label="view post"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorPrimary MuiIconButton-sizeSmall css-2rshpx-MuiButtonBase-root-MuiIconButton-root"
+        tabindex="0"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          data-testid="VisibilityIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5M12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5m0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"
+          />
+        </svg>
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+      <button
+        aria-label="edit post"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary MuiIconButton-sizeSmall css-1hxb263-MuiButtonBase-root-MuiIconButton-root"
+        tabindex="0"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          data-testid="EditIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75z"
+          />
+        </svg>
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+      <button
+        aria-label="delete post"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorError MuiIconButton-sizeSmall css-1mk6yu1-MuiButtonBase-root-MuiIconButton-root"
+        tabindex="0"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          data-testid="DeleteIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6zM19 4h-3.5l-1-1h-5l-1 1H5v2h14z"
+          />
+        </svg>
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`PostCard Snapshot Tests renders post card without actions correctly 1`] = `
+<div
+  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation2 MuiCard-root css-rpm3sl-MuiPaper-root-MuiCard-root"
+>
+  <div
+    class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
+  >
+    <h3
+      class="MuiTypography-root MuiTypography-h6 MuiTypography-gutterBottom css-1q6nwsw-MuiTypography-root"
+    >
+      Test Post Title
+    </h3>
+    <p
+      class="MuiTypography-root MuiTypography-body2 css-yb0dix-MuiTypography-root"
+    >
+      This is a test post body with some content to display.
+    </p>
+    <div
+      class="MuiBox-root css-1yuhvjn"
+    >
+      <span
+        class="MuiTypography-root MuiTypography-caption css-ol7wxs-MuiTypography-root"
+      >
+        Post ID: 
+        1
+         | User ID: 
+        1
+      </span>
+    </div>
+  </div>
+</div>
+`;
