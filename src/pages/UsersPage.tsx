@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Typography, Box } from '@mui/material';
-import { UsersList } from '@/components';
+import { UsersList } from '@/components/UsersList';
 import { useUsers } from '@/hooks';
 
 export const UsersPage: React.FC = () => {

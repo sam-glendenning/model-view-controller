@@ -13,27 +13,24 @@ import {
 import { Edit, Delete, Save, Cancel } from '@mui/icons-material';
 import {
   usePostUpdateController,
-  UsePostUpdateControllerProps,
+  type UsePostUpdateControllerProps,
 } from '@/controllers/usePostUpdateController';
 import {
   usePostDeleteController,
-  UsePostDeleteControllerProps,
+  type UsePostDeleteControllerProps,
 } from '@/controllers/usePostDeleteController';
+import type { Post } from '@/types';
 
 interface PostComponentProps {
-  post: UsePostUpdateControllerProps['post'];
+  post: Post;
   onPostDeleted?: UsePostDeleteControllerProps['onPostDeleted'];
   onPostUpdated?: UsePostUpdateControllerProps['onPostUpdated'];
-  elevation?: number;
-  sx?: object;
 }
 
 export const PostComponent: React.FC<PostComponentProps> = ({
   post,
   onPostDeleted,
   onPostUpdated,
-  elevation = 2,
-  sx = {},
 }) => {
   const {
     isEditingPost,
@@ -56,7 +53,7 @@ export const PostComponent: React.FC<PostComponentProps> = ({
 
   return (
     <>
-      <Card elevation={elevation} sx={{ mb: 2, ...sx }}>
+      <Card elevation={2} sx={{ mb: 2 }}>
         <CardContent>
           {isEditingPost ? (
             <Box>

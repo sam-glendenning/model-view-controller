@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useDeletePost } from '@/hooks';
 import type { Post } from '@/types';
 
-export interface PostDeleteController {
+interface PostDeleteController {
   // Data
   post: Post;
 

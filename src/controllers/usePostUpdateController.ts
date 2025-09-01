@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import { useUpdatePost } from '@/hooks';
 import type { Post, UpdatePostForm, PostFormData } from '@/types';
 
-export interface PostUpdateController {
+interface PostUpdateController {
   // Data
   post: Post;
 

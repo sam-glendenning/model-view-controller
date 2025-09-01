@@ -1,5 +1,5 @@
 import { http, HttpResponse, delay } from 'msw';
-import type { User, Post, Comment } from '@/types';
+import type { User, Post } from '@/types';
 
 // Mock data
 export const mockUsers: User[] = [
@@ -65,7 +65,7 @@ export const mockPosts: Post[] = [
   {
     id: 3,
     userId: 2,
-    title: 'Jane\'s Post',
+    title: "Jane's Post",
     body: 'A post written by Jane Smith about various topics.',
   },
   {
@@ -82,37 +82,6 @@ export const mockPosts: Post[] = [
   },
 ];
 
-export const mockComments: Comment[] = [
-  {
-    id: 1,
-    postId: 1,
-    name: 'Great introduction!',
-    email: 'sarah@example.com',
-    body: 'This is a really helpful introduction to React Hooks. The examples are clear and easy to follow.',
-  },
-  {
-    id: 2,
-    postId: 1,
-    name: 'Question about useEffect',
-    email: 'mike@example.com',
-    body: 'I have a question about the dependency array in useEffect. When should I include functions?',
-  },
-  {
-    id: 3,
-    postId: 2,
-    name: 'TypeScript fan',
-    email: 'alex@example.com',
-    body: 'TypeScript has been a game-changer for our team. These tips will definitely help us improve our codebase.',
-  },
-  {
-    id: 4,
-    postId: 3,
-    name: 'API design insights',
-    email: 'jessica@example.com',
-    body: 'The section about versioning strategies was particularly insightful. We\'re implementing similar approaches.',
-  },
-];
-
 // Artificial delay function
 const artificialDelay = () => delay(1000);
 
@@ -124,96 +93,102 @@ export const handlers = [
     return HttpResponse.json(mockUsers);
   }),
 
-  http.get('https://jsonplaceholder.typicode.com/users/:id', async ({ params }) => {
-    await artificialDelay();
-    const id = parseInt(params.id as string);
-    const user = mockUsers.find(u => u.id === id);
-    
-    if (!user) {
-      return new HttpResponse(null, { status: 404 });
-    }
-    
-    return HttpResponse.json(user);
-  }),
+  http.get(
+    'https://jsonplaceholder.typicode.com/users/:id',
+    async ({ params }) => {
+      await artificialDelay();
+      const id = parseInt(params.id as string);
+      const user = mockUsers.find(u => u.id === id);
+
+      if (!user) {
+        return new HttpResponse(null, { status: 404 });
+      }
+
+      return HttpResponse.json(user);
+    },
+  ),
 
   // Posts
-  http.get('https://jsonplaceholder.typicode.com/posts', async ({ request }) => {
-    await artificialDelay();
-    const url = new URL(request.url);
-    const userId = url.searchParams.get('userId');
-    
-    if (userId) {
-      const filteredPosts = mockPosts.filter(p => p.userId === parseInt(userId));
-      return HttpResponse.json(filteredPosts);
-    }
-    
-    return HttpResponse.json(mockPosts);
-  }),
+  http.get(
+    'https://jsonplaceholder.typicode.com/posts',
+    async ({ request }) => {
+      await artificialDelay();
+      const url = new URL(request.url);
+      const userId = url.searchParams.get('userId');
 
-  http.get('https://jsonplaceholder.typicode.com/posts/:id', async ({ params }) => {
-    await artificialDelay();
-    const id = parseInt(params.id as string);
-    const post = mockPosts.find(p => p.id === id);
-    
-    if (!post) {
-      return new HttpResponse(null, { status: 404 });
-    }
-    
-    return HttpResponse.json(post);
-  }),
+      if (userId) {
+        const filteredPosts = mockPosts.filter(
+          p => p.userId === parseInt(userId),
+        );
+        return HttpResponse.json(filteredPosts);
+      }
 
-  http.post('https://jsonplaceholder.typicode.com/posts', async ({ request }) => {
-    await artificialDelay();
-    const newPost = await request.json() as Omit<Post, 'id'>;
-    // Generate a unique ID that doesn't conflict with existing posts
-    const maxId = Math.max(...mockPosts.map(p => p.id));
-    const post: Post = {
-      ...newPost,
-      id: maxId + 1,
-    };
-    
-    mockPosts.push(post);
-    return HttpResponse.json(post, { status: 201 });
-  }),
+      return HttpResponse.json(mockPosts);
+    },
+  ),
 
-  http.put('https://jsonplaceholder.typicode.com/posts/:id', async ({ params, request }) => {
-    await artificialDelay();
-    const id = parseInt(params.id as string);
-    const updatedData = await request.json() as Partial<Post>;
-    const postIndex = mockPosts.findIndex(p => p.id === id);
-    
-    if (postIndex === -1) {
-      return new HttpResponse(null, { status: 404 });
-    }
-    
-    mockPosts[postIndex] = { ...mockPosts[postIndex], ...updatedData };
-    return HttpResponse.json(mockPosts[postIndex]);
-  }),
+  http.get(
+    'https://jsonplaceholder.typicode.com/posts/:id',
+    async ({ params }) => {
+      await artificialDelay();
+      const id = parseInt(params.id as string);
+      const post = mockPosts.find(p => p.id === id);
 
-  http.delete('https://jsonplaceholder.typicode.com/posts/:id', async ({ params }) => {
-    await artificialDelay();
-    const id = parseInt(params.id as string);
-    const postIndex = mockPosts.findIndex(p => p.id === id);
-    
-    if (postIndex === -1) {
-      return new HttpResponse(null, { status: 404 });
-    }
-    
-    mockPosts.splice(postIndex, 1);
-    return new HttpResponse(null, { status: 200 });
-  }),
+      if (!post) {
+        return new HttpResponse(null, { status: 404 });
+      }
 
-  // Comments
-  http.get('https://jsonplaceholder.typicode.com/comments', async ({ request }) => {
-    await artificialDelay();
-    const url = new URL(request.url);
-    const postId = url.searchParams.get('postId');
-    
-    if (postId) {
-      const filteredComments = mockComments.filter(c => c.postId === parseInt(postId));
-      return HttpResponse.json(filteredComments);
-    }
-    
-    return HttpResponse.json(mockComments);
-  }),
+      return HttpResponse.json(post);
+    },
+  ),
+
+  http.post(
+    'https://jsonplaceholder.typicode.com/posts',
+    async ({ request }) => {
+      await artificialDelay();
+      const newPost = (await request.json()) as Omit<Post, 'id'>;
+      // Generate a unique ID that doesn't conflict with existing posts
+      const maxId = Math.max(...mockPosts.map(p => p.id));
+      const post: Post = {
+        ...newPost,
+        id: maxId + 1,
+      };
+
+      mockPosts.push(post);
+      return HttpResponse.json(post, { status: 201 });
+    },
+  ),
+
+  http.put(
+    'https://jsonplaceholder.typicode.com/posts/:id',
+    async ({ params, request }) => {
+      await artificialDelay();
+      const id = parseInt(params.id as string);
+      const updatedData = (await request.json()) as Partial<Post>;
+      const postIndex = mockPosts.findIndex(p => p.id === id);
+
+      if (postIndex === -1) {
+        return new HttpResponse(null, { status: 404 });
+      }
+
+      mockPosts[postIndex] = { ...mockPosts[postIndex], ...updatedData };
+      return HttpResponse.json(mockPosts[postIndex]);
+    },
+  ),
+
+  http.delete(
+    'https://jsonplaceholder.typicode.com/posts/:id',
+    async ({ params }) => {
+      await artificialDelay();
+      const id = parseInt(params.id as string);
+      const postIndex = mockPosts.findIndex(p => p.id === id);
+
+      if (postIndex === -1) {
+        return new HttpResponse(null, { status: 404 });
+      }
+
+      mockPosts.splice(postIndex, 1);
+      return new HttpResponse(null, { status: 200 });
+    },
+  ),
 ];

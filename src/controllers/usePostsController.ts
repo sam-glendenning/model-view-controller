@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import { usePosts } from '@/hooks';
 import type { Post, SnackbarState } from '@/types';
 
-export interface PostsController {
+interface PostsController {
   // Data
   posts: Post[] | undefined;
   postsLoading: boolean;

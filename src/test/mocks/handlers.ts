@@ -1,8 +1,8 @@
 import { http, HttpResponse } from 'msw';
-import { User, Post, Comment } from '@/types';
+import { User, Post } from '@/types';
 
 // Mock data
-export const mockUsers: User[] = [
+const mockUsers: User[] = [
   {
     id: 1,
     name: 'John Doe',
@@ -49,7 +49,7 @@ export const mockUsers: User[] = [
   },
 ];
 
-export const mockPosts: Post[] = [
+const mockPosts: Post[] = [
   {
     id: 1,
     userId: 1,
@@ -65,25 +65,8 @@ export const mockPosts: Post[] = [
   {
     id: 3,
     userId: 2,
-    title: 'Jane\'s Post',
+    title: "Jane's Post",
     body: 'A post written by Jane Smith about various topics.',
-  },
-];
-
-export const mockComments: Comment[] = [
-  {
-    id: 1,
-    postId: 1,
-    name: 'Great post!',
-    email: 'commenter@example.com',
-    body: 'This is a really insightful post. Thanks for sharing!',
-  },
-  {
-    id: 2,
-    postId: 1,
-    name: 'Follow up question',
-    email: 'curious@example.com',
-    body: 'I have a question about this topic. Could you elaborate?',
   },
 ];
 
@@ -97,11 +80,11 @@ export const handlers = [
   http.get('https://jsonplaceholder.typicode.com/users/:id', ({ params }) => {
     const id = parseInt(params.id as string);
     const user = mockUsers.find(u => u.id === id);
-    
+
     if (!user) {
       return new HttpResponse(null, { status: 404 });
     }
-    
+
     return HttpResponse.json(user);
   }),
 
@@ -109,74 +92,72 @@ export const handlers = [
   http.get('https://jsonplaceholder.typicode.com/posts', ({ request }) => {
     const url = new URL(request.url);
     const userId = url.searchParams.get('userId');
-    
+
     if (userId) {
-      const filteredPosts = mockPosts.filter(p => p.userId === parseInt(userId));
+      const filteredPosts = mockPosts.filter(
+        p => p.userId === parseInt(userId),
+      );
       return HttpResponse.json(filteredPosts);
     }
-    
+
     return HttpResponse.json(mockPosts);
   }),
 
   http.get('https://jsonplaceholder.typicode.com/posts/:id', ({ params }) => {
     const id = parseInt(params.id as string);
     const post = mockPosts.find(p => p.id === id);
-    
+
     if (!post) {
       return new HttpResponse(null, { status: 404 });
     }
-    
+
     return HttpResponse.json(post);
   }),
 
-  http.post('https://jsonplaceholder.typicode.com/posts', async ({ request }) => {
-    const newPost = await request.json() as Omit<Post, 'id'>;
-    // Generate a unique ID that doesn't conflict with existing posts
-    const maxId = Math.max(...mockPosts.map(p => p.id));
-    const post: Post = {
-      ...newPost,
-      id: maxId + 1,
-    };
-    
-    mockPosts.push(post);
-    return HttpResponse.json(post, { status: 201 });
-  }),
+  http.post(
+    'https://jsonplaceholder.typicode.com/posts',
+    async ({ request }) => {
+      const newPost = (await request.json()) as Omit<Post, 'id'>;
+      // Generate a unique ID that doesn't conflict with existing posts
+      const maxId = Math.max(...mockPosts.map(p => p.id));
+      const post: Post = {
+        ...newPost,
+        id: maxId + 1,
+      };
 
-  http.put('https://jsonplaceholder.typicode.com/posts/:id', async ({ params, request }) => {
-    const id = parseInt(params.id as string);
-    const updatedData = await request.json() as Partial<Post>;
-    const postIndex = mockPosts.findIndex(p => p.id === id);
-    
-    if (postIndex === -1) {
-      return new HttpResponse(null, { status: 404 });
-    }
-    
-    mockPosts[postIndex] = { ...mockPosts[postIndex], ...updatedData };
-    return HttpResponse.json(mockPosts[postIndex]);
-  }),
+      mockPosts.push(post);
+      return HttpResponse.json(post, { status: 201 });
+    },
+  ),
 
-  http.delete('https://jsonplaceholder.typicode.com/posts/:id', ({ params }) => {
-    const id = parseInt(params.id as string);
-    const postIndex = mockPosts.findIndex(p => p.id === id);
-    
-    if (postIndex === -1) {
-      return new HttpResponse(null, { status: 404 });
-    }
-    
-    mockPosts.splice(postIndex, 1);
-    return new HttpResponse(null, { status: 200 });
-  }),
+  http.put(
+    'https://jsonplaceholder.typicode.com/posts/:id',
+    async ({ params, request }) => {
+      const id = parseInt(params.id as string);
+      const updatedData = (await request.json()) as Partial<Post>;
+      const postIndex = mockPosts.findIndex(p => p.id === id);
 
-  // Comments
-  http.get('https://jsonplaceholder.typicode.com/comments', ({ request }) => {
-    const url = new URL(request.url);
-    const postId = url.searchParams.get('postId');
-    
-    if (postId) {
-      const filteredComments = mockComments.filter(c => c.postId === parseInt(postId));
-      return HttpResponse.json(filteredComments);
-    }
-    
-    return HttpResponse.json(mockComments);
-  }),
+      if (postIndex === -1) {
+        return new HttpResponse(null, { status: 404 });
+      }
+
+      mockPosts[postIndex] = { ...mockPosts[postIndex], ...updatedData };
+      return HttpResponse.json(mockPosts[postIndex]);
+    },
+  ),
+
+  http.delete(
+    'https://jsonplaceholder.typicode.com/posts/:id',
+    ({ params }) => {
+      const id = parseInt(params.id as string);
+      const postIndex = mockPosts.findIndex(p => p.id === id);
+
+      if (postIndex === -1) {
+        return new HttpResponse(null, { status: 404 });
+      }
+
+      mockPosts.splice(postIndex, 1);
+      return new HttpResponse(null, { status: 200 });
+    },
+  ),
 ];

@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import { useCreatePost } from '@/hooks';
 import type { PostFormData } from '@/types';
 
-export interface CreatePostDialogController {
+interface CreatePostDialogController {
   // Form State
   formData: PostFormData;
 
@@ -17,7 +17,7 @@ export interface CreatePostDialogController {
   submitForm: () => Promise<void>;
 }
 
-export interface useCreatePostControllerProps {
+interface useCreatePostControllerProps {
   onClose?: () => void;
   onSuccess?: (message: string) => void;
   onError?: (message: string) => void;

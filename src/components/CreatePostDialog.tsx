@@ -10,7 +10,7 @@ import {
 import React, { useCallback } from 'react';
 import { useCreatePostController } from '@/controllers/useCreatePostController';
 
-export interface CreatePostDialogProps {
+interface CreatePostDialogProps {
   isOpen: boolean;
   onClose: () => void;
   onSuccess?: (message: string) => void;
