@@ -2,7 +2,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiService } from '@/services/api';
 import type {
   Post,
-  CreatePostForm,
+  PostFormData,
   UpdatePostForm,
   UsersQueryResponse,
   PostsQueryResponse,
@@ -46,8 +46,8 @@ export const usePosts = () => {
 export const useCreatePost = () => {
   const queryClient = useQueryClient();
 
-  return useMutation<CreatePostMutationResponse, Error, CreatePostForm>({
-    mutationFn: (postData: CreatePostForm) => apiService.createPost(postData),
+  return useMutation<CreatePostMutationResponse, Error, PostFormData>({
+    mutationFn: (postData: PostFormData) => apiService.createPost(postData),
     onSuccess: newPost => {
       // Invalidate and refetch posts
       queryClient.invalidateQueries({ queryKey: queryKeys.posts });

@@ -60,13 +60,6 @@ export interface SnackbarState {
   severity: 'success' | 'error' | 'warning' | 'info';
 }
 
-// Form data types
-export interface CreatePostForm {
-  title: string;
-  body: string;
-  userId: number;
-}
-
-export interface UpdatePostForm extends Partial<CreatePostForm> {
+export interface UpdatePostForm extends Partial<PostFormData> {
   id: number;
 }

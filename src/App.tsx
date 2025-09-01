@@ -15,50 +15,52 @@ import {
 import { Brightness4, Brightness7 } from '@mui/icons-material';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { PostsPage, UsersPage } from '@/pages';
+import { PostsPage } from './pages/PostsPage';
+import { UsersPage } from './pages/UsersPage';
 
 // Create a MUI theme
-const getTheme = (mode: 'light' | 'dark') => createTheme({
-  palette: {
-    mode,
-    primary: {
-      main: '#1976d2',
+const getTheme = (mode: 'light' | 'dark') =>
+  createTheme({
+    palette: {
+      mode,
+      primary: {
+        main: '#1976d2',
+      },
+      secondary: {
+        main: '#dc004e',
+      },
     },
-    secondary: {
-      main: '#dc004e',
+    typography: {
+      h3: {
+        fontWeight: 600,
+      },
+      h5: {
+        fontWeight: 500,
+      },
     },
-  },
-  typography: {
-    h3: {
-      fontWeight: 600,
+    shape: {
+      borderRadius: 8,
     },
-    h5: {
-      fontWeight: 500,
-    },
-  },
-  shape: {
-    borderRadius: 8,
-  },
-  components: {
-    MuiCssBaseline: {
-      styleOverrides: {
-        '@global': {
-          '@keyframes pulse': {
-            '0%': {
-              opacity: 1,
-            },
-            '50%': {
-              opacity: 0.5,
-            },
-            '100%': {
-              opacity: 1,
+    components: {
+      MuiCssBaseline: {
+        styleOverrides: {
+          '@global': {
+            '@keyframes pulse': {
+              '0%': {
+                opacity: 1,
+              },
+              '50%': {
+                opacity: 0.5,
+              },
+              '100%': {
+                opacity: 1,
+              },
             },
           },
         },
       },
     },
-  },
-});
+  });
 
 // Create QueryClient
 const queryClient = new QueryClient({
@@ -79,7 +81,7 @@ type AppView = 'posts' | 'users' | 'home';
 export const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<AppView>('home');
   const [darkMode, setDarkMode] = useState(false);
-  
+
   const theme = getTheme(darkMode ? 'dark' : 'light');
 
   const renderContent = () => {
@@ -99,28 +101,60 @@ export const App: React.FC = () => {
               <Typography variant="h5" color="text.secondary" sx={{ mb: 4 }}>
                 A demonstration of Model-View-Controller architecture in React
               </Typography>
-              
+
               <Box sx={{ mb: 4 }}>
                 <Typography variant="body1" sx={{ mb: 2 }}>
                   This application showcases the MVC pattern with:
                 </Typography>
-                <Box component="ul" sx={{ textAlign: 'left', maxWidth: 400, mx: 'auto' }}>
-                  <li><strong>Model:</strong> TypeScript interfaces and API services</li>
-                  <li><strong>View:</strong> React components (dumb UI components)</li>
-                  <li><strong>Controller:</strong> Custom hooks with TanStack Query</li>
+                <Box
+                  component="ul"
+                  sx={{ textAlign: 'left', maxWidth: 400, mx: 'auto' }}
+                >
+                  <li>
+                    <strong>Model:</strong> TypeScript interfaces and API
+                    services
+                  </li>
+                  <li>
+                    <strong>View:</strong> React components (dumb UI components)
+                  </li>
+                  <li>
+                    <strong>Controller:</strong> Custom hooks with TanStack
+                    Query
+                  </li>
                 </Box>
               </Box>
 
-              <Box sx={{ mb: 4, p: 2, backgroundColor: 'rgba(255, 193, 7, 0.1)', borderRadius: 2 }}>
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
-                  🔶 <strong>Mock API Active:</strong> All requests are intercepted by MSW with 1000ms artificial delays to simulate real network conditions.
+              <Box
+                sx={{
+                  mb: 4,
+                  p: 2,
+                  backgroundColor: 'rgba(255, 193, 7, 0.1)',
+                  borderRadius: 2,
+                }}
+              >
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ mb: 1 }}
+                >
+                  🔶 <strong>Mock API Active:</strong> All requests are
+                  intercepted by MSW with 1000ms artificial delays to simulate
+                  real network conditions.
                 </Typography>
                 <Typography variant="caption" color="text.secondary">
-                  This demo uses completely mocked data - no external API calls are made.
+                  This demo uses completely mocked data - no external API calls
+                  are made.
                 </Typography>
               </Box>
 
-              <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  gap: 2,
+                  justifyContent: 'center',
+                  flexWrap: 'wrap',
+                }}
+              >
                 <Button
                   variant="contained"
                   size="large"
@@ -136,10 +170,11 @@ export const App: React.FC = () => {
                   View Users
                 </Button>
               </Box>
-              
+
               <Box sx={{ mt: 4 }}>
                 <Typography variant="body2" color="text.secondary">
-                  Built with React 17, TypeScript 5, Material-UI 5, TanStack Query v4, and Axios
+                  Built with React 17, TypeScript 5, Material-UI 5, TanStack
+                  Query v4, and Axios
                 </Typography>
               </Box>
             </Paper>
@@ -152,41 +187,44 @@ export const App: React.FC = () => {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        
+
         <AppBar position="static" elevation={1}>
           <Toolbar>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               MVC React Demo
             </Typography>
-            
+
             {/* Mock API Status Indicator */}
-            <Box 
-              sx={{ 
-                display: 'flex', 
-                alignItems: 'center', 
-                gap: 1, 
-                mr: 2, 
-                px: 1.5, 
-                py: 0.5, 
-                backgroundColor: 'rgba(255, 193, 7, 0.1)', 
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1,
+                mr: 2,
+                px: 1.5,
+                py: 0.5,
+                backgroundColor: 'rgba(255, 193, 7, 0.1)',
                 borderRadius: 1,
-                border: '1px solid rgba(255, 193, 7, 0.3)'
+                border: '1px solid rgba(255, 193, 7, 0.3)',
               }}
             >
-              <Box 
-                sx={{ 
-                  width: 8, 
-                  height: 8, 
-                  borderRadius: '50%', 
+              <Box
+                sx={{
+                  width: 8,
+                  height: 8,
+                  borderRadius: '50%',
                   backgroundColor: '#ff9800',
-                  animation: 'pulse 2s infinite'
-                }} 
+                  animation: 'pulse 2s infinite',
+                }}
               />
-              <Typography variant="caption" sx={{ color: '#ff9800', fontWeight: 500 }}>
+              <Typography
+                variant="caption"
+                sx={{ color: '#ff9800', fontWeight: 500 }}
+              >
                 Mock API (1000ms delay)
               </Typography>
             </Box>
-            
+
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
               <Button
                 color="inherit"
@@ -195,19 +233,13 @@ export const App: React.FC = () => {
               >
                 Home
               </Button>
-              <Button
-                color="inherit"
-                onClick={() => setCurrentView('posts')}
-              >
+              <Button color="inherit" onClick={() => setCurrentView('posts')}>
                 Posts
               </Button>
-              <Button
-                color="inherit"
-                onClick={() => setCurrentView('users')}
-              >
+              <Button color="inherit" onClick={() => setCurrentView('users')}>
                 Users
               </Button>
-              
+
               <IconButton
                 color="inherit"
                 onClick={() => setDarkMode(!darkMode)}

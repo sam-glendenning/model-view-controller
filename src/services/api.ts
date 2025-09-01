@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import {
-  CreatePostForm,
+  PostFormData,
   UpdatePostForm,
   GetPostsParams,
   UsersQueryResponse,
@@ -83,7 +83,7 @@ class ApiService {
   };
 
   createPost = async (
-    postData: CreatePostForm,
+    postData: PostFormData,
   ): Promise<CreatePostMutationResponse> => {
     try {
       const response = await this.api.post<CreatePostMutationResponse>(
