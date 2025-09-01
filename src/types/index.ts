@@ -114,17 +114,3 @@ export interface CreatePostForm {
 export interface UpdatePostForm extends Partial<CreatePostForm> {
   id: number;
 }
-
-// Stricter form types with validation rules
-export interface CreatePostFormStrict extends CreatePostForm {
-  title: string; // Required, non-empty
-  body: string;  // Required, non-empty
-  userId: number; // Required, positive integer
-}
-
-export interface UpdatePostFormStrict extends UpdatePostForm {
-  id: number; // Required, positive integer
-  title?: string; // Optional but if provided, non-empty
-  body?: string;  // Optional but if provided, non-empty
-  userId?: number; // Optional but if provided, positive integer
-}

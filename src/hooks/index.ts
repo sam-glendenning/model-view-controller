@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiService } from '@/services/api';
-import { 
+import type { 
   Post, 
   CreatePostForm, 
   UpdatePostForm,

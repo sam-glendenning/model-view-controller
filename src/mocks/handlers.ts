@@ -1,5 +1,5 @@
 import { http, HttpResponse, delay } from 'msw';
-import { User, Post, Comment } from '@/types';
+import type { User, Post, Comment } from '@/types';
 
 // Mock data
 export const mockUsers: User[] = [

@@ -14,6 +14,7 @@ import {
 } from '@mui/material';
 import { Brightness4, Brightness7 } from '@mui/icons-material';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { PostsPage, UsersPage } from '@/pages';
 
 // Create a MUI theme
@@ -222,6 +223,7 @@ export const App: React.FC = () => {
           {renderContent()}
         </Box>
       </ThemeProvider>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 };
