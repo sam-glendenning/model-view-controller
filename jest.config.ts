@@ -1,4 +1,6 @@
-module.exports = {
+import type { Config } from 'jest';
+
+const config: Config = {
   preset: 'ts-jest',
   testEnvironment: 'jest-fixed-jsdom',
   setupFilesAfterEnv: ['<rootDir>/src/test/setup.ts'],
@@ -21,15 +23,18 @@ module.exports = {
   coverageReporters: ['text', 'lcov', 'html'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
   transform: {
-    '^.+\\.(ts|tsx)$': ['ts-jest', {
-      tsconfig: {
-        jsx: 'react-jsx',
+    '^.+\\.(ts|tsx)$': [
+      'ts-jest',
+      {
+        tsconfig: {
+          jsx: 'react-jsx',
+        },
       },
-    }],
+    ],
   },
-  transformIgnorePatterns: [
-    'node_modules/(?!(axios|@mui|@emotion)/)',
-  ],
+  transformIgnorePatterns: ['node_modules/(?!(axios|@mui|@emotion)/)'],
   testTimeout: 10000,
   resolver: '<rootDir>/msw-resolver.js',
 };
+
+export default config;
