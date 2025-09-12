@@ -4,10 +4,17 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
+import type { Linter } from 'eslint';
 
-export default [
+const config: Linter.Config[] = [
   {
-    ignores: ['dist', 'node_modules', '.eslintrc.cjs', 'public/mockServiceWorker.js', '.yarn/**'],
+    ignores: [
+      'dist',
+      'node_modules',
+      '.eslintrc.cjs',
+      'public/mockServiceWorker.js',
+      '.yarn/**',
+    ],
   },
   {
     files: ['**/*.{ts,tsx}'],
@@ -24,6 +31,7 @@ export default [
       },
     },
     plugins: {
+      // @ts-expect-error - Plugin type compatibility issues with current @typescript-eslint version
       '@typescript-eslint': tseslint,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
@@ -36,7 +44,10 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
-      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_' },
+      ],
       '@typescript-eslint/no-explicit-any': 'warn',
     },
   },
@@ -54,3 +65,5 @@ export default [
     },
   },
 ];
+
+export default config;
