@@ -7,14 +7,7 @@ import {
 } from '@testing-library/react';
 import PostComponent from './index';
 import userEvent, { type UserEvent } from '@testing-library/user-event';
-import type { Post } from '@/types';
-
-const mockPost: Post = {
-  id: 1,
-  userId: 1,
-  title: 'Test Post Title',
-  body: 'This is a test post body with some content to display.',
-};
+import { mockPosts } from '@/mocks/data';
 
 describe('Post component', () => {
   const mockOnPostDeleted = jest.fn();
@@ -24,7 +17,7 @@ describe('Post component', () => {
   const createView = () =>
     render(
       <PostComponent
-        postData={mockPost}
+        postData={mockPosts[0]}
         onPostDeleted={mockOnPostDeleted}
         onPostUpdated={mockOnPostUpdated}
       />,

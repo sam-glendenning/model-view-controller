@@ -6,32 +6,12 @@ import { usePostDeleteController } from './usePostDeleteController';
 import { mockPosts } from '@/mocks/data';
 import { createControllerHookWrapper as createWrapper } from '@/test/utils';
 
-const mockOnPostDeleted = jest.fn();
-
-const mockPost = {
-  id: 1,
-  userId: 1,
-  title: 'Test Post Title',
-  body: 'This is a test post body with some content to display.',
-};
-
 describe('usePostDeleteController', () => {
+  const mockOnPostDeleted = jest.fn();
+  const mockPost = mockPosts[0];
+
   beforeEach(() => {
     jest.clearAllMocks();
-    // Reset mock posts data
-    mockPosts.splice(
-      0,
-      mockPosts.length,
-      ...[
-        mockPost,
-        {
-          id: 2,
-          userId: 1,
-          title: 'Another Test Post',
-          body: 'This is another test post with different content.',
-        },
-      ],
-    );
   });
 
   it.only('should handle successful post deletion', async () => {
