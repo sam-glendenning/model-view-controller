@@ -12,30 +12,51 @@ const testTheme = createTheme({
 });
 
 // Create a test query client
-const createTestQueryClient = () => new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: false,
-      cacheTime: 0,
-      staleTime: 0,
-      // Force immediate updates in tests
-      refetchOnWindowFocus: false,
-      refetchOnMount: true,
+const createTestQueryClient = () =>
+  new QueryClient({
+    defaultOptions: {
+      queries: {
+        retry: false,
+        cacheTime: 0,
+        staleTime: 0,
+        // Force immediate updates in tests
+        refetchOnWindowFocus: false,
+        refetchOnMount: true,
+      },
+      mutations: {
+        retry: false,
+      },
     },
-    mutations: {
-      retry: false,
-    },
-  },
-});
+  });
 
 interface AllTheProvidersProps {
   children: React.ReactNode;
   queryClient?: QueryClient;
 }
 
-const AllTheProviders: React.FC<AllTheProvidersProps> = ({ 
-  children, 
-  queryClient = createTestQueryClient() 
+export const createControllerHookWrapper = () => {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        retry: false,
+        cacheTime: 0,
+        staleTime: 0,
+      },
+      mutations: {
+        retry: false,
+      },
+    },
+  });
+
+  const Wrapper: React.FC<{ children: React.ReactNode }> = ({ children }) =>
+    React.createElement(QueryClientProvider, { client: queryClient }, children);
+
+  return Wrapper;
+};
+
+const AllTheProviders: React.FC<AllTheProvidersProps> = ({
+  children,
+  queryClient = createTestQueryClient(),
 }) => {
   return (
     <QueryClientProvider client={queryClient}>
@@ -51,16 +72,11 @@ interface CustomRenderOptions extends Omit<RenderOptions, 'wrapper'> {
   queryClient?: QueryClient;
 }
 
-const customRender = (
-  ui: ReactElement,
-  options: CustomRenderOptions = {}
-) => {
+const customRender = (ui: ReactElement, options: CustomRenderOptions = {}) => {
   const { queryClient, ...renderOptions } = options;
-  
+
   const Wrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-    <AllTheProviders queryClient={queryClient}>
-      {children}
-    </AllTheProviders>
+    <AllTheProviders queryClient={queryClient}>{children}</AllTheProviders>
   );
 
   return render(ui, { wrapper: Wrapper, ...renderOptions });
