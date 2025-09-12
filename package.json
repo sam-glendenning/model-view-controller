@@ -43,7 +43,7 @@
     "jest": "29.7.0",
     "jest-environment-jsdom": "29.7.0",
     "jest-fixed-jsdom": "0.0.10",
-    "jsdom": "^22.1.0",
+    "jsdom": "26.1.0",
     "msw": "2.11.2",
     "ts-jest": "29.4.1",
     "typescript": "5.9.2",
