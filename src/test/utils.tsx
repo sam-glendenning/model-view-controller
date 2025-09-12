@@ -1,6 +1,5 @@
-/* eslint-disable react-refresh/only-export-components */
 import React, { ReactElement } from 'react';
-import { render, RenderOptions } from '@testing-library/react';
+import { render, type RenderOptions } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
 
@@ -54,6 +53,7 @@ export const createControllerHookWrapper = () => {
   return Wrapper;
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 const AllTheProviders: React.FC<AllTheProvidersProps> = ({
   children,
   queryClient = createTestQueryClient(),
@@ -82,6 +82,4 @@ const customRender = (ui: ReactElement, options: CustomRenderOptions = {}) => {
   return render(ui, { wrapper: Wrapper, ...renderOptions });
 };
 
-// Re-export everything
-export * from '@testing-library/react';
 export { customRender as render, createTestQueryClient };

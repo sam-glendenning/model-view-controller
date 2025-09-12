@@ -1,7 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import {
-  PostFormData,
-  UpdatePostForm,
+  Post,
   GetPostsParams,
   UsersQueryResponse,
   PostsQueryResponse,
@@ -82,9 +81,7 @@ class ApiService {
     }
   };
 
-  createPost = async (
-    postData: PostFormData,
-  ): Promise<CreatePostMutationResponse> => {
+  createPost = async (postData: Post): Promise<CreatePostMutationResponse> => {
     try {
       const response = await this.api.post<CreatePostMutationResponse>(
         '/posts',
@@ -97,9 +94,7 @@ class ApiService {
     }
   };
 
-  updatePost = async (
-    postData: UpdatePostForm,
-  ): Promise<UpdatePostMutationResponse> => {
+  updatePost = async (postData: Post): Promise<UpdatePostMutationResponse> => {
     try {
       const { id, ...updateData } = postData;
       const response = await this.api.put<UpdatePostMutationResponse>(

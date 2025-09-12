@@ -1,0 +1,109 @@
+import React from 'react';
+import {
+  Card,
+  CardContent,
+  CardActions,
+  Button,
+  TextField,
+  Box,
+  CircularProgress,
+} from '@mui/material';
+import { Save, Cancel, Delete } from '@mui/icons-material';
+import type { Post } from '@/types';
+
+export interface PostEditComponentProps {
+  formData: Post;
+  onTitleChange: (title: string) => void;
+  onBodyChange: (body: string) => void;
+  onUserIdChange: (userId: number) => void;
+  onSave: () => void;
+  onCancel: () => void;
+  onDelete: () => void;
+  isSaveButtonDisabled: boolean;
+  isUpdating: boolean;
+  isDeleting: boolean;
+}
+
+export const PostEditComponent: React.FC<PostEditComponentProps> = ({
+  formData,
+  onTitleChange,
+  onBodyChange,
+  onUserIdChange,
+  onSave,
+  onCancel,
+  onDelete,
+  isSaveButtonDisabled,
+  isUpdating,
+  isDeleting,
+}) => {
+  return (
+    <Card elevation={2} sx={{ mb: 2 }}>
+      <CardContent>
+        <Box>
+          <TextField
+            fullWidth
+            label="Title"
+            value={formData.title}
+            onChange={e => onTitleChange(e.target.value)}
+            sx={{ mb: 2 }}
+            disabled={isUpdating}
+          />
+          <TextField
+            fullWidth
+            label="Content"
+            multiline
+            rows={4}
+            value={formData.body}
+            onChange={e => onBodyChange(e.target.value)}
+            sx={{ mb: 2 }}
+            disabled={isUpdating}
+          />
+          <TextField
+            fullWidth
+            label="User ID"
+            type="number"
+            value={formData.userId}
+            onChange={e => onUserIdChange(parseInt(e.target.value) || 1)}
+            disabled={isUpdating}
+          />
+        </Box>
+      </CardContent>
+
+      <CardActions sx={{ justifyContent: 'space-between', px: 2, pb: 2 }}>
+        <Box sx={{ display: 'flex', gap: 1 }}>
+          <Button
+            startIcon={isUpdating ? <CircularProgress size={16} /> : <Save />}
+            onClick={onSave}
+            variant="contained"
+            color="primary"
+            disabled={isSaveButtonDisabled}
+            size="small"
+          >
+            Save
+          </Button>
+          <Button
+            startIcon={<Cancel />}
+            onClick={onCancel}
+            variant="outlined"
+            disabled={isUpdating}
+            size="small"
+          >
+            Cancel
+          </Button>
+        </Box>
+
+        <Button
+          startIcon={isDeleting ? <CircularProgress size={16} /> : <Delete />}
+          onClick={onDelete}
+          variant="outlined"
+          color="error"
+          disabled={isUpdating || isDeleting}
+          size="small"
+          aria-label="delete post"
+        >
+          Delete
+        </Button>
+      </CardActions>
+    </Card>
+  );
+};

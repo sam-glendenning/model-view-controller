@@ -1,17 +1,15 @@
 import { useState, useCallback } from 'react';
 import { useUpdatePost } from '@/hooks';
-import type { Post, UpdatePostForm, PostFormData } from '@/types';
+import type { Post } from '@/types';
 
 interface PostUpdateController {
-  // Data
-  post: Post;
-
   // State
   isEditingPost: boolean;
-  formData: PostFormData;
+  formData: Post;
 
   // Computed
-  isUpdateSubmitDisabled: boolean;
+  isUpdating: boolean;
+  isSaveButtonDisabled: boolean;
 
   // Actions
   startEditing: () => void;
@@ -23,29 +21,24 @@ interface PostUpdateController {
 }
 
 export interface UsePostUpdateControllerProps {
-  post: Post;
-  onPostUpdated?: () => void;
+  postData: Post;
+  onPostUpdated?: (updatedPost: Post) => void;
 }
 
 export const usePostUpdateController = ({
-  post,
+  postData,
   onPostUpdated,
 }: UsePostUpdateControllerProps): PostUpdateController => {
   // Mutation hook
-  const { mutateAsync: mutatePost, isPending: isUpdatePostPending } =
-    useUpdatePost();
+  const { mutateAsync: mutatePost, isPending: isUpdating } = useUpdatePost();
 
   // Local state
   const [isEditingPost, setIsEditingPost] = useState<boolean>(false);
-  const [formData, setFormData] = useState<PostFormData>({
-    title: post.title,
-    body: post.body,
-    userId: post.userId,
-  });
+  const [formData, setFormData] = useState<Post>(postData);
 
   // Computed values
-  const isUpdateSubmitDisabled =
-    !formData.title.trim() || !formData.body.trim() || isUpdatePostPending;
+  const isSaveButtonDisabled =
+    isUpdating || !formData.title.trim() || !formData.body.trim();
 
   // Actions
   const startEditing = useCallback(() => {
@@ -65,31 +58,24 @@ export const usePostUpdateController = ({
   }, []);
 
   const updateUserId = useCallback((userId: number) => {
-    setFormData(prev => ({ ...prev, userId: userId ?? 1 }));
+    setFormData(prev => ({ ...prev, userId }));
   }, []);
 
   const updatePost = useCallback(async () => {
-    const updateData: UpdatePostForm = {
-      id: post.id,
-      ...formData,
-    };
-
-    await mutatePost(updateData);
+    await mutatePost(formData);
 
     setIsEditingPost(false);
-    onPostUpdated?.();
-  }, [post.id, formData, mutatePost, onPostUpdated]);
+    onPostUpdated?.(formData);
+  }, [formData, mutatePost, onPostUpdated]);
 
   return {
-    // Data
-    post,
-
     // State
     isEditingPost,
     formData,
 
     // Computed
-    isUpdateSubmitDisabled,
+    isUpdating,
+    isSaveButtonDisabled,
 
     // Actions
     startEditing,

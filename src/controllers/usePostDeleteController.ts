@@ -3,46 +3,39 @@ import { useDeletePost } from '@/hooks';
 import type { Post } from '@/types';
 
 interface PostDeleteController {
-  // Data
-  post: Post;
-
   // Computed
-  isDeleteSubmitDisabled: boolean;
+  isDeleting: boolean;
 
   // Actions
   deletePost: () => Promise<void>;
 }
 
 export interface UsePostDeleteControllerProps {
-  post: Post;
-  onPostDeleted?: () => void;
+  postData: Post;
+  onPostDeleted?: (deletedPost: Post) => void;
 }
 
 export const usePostDeleteController = ({
-  post,
+  postData,
   onPostDeleted,
 }: UsePostDeleteControllerProps): PostDeleteController => {
   // Mutation hook
-  const { mutateAsync: deletePostMutate, isPending: isDeletePending } =
+  const { mutateAsync: deletePostMutate, isPending: isDeleting } =
     useDeletePost();
-
-  // Computed values
-  const isDeleteSubmitDisabled = isDeletePending;
 
   // Actions
   const deletePost = useCallback(async () => {
-    if (window.confirm(`Are you sure you want to delete "${post.title}"?`)) {
-      await deletePostMutate(post.id);
-      onPostDeleted?.();
+    if (
+      window.confirm(`Are you sure you want to delete "${postData.title}"?`)
+    ) {
+      await deletePostMutate(postData.id);
+      onPostDeleted?.(postData);
     }
-  }, [post.title, post.id, deletePostMutate, onPostDeleted]);
+  }, [postData, deletePostMutate, onPostDeleted]);
 
   return {
-    // Data
-    post,
-
     // Computed
-    isDeleteSubmitDisabled,
+    isDeleting,
 
     // Actions
     deletePost,

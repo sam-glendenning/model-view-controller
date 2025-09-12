@@ -2,8 +2,6 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiService } from '@/services/api';
 import type {
   Post,
-  PostFormData,
-  UpdatePostForm,
   UsersQueryResponse,
   PostsQueryResponse,
   CreatePostMutationResponse,
@@ -46,8 +44,8 @@ export const usePosts = () => {
 export const useCreatePost = () => {
   const queryClient = useQueryClient();
 
-  return useMutation<CreatePostMutationResponse, Error, PostFormData>({
-    mutationFn: (postData: PostFormData) => apiService.createPost(postData),
+  return useMutation<CreatePostMutationResponse, Error, Post>({
+    mutationFn: (postData: Post) => apiService.createPost(postData),
     onSuccess: newPost => {
       // Invalidate and refetch posts
       queryClient.invalidateQueries({ queryKey: queryKeys.posts });
@@ -69,8 +67,8 @@ export const useCreatePost = () => {
 export const useUpdatePost = () => {
   const queryClient = useQueryClient();
 
-  return useMutation<UpdatePostMutationResponse, Error, UpdatePostForm>({
-    mutationFn: (postData: UpdatePostForm) => apiService.updatePost(postData),
+  return useMutation<UpdatePostMutationResponse, Error, Post>({
+    mutationFn: (postData: Post) => apiService.updatePost(postData),
     onSuccess: updatedPost => {
       // Update the specific post in cache
       queryClient.setQueryData(queryKeys.post(updatedPost.id), updatedPost);

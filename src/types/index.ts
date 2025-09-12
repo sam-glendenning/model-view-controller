@@ -46,20 +46,9 @@ export type CreatePostMutationResponse = Post;
 export type UpdatePostMutationResponse = Post;
 export type DeletePostMutationResponse = void;
 
-// Form data types
-export interface PostFormData {
-  title: string;
-  body: string;
-  userId: number;
-}
-
 // Snackbar state type
 export interface SnackbarState {
   open: boolean;
   message: string;
   severity: 'success' | 'error' | 'warning' | 'info';
-}
-
-export interface UpdatePostForm extends Partial<PostFormData> {
-  id: number;
 }

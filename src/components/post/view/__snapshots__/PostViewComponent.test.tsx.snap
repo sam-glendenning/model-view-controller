@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PostComponent renders correctly 1`] = `
-<div>
+exports[`PostViewComponent renders correctly 1`] = `
+<DocumentFragment>
   <div
     class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation2 MuiCard-root css-okv3ew-MuiPaper-root-MuiCard-root"
   >
@@ -106,5 +106,5 @@ exports[`PostComponent renders correctly 1`] = `
       </button>
     </div>
   </div>
-</div>
+</DocumentFragment>
 `;
