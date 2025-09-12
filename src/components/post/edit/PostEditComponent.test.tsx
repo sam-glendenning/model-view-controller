@@ -4,11 +4,18 @@ import {
   type PostEditComponentProps,
 } from './PostEditComponent';
 import { mockPosts } from '@/mocks/data';
+import type { Post } from '@/types';
 
 describe('PostEditComponent', () => {
+  let mockPost: Post;
+
+  beforeEach(() => {
+    mockPost = { ...mockPosts[0] };
+  });
+
   it('renders correctly', () => {
     const props: PostEditComponentProps = {
-      formData: mockPosts[0],
+      formData: mockPost,
       onTitleChange: jest.fn(),
       onBodyChange: jest.fn(),
       onUserIdChange: jest.fn(),

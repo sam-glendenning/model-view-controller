@@ -14,7 +14,7 @@ describe('usePostDeleteController', () => {
     jest.clearAllMocks();
   });
 
-  it.only('should handle successful post deletion', async () => {
+  it('should initialize with correct default state', () => {
     const wrapper = createWrapper();
     const { result } = renderHook(
       () =>
@@ -25,11 +25,55 @@ describe('usePostDeleteController', () => {
       { wrapper },
     );
 
-    await waitFor(async () => {
-      await result.current.deletePost();
+    expect(result.current.isDeletePostDialogOpen).toBe(false);
+    expect(result.current.isDeleting).toBe(false);
+  });
+
+  it('should show and hide confirmation dialog', () => {
+    const wrapper = createWrapper();
+    const { result } = renderHook(
+      () =>
+        usePostDeleteController({
+          postData: mockPost,
+          onPostDeleted: mockOnPostDeleted,
+        }),
+      { wrapper },
+    );
+
+    expect(result.current.isDeletePostDialogOpen).toBe(false);
+
+    act(() => {
+      result.current.showDeletePostDialog();
     });
 
-    expect(mockOnPostDeleted).toHaveBeenCalled();
+    expect(result.current.isDeletePostDialogOpen).toBe(true);
+
+    act(() => {
+      result.current.hideDeletePostDialog();
+    });
+
+    expect(result.current.isDeletePostDialogOpen).toBe(false);
+  });
+
+  it('should handle successful post deletion', async () => {
+    const wrapper = createWrapper();
+    const { result } = renderHook(
+      () =>
+        usePostDeleteController({
+          postData: mockPost,
+          onPostDeleted: mockOnPostDeleted,
+        }),
+      { wrapper },
+    );
+
+    await act(async () => {
+      await result.current.confirmDelete();
+    });
+
+    await waitFor(() => {
+      expect(mockOnPostDeleted).toHaveBeenCalledWith(mockPost);
+      expect(result.current.isDeletePostDialogOpen).toBe(false);
+    });
   });
 
   it('should handle post deletion error', async () => {
@@ -54,7 +98,7 @@ describe('usePostDeleteController', () => {
 
     await expect(
       act(async () => {
-        await result.current.deletePost();
+        await result.current.confirmDelete();
       }),
     ).rejects.toThrow();
 

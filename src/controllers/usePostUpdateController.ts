@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useUpdatePost } from '@/hooks';
 import type { Post } from '@/types';
 
@@ -40,6 +40,10 @@ export const usePostUpdateController = ({
   const isSaveButtonDisabled =
     isUpdating || !formData.title.trim() || !formData.body.trim();
 
+  useEffect(() => {
+    setFormData(postData);
+  }, [postData]);
+
   // Actions
   const startEditing = useCallback(() => {
     setIsEditingPost(true);
@@ -47,7 +51,8 @@ export const usePostUpdateController = ({
 
   const cancelEditing = useCallback(() => {
     setIsEditingPost(false);
-  }, []);
+    setFormData(postData); // Reset form data to original post data
+  }, [postData]);
 
   const updateTitle = useCallback((title: string) => {
     setFormData(prev => ({ ...prev, title }));

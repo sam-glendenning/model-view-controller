@@ -3,16 +3,19 @@ import {
   PostViewComponent,
   type PostViewComponentProps,
 } from './PostViewComponent';
+import type { Post } from '@/types';
+import { mockPosts } from '@/mocks/data';
 
 describe('PostViewComponent', () => {
+  let mockPost: Post;
+
+  beforeEach(() => {
+    mockPost = { ...mockPosts[0] };
+  });
+
   it('renders correctly', () => {
     const props: PostViewComponentProps = {
-      postData: {
-        id: 1,
-        userId: 1,
-        title: 'Test Post Title',
-        body: 'This is a test post body with some content to display.',
-      },
+      postData: mockPost,
       onEditClick: jest.fn(),
       onDeleteClick: jest.fn(),
       isDeleting: false,

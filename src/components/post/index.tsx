@@ -3,6 +3,7 @@ import { usePostUpdateController } from '@/controllers/usePostUpdateController';
 import { usePostDeleteController } from '@/controllers/usePostDeleteController';
 import { PostViewComponent } from './view/PostViewComponent';
 import { PostEditComponent } from './edit/PostEditComponent';
+import { DeletePostDialog } from './delete/DeletePostDialog';
 import type { Post } from '@/types';
 
 interface PostComponentProps {
@@ -29,35 +30,48 @@ const PostComponent: React.FC<PostComponentProps> = ({
     updatePost,
   } = usePostUpdateController({ postData, onPostUpdated });
 
-  const { isDeleting, deletePost } = usePostDeleteController({
+  const {
+    isDeletePostDialogOpen,
+    isDeleting,
+    showDeletePostDialog,
+    hideDeletePostDialog,
+    confirmDelete,
+  } = usePostDeleteController({
     postData,
     onPostDeleted,
   });
 
-  if (isEditingPost) {
-    return (
-      <PostEditComponent
-        formData={formData}
-        onTitleChange={updateTitle}
-        onBodyChange={updateBody}
-        onUserIdChange={updateUserId}
-        onSave={updatePost}
-        onCancel={cancelEditing}
-        onDelete={deletePost}
-        isSaveButtonDisabled={isUpdateSaveButtonDisabled}
-        isUpdating={isUpdating}
+  return (
+    <div>
+      {isEditingPost ? (
+        <PostEditComponent
+          formData={formData}
+          onTitleChange={updateTitle}
+          onBodyChange={updateBody}
+          onUserIdChange={updateUserId}
+          onSave={updatePost}
+          onCancel={cancelEditing}
+          onDelete={showDeletePostDialog}
+          isSaveButtonDisabled={isUpdateSaveButtonDisabled}
+          isUpdating={isUpdating}
+          isDeleting={isDeleting}
+        />
+      ) : (
+        <PostViewComponent
+          postData={postData}
+          onEditClick={startEditing}
+          onDeleteClick={showDeletePostDialog}
+          isDeleting={isDeleting}
+        />
+      )}
+      <DeletePostDialog
+        open={isDeletePostDialogOpen}
+        postData={postData}
+        confirmPostDelete={confirmDelete}
+        cancelPostDelete={hideDeletePostDialog}
         isDeleting={isDeleting}
       />
-    );
-  }
-
-  return (
-    <PostViewComponent
-      postData={postData}
-      onEditClick={startEditing}
-      onDeleteClick={deletePost}
-      isDeleting={isDeleting}
-    />
+    </div>
   );
 };
 
