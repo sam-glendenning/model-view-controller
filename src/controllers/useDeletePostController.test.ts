@@ -77,6 +77,8 @@ describe('useDeletePostController', () => {
   });
 
   it('should handle post deletion error', async () => {
+    const mockOnPostDeletionError = jest.fn();
+
     // Mock a network error
     const errorHandlers = [
       http.delete('https://jsonplaceholder.typicode.com/posts/1', () => {
@@ -92,17 +94,17 @@ describe('useDeletePostController', () => {
         useDeletePostController({
           postData: mockPost,
           onPostDeleted: mockOnPostDeleted,
+          onPostDeletionError: mockOnPostDeletionError,
         }),
       { wrapper },
     );
 
-    await expect(
-      act(async () => {
-        await result.current.confirmDelete();
-      }),
-    ).rejects.toThrow();
+    await act(async () => {
+      await result.current.confirmDelete();
+    });
 
     expect(mockOnPostDeleted).not.toHaveBeenCalled();
+    expect(mockOnPostDeletionError).toHaveBeenCalledWith(expect.any(Error));
 
     // Reset handlers
     server.resetHandlers();

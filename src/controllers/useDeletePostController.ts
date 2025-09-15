@@ -18,11 +18,13 @@ interface PostDeleteController {
 interface useDeletePostControllerProps {
   postData: Post;
   onPostDeleted?: (deletedPost: Post) => void;
+  onPostDeletionError?: (error: Error) => void;
 }
 
 export const useDeletePostController = ({
   postData,
   onPostDeleted,
+  onPostDeletionError,
 }: useDeletePostControllerProps): PostDeleteController => {
   // Local state
   const [isDeletePostDialogOpen, setIsDeletePostDialogOpen] = useState(false);
@@ -41,10 +43,14 @@ export const useDeletePostController = ({
   }, []);
 
   const confirmDelete = useCallback(async () => {
-    await deletePostMutate(postData.id);
-    setIsDeletePostDialogOpen(false);
-    onPostDeleted?.(postData);
-  }, [postData, deletePostMutate, onPostDeleted]);
+    try {
+      await deletePostMutate(postData.id);
+      setIsDeletePostDialogOpen(false);
+      onPostDeleted?.(postData);
+    } catch (error) {
+      onPostDeletionError?.(error as Error);
+    }
+  }, [postData, deletePostMutate, onPostDeleted, onPostDeletionError]);
 
   return {
     // State

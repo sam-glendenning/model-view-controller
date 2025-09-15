@@ -124,6 +124,8 @@ describe('useUpdatePostController', () => {
   });
 
   it('should handle form submission error', async () => {
+    const mockOnPostUpdateError = jest.fn();
+
     server.use(
       http.put('https://jsonplaceholder.typicode.com/posts/1', () => {
         return new HttpResponse(null, { status: 500 });
@@ -136,6 +138,7 @@ describe('useUpdatePostController', () => {
         useUpdatePostController({
           postData: mockPost,
           onPostUpdated: mockOnPostUpdated,
+          onPostUpdateError: mockOnPostUpdateError,
         }),
       { wrapper },
     );
@@ -146,8 +149,11 @@ describe('useUpdatePostController', () => {
     });
 
     await act(async () => {
-      await expect(result.current.updatePost()).rejects.toThrow();
+      await result.current.updatePost();
     });
+
+    expect(mockOnPostUpdated).not.toHaveBeenCalled();
+    expect(mockOnPostUpdateError).toHaveBeenCalledWith(expect.any(Error));
 
     // Reset handlers
     server.resetHandlers();

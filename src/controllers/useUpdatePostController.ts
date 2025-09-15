@@ -23,11 +23,13 @@ interface PostUpdateController {
 interface useUpdatePostControllerProps {
   postData: Post;
   onPostUpdated?: (updatedPost: Post) => void;
+  onPostUpdateError?: (error: Error) => void;
 }
 
 export const useUpdatePostController = ({
   postData,
   onPostUpdated,
+  onPostUpdateError,
 }: useUpdatePostControllerProps): PostUpdateController => {
   // Mutation hook
   const { mutateAsync: mutatePost, isPending: isUpdating } = useUpdatePost();
@@ -67,11 +69,14 @@ export const useUpdatePostController = ({
   }, []);
 
   const updatePost = useCallback(async () => {
-    await mutatePost(formData);
-
-    setIsEditingPost(false);
-    onPostUpdated?.(formData);
-  }, [formData, mutatePost, onPostUpdated]);
+    try {
+      await mutatePost(formData);
+      setIsEditingPost(false);
+      onPostUpdated?.(formData);
+    } catch (error) {
+      onPostUpdateError?.(error as Error);
+    }
+  }, [formData, mutatePost, onPostUpdated, onPostUpdateError]);
 
   return {
     // State
