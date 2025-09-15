@@ -12,7 +12,7 @@ import { Save, Cancel, Delete } from '@mui/icons-material';
 import type { Post } from '@/types';
 
 export interface PostEditComponentProps {
-  formData: Post;
+  postData: Post;
   onTitleChange: (title: string) => void;
   onBodyChange: (body: string) => void;
   onUserIdChange: (userId: number) => void;
@@ -25,7 +25,7 @@ export interface PostEditComponentProps {
 }
 
 export const PostEditComponent: React.FC<PostEditComponentProps> = ({
-  formData,
+  postData,
   onTitleChange,
   onBodyChange,
   onUserIdChange,
@@ -43,7 +43,7 @@ export const PostEditComponent: React.FC<PostEditComponentProps> = ({
           <TextField
             fullWidth
             label="Title"
-            value={formData.title}
+            value={postData.title}
             onChange={e => onTitleChange(e.target.value)}
             sx={{ mb: 2 }}
             disabled={isUpdating}
@@ -53,7 +53,7 @@ export const PostEditComponent: React.FC<PostEditComponentProps> = ({
             label="Content"
             multiline
             rows={4}
-            value={formData.body}
+            value={postData.body}
             onChange={e => onBodyChange(e.target.value)}
             sx={{ mb: 2 }}
             disabled={isUpdating}
@@ -62,8 +62,8 @@ export const PostEditComponent: React.FC<PostEditComponentProps> = ({
             fullWidth
             label="User ID"
             type="number"
-            value={formData.userId}
-            onChange={e => onUserIdChange(parseInt(e.target.value) || 1)}
+            value={postData.userId}
+            onChange={e => onUserIdChange(parseInt(e.target.value) ?? 1)}
             disabled={isUpdating}
           />
         </Box>

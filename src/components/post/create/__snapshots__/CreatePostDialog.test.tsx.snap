@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CreatePostDialog renders snapshot correctly 1`] = `
+exports[`CreatePostDialog renders correctly 1`] = `
 <body
   style="padding-right: 1024px; overflow: hidden;"
 >
@@ -47,10 +47,10 @@ exports[`CreatePostDialog renders snapshot correctly 1`] = `
               class="MuiFormControl-root MuiFormControl-marginDense MuiFormControl-fullWidth MuiTextField-root css-3tho05-MuiFormControl-root-MuiTextField-root"
             >
               <label
-                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary Mui-focused MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled Mui-focused MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
                 data-shrink="true"
-                for="mui-3"
-                id="mui-3-label"
+                for="mui-2"
+                id="mui-2-label"
               >
                 Title
               </label>
@@ -60,9 +60,9 @@ exports[`CreatePostDialog renders snapshot correctly 1`] = `
                 <input
                   aria-invalid="false"
                   class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
-                  id="mui-3"
+                  id="mui-2"
                   type="text"
-                  value=""
+                  value="Test Post Title"
                 />
                 <fieldset
                   aria-hidden="true"
@@ -82,10 +82,10 @@ exports[`CreatePostDialog renders snapshot correctly 1`] = `
               class="MuiFormControl-root MuiFormControl-marginDense MuiFormControl-fullWidth MuiTextField-root css-3tho05-MuiFormControl-root-MuiTextField-root"
             >
               <label
-                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root"
-                data-shrink="false"
-                for="mui-4"
-                id="mui-4-label"
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
+                data-shrink="true"
+                for="mui-3"
+                id="mui-3-label"
               >
                 Content
               </label>
@@ -95,10 +95,12 @@ exports[`CreatePostDialog renders snapshot correctly 1`] = `
                 <textarea
                   aria-invalid="false"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
-                  id="mui-4"
+                  id="mui-3"
                   rows="4"
                   style="height: 0px; overflow: hidden;"
-                />
+                >
+                  This is a test post body with some content to display.
+                </textarea>
                 <textarea
                   aria-hidden="true"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
@@ -111,7 +113,7 @@ exports[`CreatePostDialog renders snapshot correctly 1`] = `
                   class="MuiOutlinedInput-notchedOutline css-r01yff-MuiNotchedOutlined-root-MuiOutlinedInput-notchedOutline"
                 >
                   <legend
-                    class="css-njhac4-MuiNotchedOutlined-root"
+                    class="css-sl37lx-MuiNotchedOutlined-root"
                   >
                     <span>
                       Content
@@ -126,8 +128,8 @@ exports[`CreatePostDialog renders snapshot correctly 1`] = `
               <label
                 class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
                 data-shrink="true"
-                for="mui-5"
-                id="mui-5-label"
+                for="mui-4"
+                id="mui-4-label"
               >
                 User ID
               </label>
@@ -137,7 +139,7 @@ exports[`CreatePostDialog renders snapshot correctly 1`] = `
                 <input
                   aria-invalid="false"
                   class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
-                  id="mui-5"
+                  id="mui-4"
                   type="number"
                   value="1"
                 />
@@ -171,12 +173,14 @@ exports[`CreatePostDialog renders snapshot correctly 1`] = `
             />
           </button>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary Mui-disabled MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-sghohy-MuiButtonBase-root-MuiButton-root"
-            disabled=""
-            tabindex="-1"
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-sghohy-MuiButtonBase-root-MuiButton-root"
+            tabindex="0"
             type="button"
           >
             Create
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
           </button>
         </div>
       </div>

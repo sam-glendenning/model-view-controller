@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Dialog,
   DialogTitle,
@@ -7,42 +8,36 @@ import {
   DialogActions,
   Button,
 } from '@mui/material';
-import React, { useCallback } from 'react';
-import { useCreatePostController } from '@/controllers/useCreatePostController';
+import type { Post } from '@/types';
 
 interface CreatePostDialogProps {
-  isOpen: boolean;
+  // Dialog state
+  open: boolean;
   onClose: () => void;
-  onSuccess?: (message: string) => void;
-  onError?: (message: string) => void;
+
+  // Form data
+  postData: Post;
+  onTitleChange: (title: string) => void;
+  onBodyChange: (body: string) => void;
+  onUserIdChange: (userId: number) => void;
+
+  // Actions
+  onSubmit: () => Promise<void>;
+  isCreating: boolean;
 }
 
 export const CreatePostDialog: React.FC<CreatePostDialogProps> = ({
-  isOpen,
+  open,
   onClose,
-  onSuccess,
-  onError,
+  postData,
+  onTitleChange,
+  onBodyChange,
+  onUserIdChange,
+  onSubmit,
+  isCreating,
 }) => {
-  const {
-    formData,
-    isSubmitDisabled,
-    handleClose,
-    updateTitle,
-    updateBody,
-    updateUserId,
-    submitForm,
-  } = useCreatePostController({
-    onClose,
-    onSuccess,
-    onError,
-  });
-
-  const handleSubmit = useCallback(async () => {
-    await submitForm();
-  }, [submitForm]);
-
   return (
-    <Dialog open={isOpen} onClose={handleClose} maxWidth="sm" fullWidth>
+    <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
       <DialogTitle>Create New Post</DialogTitle>
       <DialogContent>
         <Box sx={{ pt: 1 }}>
@@ -53,8 +48,8 @@ export const CreatePostDialog: React.FC<CreatePostDialogProps> = ({
             type="text"
             fullWidth
             variant="outlined"
-            value={formData.title}
-            onChange={e => updateTitle(e.target.value)}
+            value={postData.title}
+            onChange={e => onTitleChange(e.target.value)}
             sx={{ mb: 2 }}
           />
           <TextField
@@ -65,8 +60,8 @@ export const CreatePostDialog: React.FC<CreatePostDialogProps> = ({
             multiline
             rows={4}
             variant="outlined"
-            value={formData.body}
-            onChange={e => updateBody(e.target.value)}
+            value={postData.body}
+            onChange={e => onBodyChange(e.target.value)}
             sx={{ mb: 2 }}
           />
           <TextField
@@ -75,18 +70,14 @@ export const CreatePostDialog: React.FC<CreatePostDialogProps> = ({
             type="number"
             fullWidth
             variant="outlined"
-            value={formData.userId}
-            onChange={e => updateUserId(parseInt(e.target.value) ?? 1)}
+            value={postData.userId}
+            onChange={e => onUserIdChange(parseInt(e.target.value) ?? 1)}
           />
         </Box>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
-        <Button
-          onClick={handleSubmit}
-          variant="contained"
-          disabled={isSubmitDisabled}
-        >
+        <Button onClick={onClose}>Cancel</Button>
+        <Button onClick={onSubmit} variant="contained" disabled={isCreating}>
           Create
         </Button>
       </DialogActions>

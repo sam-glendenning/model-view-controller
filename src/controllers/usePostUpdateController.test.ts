@@ -114,7 +114,12 @@ describe('usePostUpdateController', () => {
       await result.current.updatePost();
     });
 
-    expect(mockOnPostUpdated).toHaveBeenCalled();
+    expect(mockOnPostUpdated).toHaveBeenCalledWith(
+      expect.objectContaining({
+        title: 'Updated Title',
+        body: 'Updated Body',
+      }),
+    );
     expect(result.current.isEditingPost).toBe(false);
   });
 

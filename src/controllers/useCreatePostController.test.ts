@@ -2,193 +2,126 @@ import { renderHook, act } from '@testing-library/react-hooks';
 import { http, HttpResponse } from 'msw';
 import { server } from '@/test/mocks/server';
 import { useCreatePostController } from './useCreatePostController';
-import { mockPosts } from '@/mocks/data';
 import { createControllerHookWrapper as createWrapper } from '@/test/utils';
 
-const mockOnSuccess = jest.fn();
-const mockOnError = jest.fn();
-const mockOnClose = jest.fn();
-
 describe('useCreatePostController', () => {
+  const mockOnPostCreated = jest.fn();
+
+  const createHook = () =>
+    renderHook(
+      () =>
+        useCreatePostController({
+          onPostCreated: mockOnPostCreated,
+        }),
+      { wrapper: createWrapper() },
+    );
+
   beforeEach(() => {
     jest.clearAllMocks();
-    // Reset mock posts data
-    mockPosts.splice(
-      0,
-      mockPosts.length,
-      ...[
-        {
-          id: 1,
-          userId: 1,
-          title: 'Test Post Title',
-          body: 'This is a test post body with some content to display.',
-        },
-        {
-          id: 2,
-          userId: 1,
-          title: 'Another Test Post',
-          body: 'This is another test post with different content.',
-        },
-      ],
-    );
   });
 
-  it('should initialize with default form data', () => {
-    const wrapper = createWrapper();
-    const { result } = renderHook(
-      () =>
-        useCreatePostController({
-          onSuccess: mockOnSuccess,
-          onError: mockOnError,
-          onClose: mockOnClose,
-        }),
-      { wrapper },
-    );
+  it('should initialise with correct default state', () => {
+    const { result } = createHook();
 
-    expect(result.current.formData).toEqual({
-      title: '',
-      body: '',
-      userId: 1,
-    });
-    expect(result.current.isSubmitDisabled).toBe(true);
+    expect(result.current.isCreatePostDialogOpen).toBe(false);
+    expect(result.current.isCreating).toBe(false);
   });
 
-  it('should update form fields correctly', () => {
-    const wrapper = createWrapper();
-    const { result } = renderHook(
-      () =>
-        useCreatePostController({
-          onSuccess: mockOnSuccess,
-          onError: mockOnError,
-          onClose: mockOnClose,
-        }),
-      { wrapper },
-    );
+  it('allows the user to open and close the dialog', () => {
+    const { result } = createHook();
+
+    expect(result.current.isCreatePostDialogOpen).toBe(false);
 
     act(() => {
-      result.current.updateTitle('New Title');
+      result.current.showCreatePostDialog();
     });
 
-    expect(result.current.formData.title).toBe('New Title');
+    expect(result.current.isCreatePostDialogOpen).toBe(true);
 
     act(() => {
-      result.current.updateBody('New Body');
+      result.current.hideCreatePostDialog();
     });
 
-    expect(result.current.formData.body).toBe('New Body');
-
-    act(() => {
-      result.current.updateUserId(2);
-    });
-
-    expect(result.current.formData.userId).toBe(2);
+    expect(result.current.isCreatePostDialogOpen).toBe(false);
   });
 
-  it('should enable submit when form is valid', () => {
-    const wrapper = createWrapper();
-    const { result } = renderHook(
-      () =>
-        useCreatePostController({
-          onSuccess: mockOnSuccess,
-          onError: mockOnError,
-          onClose: mockOnClose,
-        }),
-      { wrapper },
-    );
-
-    expect(result.current.isSubmitDisabled).toBe(true);
+  it('handles creating a post', async () => {
+    const { result } = createHook();
 
     act(() => {
-      result.current.updateTitle('Valid Title');
+      result.current.showCreatePostDialog();
     });
-
-    expect(result.current.isSubmitDisabled).toBe(true); // Still disabled - need body too
-
-    act(() => {
-      result.current.updateBody('Valid Body');
-    });
-
-    expect(result.current.isSubmitDisabled).toBe(false);
-  });
-
-  it('should handle successful form submission', async () => {
-    const wrapper = createWrapper();
-    const { result } = renderHook(
-      () =>
-        useCreatePostController({
-          onSuccess: mockOnSuccess,
-          onError: mockOnError,
-          onClose: mockOnClose,
-        }),
-      { wrapper },
-    );
+    expect(result.current.isCreatePostDialogOpen).toBe(true);
 
     act(() => {
       result.current.updateTitle('Test Title');
       result.current.updateBody('Test Body');
+      result.current.updateUserId(1);
     });
 
     await act(async () => {
-      await result.current.submitForm();
+      await result.current.confirmCreate();
     });
 
-    expect(mockOnSuccess).toHaveBeenCalledWith('Post created successfully!');
-    expect(mockOnClose).toHaveBeenCalled();
+    expect(mockOnPostCreated).toHaveBeenCalledWith(
+      expect.objectContaining({
+        title: 'Test Title',
+        body: 'Test Body',
+        userId: 1,
+      }),
+    );
+    expect(result.current.isCreatePostDialogOpen).toBe(false);
+
+    // Check we reset back to the default values
+    expect(result.current.postData).toEqual(
+      expect.objectContaining({ title: '', body: '', userId: 1 }),
+    );
   });
 
   it('should handle form submission error', async () => {
-    // Mock a network error
-    const errorHandlers = [
+    server.use(
       http.post('https://jsonplaceholder.typicode.com/posts', () => {
         return new HttpResponse(null, { status: 500 });
       }),
-    ];
-
-    server.use(...errorHandlers);
-
-    const wrapper = createWrapper();
-    const { result } = renderHook(
-      () =>
-        useCreatePostController({
-          onSuccess: mockOnSuccess,
-          onError: mockOnError,
-          onClose: mockOnClose,
-        }),
-      { wrapper },
     );
 
+    const { result } = createHook();
+
     act(() => {
-      result.current.updateTitle('Test Title');
-      result.current.updateBody('Test Body');
+      result.current.showCreatePostDialog();
+      result.current.updateTitle('Updated Title');
+      result.current.updateBody('Updated Content');
+      result.current.updateUserId(2);
     });
 
     await act(async () => {
-      await result.current.submitForm();
+      await expect(result.current.confirmCreate()).rejects.toThrow();
     });
-
-    expect(mockOnError).toHaveBeenCalledWith('Failed to create post');
-    expect(mockOnClose).toHaveBeenCalled();
 
     // Reset handlers
     server.resetHandlers();
   });
 
-  it('should handle close action', () => {
-    const wrapper = createWrapper();
-    const { result } = renderHook(
-      () =>
-        useCreatePostController({
-          onSuccess: mockOnSuccess,
-          onError: mockOnError,
-          onClose: mockOnClose,
-        }),
-      { wrapper },
-    );
+  it('should disable submit when form is invalid', () => {
+    const { result } = createHook();
 
     act(() => {
-      result.current.handleClose();
+      result.current.showCreatePostDialog();
     });
 
-    expect(mockOnClose).toHaveBeenCalled();
+    // No data yet so it is disabled
+    expect(result.current.isCreateButtonDisabled).toBe(true);
+
+    act(() => {
+      result.current.updateTitle('Valid title');
+    });
+
+    expect(result.current.isCreateButtonDisabled).toBe(true);
+
+    act(() => {
+      result.current.updateBody('Valid body');
+    });
+
+    expect(result.current.isCreateButtonDisabled).toBe(false);
   });
 });

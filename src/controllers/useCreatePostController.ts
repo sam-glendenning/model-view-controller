@@ -1,89 +1,102 @@
 import { useState, useCallback } from 'react';
 import { useCreatePost } from '@/hooks';
-import type { PostFormData } from '@/types';
+import type { Post } from '@/types';
+
+const EMPTY_POST: Omit<Post, 'id'> = {
+  title: '',
+  body: '',
+  userId: 1,
+} as const;
 
 interface CreatePostDialogController {
-  // Form State
-  formData: PostFormData;
+  // State
+  postData: Post;
+  isCreatePostDialogOpen: boolean;
 
-  // Form Validation
-  isSubmitDisabled: boolean;
+  // Computed
+  isCreating: boolean;
+  isCreateButtonDisabled: boolean;
 
   // Actions
-  handleClose: () => void;
+  showCreatePostDialog: () => void;
+  hideCreatePostDialog: () => void;
   updateTitle: (title: string) => void;
   updateBody: (body: string) => void;
   updateUserId: (userId: number) => void;
-  submitForm: () => Promise<void>;
+  confirmCreate: () => Promise<void>;
 }
 
-interface useCreatePostControllerProps {
-  onClose?: () => void;
-  onSuccess?: (message: string) => void;
-  onError?: (message: string) => void;
+export interface UseCreatePostControllerProps {
+  onPostCreated?: (createdPost: Post) => void;
 }
 
 export const useCreatePostController = ({
-  onClose,
-  onSuccess,
-  onError,
-}: useCreatePostControllerProps = {}): CreatePostDialogController => {
+  onPostCreated,
+}: UseCreatePostControllerProps = {}): CreatePostDialogController => {
   // Mutation hook
-  const { mutateAsync: createPost, isPending: createPostPending } =
-    useCreatePost();
+  const { mutateAsync: createPost, isPending: isCreating } = useCreatePost();
 
   // Local state
-  const [formData, setFormData] = useState<PostFormData>({
-    title: '',
-    body: '',
-    userId: 1,
+  const [isCreatePostDialogOpen, setIsCreatePostDialogOpen] = useState(false);
+  const [postData, setPostData] = useState<Post>({
+    ...EMPTY_POST,
+    id: 100000, // #TODO Generate unique ID
   });
 
+  const resetPostData = useCallback(() => {
+    setPostData({
+      ...EMPTY_POST,
+      id: 100000, // generator func here
+    });
+  }, []);
+
   // Computed values
-  const isSubmitDisabled =
-    !formData.title.trim() || !formData.body.trim() || createPostPending;
+  const isCreateButtonDisabled =
+    isCreating || !postData.title.trim() || !postData.body.trim();
 
   // Actions
-  const handleClose = useCallback(() => {
-    onClose?.();
-  }, [onClose]);
+  const showCreatePostDialog = useCallback(() => {
+    setIsCreatePostDialogOpen(true);
+  }, []);
+
+  const hideCreatePostDialog = useCallback(() => {
+    setIsCreatePostDialogOpen(false);
+  }, []);
 
   const updateTitle = useCallback((title: string) => {
-    setFormData(prev => ({ ...prev, title }));
+    setPostData(prev => ({ ...prev, title }));
   }, []);
 
   const updateBody = useCallback((body: string) => {
-    setFormData(prev => ({ ...prev, body }));
+    setPostData(prev => ({ ...prev, body }));
   }, []);
 
   const updateUserId = useCallback((userId: number) => {
-    setFormData(prev => ({ ...prev, userId: userId ?? 1 }));
+    setPostData(prev => ({ ...prev, userId }));
   }, []);
 
-  const submitForm = useCallback(async () => {
-    try {
-      await createPost(formData);
-
-      onSuccess?.('Post created successfully!');
-    } catch {
-      onError?.('Failed to create post');
-    } finally {
-      onClose?.();
-    }
-  }, [createPost, formData, onSuccess, onError, onClose]);
+  const confirmCreate = useCallback(async () => {
+    await createPost(postData);
+    onPostCreated?.(postData);
+    setIsCreatePostDialogOpen(false);
+    resetPostData();
+  }, [createPost, postData, resetPostData, onPostCreated]);
 
   return {
     // State
-    formData,
+    postData,
+    isCreatePostDialogOpen,
 
     // Computed
-    isSubmitDisabled,
+    isCreating,
+    isCreateButtonDisabled,
 
     // Actions
-    handleClose,
+    showCreatePostDialog,
+    hideCreatePostDialog,
     updateTitle,
     updateBody,
     updateUserId,
-    submitForm,
+    confirmCreate,
   };
 };
