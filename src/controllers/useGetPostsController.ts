@@ -2,9 +2,9 @@ import { useState, useCallback } from 'react';
 import { usePosts } from '@/hooks';
 import type { Post, SnackbarState } from '@/types';
 
-interface PostsController {
+interface useGetPostsControllerProps {
   // Data
-  posts: Post[] | undefined;
+  posts?: Post[];
   postsLoading: boolean;
   postsError: Error | null;
 
@@ -17,11 +17,12 @@ interface PostsController {
   showErrorMessage: (message: string) => void;
 
   // Callback handlers for individual post operations
-  onPostDeleted: () => void;
-  onPostUpdated: () => void;
+  onPostDeleted: (deletedPost: Post) => void;
+  onPostUpdated: (updatedPost: Post) => void;
+  onPostCreated: (createdPost: Post) => void;
 }
 
-export const usePostsController = (): PostsController => {
+export const useGetPostsController = (): useGetPostsControllerProps => {
   // Data hooks
   const {
     data: posts,
@@ -58,18 +59,26 @@ export const usePostsController = (): PostsController => {
   }, []);
 
   // Callback handlers for individual post operations
-  const onPostDeleted = useCallback(() => {
+  const onPostDeleted = useCallback((post: Post) => {
     setSnackbar({
       open: true,
-      message: 'Post deleted successfully!',
+      message: `Post ${post.id} deleted successfully!`,
       severity: 'success',
     });
   }, []);
 
-  const onPostUpdated = useCallback(() => {
+  const onPostUpdated = useCallback((post: Post) => {
     setSnackbar({
       open: true,
-      message: 'Post updated successfully!',
+      message: `Post ${post.id} updated successfully!`,
+      severity: 'success',
+    });
+  }, []);
+
+  const onPostCreated = useCallback((post: Post) => {
+    setSnackbar({
+      open: true,
+      message: `Post ${post.id} created successfully!`,
       severity: 'success',
     });
   }, []);
@@ -91,5 +100,6 @@ export const usePostsController = (): PostsController => {
     // Callback handlers
     onPostDeleted,
     onPostUpdated,
+    onPostCreated,
   };
 };

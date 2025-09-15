@@ -1,41 +1,16 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import { waitFor } from '@testing-library/react';
-import { usePostsController } from './usePostsController';
-import { mockPosts } from '@/mocks/data';
+import { useGetPostsController } from './useGetPostsController';
 import { createControllerHookWrapper as createWrapper } from '@/test/utils';
 
-describe('usePostsController', () => {
-  beforeEach(() => {
-    // Reset mock posts data
-    mockPosts.splice(
-      0,
-      mockPosts.length,
-      ...[
-        {
-          id: 1,
-          userId: 1,
-          title: 'Test Post Title',
-          body: 'This is a test post body with some content to display.',
-        },
-        {
-          id: 2,
-          userId: 1,
-          title: 'Another Test Post',
-          body: 'This is another test post with different content.',
-        },
-        {
-          id: 3,
-          userId: 2,
-          title: "Jane's Post",
-          body: 'A post written by Jane Smith about various topics.',
-        },
-      ],
-    );
-  });
+describe('useGetPostsController', () => {
+  const createHook = () =>
+    renderHook(() => useGetPostsController(), { wrapper: createWrapper() });
+
+  beforeEach(() => {});
 
   it('should load posts on mount', async () => {
-    const wrapper = createWrapper();
-    const { result } = renderHook(() => usePostsController(), { wrapper });
+    const { result } = createHook();
 
     expect(result.current.postsLoading).toBe(true);
     expect(result.current.posts).toBeUndefined();
@@ -45,18 +20,18 @@ describe('usePostsController', () => {
       expect(result.current.postsLoading).toBe(false);
     });
 
-    expect(result.current.posts).toHaveLength(3);
+    expect(result.current.posts).toHaveLength(5);
     expect(result.current.posts![0]).toEqual(
       expect.objectContaining({
         id: 1,
         title: 'Test Post Title',
+        body: 'This is a test post body with some content to display.',
       }),
     );
   });
 
   it('should manage snackbar state correctly', async () => {
-    const wrapper = createWrapper();
-    const { result } = renderHook(() => usePostsController(), { wrapper });
+    const { result } = createHook();
 
     await waitFor(() => {
       expect(result.current.postsLoading).toBe(false);
@@ -94,28 +69,33 @@ describe('usePostsController', () => {
   });
 
   it('should handle post deletion callback', async () => {
-    const wrapper = createWrapper();
-    const { result } = renderHook(() => usePostsController(), { wrapper });
+    const { result } = createHook();
 
     await waitFor(() => {
       expect(result.current.postsLoading).toBe(false);
     });
 
-    expect(result.current.posts).toHaveLength(3);
+    expect(result.current.posts).toHaveLength(5);
 
     // Simulate post deletion
     act(() => {
-      result.current.onPostDeleted();
+      result.current.onPostDeleted({
+        id: 1,
+        userId: 1,
+        title: 'Test Post Title',
+        body: 'This is a test post body with some content to display.',
+      });
     });
 
     expect(result.current.snackbar.open).toBe(true);
-    expect(result.current.snackbar.message).toBe('Post deleted successfully!');
+    expect(result.current.snackbar.message).toBe(
+      'Post 1 deleted successfully!',
+    );
     expect(result.current.snackbar.severity).toBe('success');
   });
 
   it('should handle post update callback', async () => {
-    const wrapper = createWrapper();
-    const { result } = renderHook(() => usePostsController(), { wrapper });
+    const { result } = createHook();
 
     await waitFor(() => {
       expect(result.current.postsLoading).toBe(false);
@@ -123,11 +103,42 @@ describe('usePostsController', () => {
 
     // Simulate post update
     act(() => {
-      result.current.onPostUpdated();
+      result.current.onPostUpdated({
+        id: 1,
+        userId: 1,
+        title: 'Updated Test Post Title',
+        body: 'This is an updated test post body.',
+      });
     });
 
     expect(result.current.snackbar.open).toBe(true);
-    expect(result.current.snackbar.message).toBe('Post updated successfully!');
+    expect(result.current.snackbar.message).toBe(
+      'Post 1 updated successfully!',
+    );
+    expect(result.current.snackbar.severity).toBe('success');
+  });
+
+  it('should handle post creation callback', async () => {
+    const { result } = createHook();
+
+    await waitFor(() => {
+      expect(result.current.postsLoading).toBe(false);
+    });
+
+    // Simulate post creation
+    act(() => {
+      result.current.onPostCreated({
+        id: 4,
+        userId: 1,
+        title: 'New Test Post',
+        body: 'This is a newly created test post.',
+      });
+    });
+
+    expect(result.current.snackbar.open).toBe(true);
+    expect(result.current.snackbar.message).toBe(
+      'Post 4 created successfully!',
+    );
     expect(result.current.snackbar.severity).toBe('success');
   });
 });
