@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
-import { useCreatePost } from '@/hooks';
-import type { Post } from '@/types';
+import { useCreatePost } from './useCreatePost';
+import type { Post } from '@/shared/types';
 
 const EMPTY_POST: Omit<Post, 'id'> = {
   title: '',

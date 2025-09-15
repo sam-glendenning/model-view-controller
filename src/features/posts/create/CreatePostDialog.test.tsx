@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { CreatePostDialog } from './CreatePostDialog';
-import type { Post } from '@/types';
+import type { Post } from '@/shared/types';
 import { mockPosts } from '@/mocks/data';
 
 describe('CreatePostDialog', () => {

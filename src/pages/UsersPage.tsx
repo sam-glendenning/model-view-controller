@@ -1,10 +1,10 @@
 import React from 'react';
 import { Container, Typography, Box } from '@mui/material';
-import { UsersList } from '@/components/UsersList';
-import { useUsers } from '@/hooks';
+import { UsersList } from '@/features/users/UsersList';
+import { useGetUsers } from '@/features/users/useGetUsers';
 
 export const UsersPage: React.FC = () => {
-  const { data: users = [], isLoading, error } = useUsers();
+  const { data: users = [], isLoading, error } = useGetUsers();
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>

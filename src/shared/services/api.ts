@@ -7,7 +7,7 @@ import {
   CreatePostMutationResponse,
   UpdatePostMutationResponse,
   DeletePostMutationResponse,
-} from '@/types';
+} from '@/shared/types';
 
 class ApiService {
   private api: AxiosInstance;

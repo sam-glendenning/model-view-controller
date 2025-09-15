@@ -1,5 +1,5 @@
 import { http, HttpResponse, delay } from 'msw';
-import type { Post } from '@/types';
+import type { Post } from '@/shared/types';
 import { mockUsers, mockPosts } from './data';
 
 // Artificial delay function

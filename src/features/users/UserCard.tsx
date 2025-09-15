@@ -8,7 +8,7 @@ import {
   Avatar,
 } from '@mui/material';
 import { Email, Phone, Language } from '@mui/icons-material';
-import { User } from '@/types';
+import { User } from '@/shared/types';
 
 interface UserCardProps {
   user?: User;
@@ -68,7 +68,9 @@ export const UserCard: React.FC<UserCardProps> = ({
   return (
     <Card sx={{ mb: 2, transition: 'elevation 0.2s' }} elevation={1}>
       <CardContent>
-        <Box sx={{ display: 'flex', alignItems: 'center', mb: compact ? 0 : 2 }}>
+        <Box
+          sx={{ display: 'flex', alignItems: 'center', mb: compact ? 0 : 2 }}
+        >
           <Avatar sx={{ bgcolor: 'primary.main', mr: 2 }}>
             {getInitials(user.name)}
           </Avatar>
@@ -89,17 +91,21 @@ export const UserCard: React.FC<UserCardProps> = ({
                 <Email sx={{ fontSize: 16, mr: 1, color: 'text.secondary' }} />
                 <Typography variant="body2">{user.email}</Typography>
               </Box>
-              
+
               {user.phone && (
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-                  <Phone sx={{ fontSize: 16, mr: 1, color: 'text.secondary' }} />
+                  <Phone
+                    sx={{ fontSize: 16, mr: 1, color: 'text.secondary' }}
+                  />
                   <Typography variant="body2">{user.phone}</Typography>
                 </Box>
               )}
-              
+
               {user.website && (
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-                  <Language sx={{ fontSize: 16, mr: 1, color: 'text.secondary' }} />
+                  <Language
+                    sx={{ fontSize: 16, mr: 1, color: 'text.secondary' }}
+                  />
                   <Typography variant="body2">{user.website}</Typography>
                 </Box>
               )}

@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
-import { usePosts } from '@/hooks';
-import type { Post, SnackbarState } from '@/types';
+import { useGetPosts } from './useGetPosts';
+import type { Post, SnackbarState } from '@/shared/types';
 
 interface useGetPostsControllerProps {
   // Data
@@ -28,7 +28,7 @@ export const useGetPostsController = (): useGetPostsControllerProps => {
     data: posts,
     isLoading: postsLoading,
     error: postsError,
-  } = usePosts();
+  } = useGetPosts();
 
   // Local state
   const [snackbar, setSnackbar] = useState<SnackbarState>({

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Typography, Box, Alert } from '@mui/material';
 import { UserCard } from './UserCard';
-import { User } from '@/types';
+import { User } from '@/shared/types';
 
 interface UsersListProps {
   users?: User[];
@@ -26,9 +26,7 @@ export const UsersList: React.FC<UsersListProps> = ({
         <Typography variant="h5" gutterBottom>
           {title}
         </Typography>
-        <Alert severity="error">
-          Error loading users: {error}
-        </Alert>
+        <Alert severity="error">Error loading users: {error}</Alert>
       </Box>
     );
   }
@@ -49,20 +47,19 @@ export const UsersList: React.FC<UsersListProps> = ({
 
       <Grid container spacing={2}>
         {isLoading && renderLoadingSkeletons()}
-        
+
         {!isLoading && users.length === 0 && (
           <Grid item xs={12}>
-            <Alert severity="info">
-              {emptyMessage}
-            </Alert>
+            <Alert severity="info">{emptyMessage}</Alert>
           </Grid>
         )}
-        
-        {!isLoading && users.map((user) => (
-          <Grid item xs={12} sm={6} md={compact ? 6 : 4} key={user.id}>
-            <UserCard user={user} compact={compact} />
-          </Grid>
-        ))}
+
+        {!isLoading &&
+          users.map(user => (
+            <Grid item xs={12} sm={6} md={compact ? 6 : 4} key={user.id}>
+              <UserCard user={user} compact={compact} />
+            </Grid>
+          ))}
       </Grid>
     </Box>
   );

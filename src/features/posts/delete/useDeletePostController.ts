@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
-import { useDeletePost } from '@/hooks';
-import type { Post } from '@/types';
+import { useDeletePost } from './useDeletePost';
+import type { Post } from '@/shared/types';
 
 interface PostDeleteController {
   // State

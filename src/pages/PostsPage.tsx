@@ -9,10 +9,10 @@ import {
   CircularProgress,
 } from '@mui/material';
 import { Add } from '@mui/icons-material';
-import Post from '@/components/post';
-import { useGetPostsController } from '@/controllers/useGetPostsController';
-import { CreatePostDialog } from '@/components/post/create/CreatePostDialog';
-import { useCreatePostController } from '@/controllers/useCreatePostController';
+import Post from '@/features/posts';
+import { useGetPostsController } from '@/features/posts/view/useGetPostsController';
+import { CreatePostDialog } from '@/features/posts/create/CreatePostDialog';
+import { useCreatePostController } from '@/features/posts/create/useCreatePostController';
 
 export const PostsPage: React.FC = () => {
   const {

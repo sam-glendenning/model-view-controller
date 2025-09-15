@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
-import { useUpdatePost } from '@/hooks';
-import type { Post } from '@/types';
+import { useUpdatePost } from './useUpdatePost';
+import type { Post } from '@/shared/types';
 
 interface PostUpdateController {
   // State

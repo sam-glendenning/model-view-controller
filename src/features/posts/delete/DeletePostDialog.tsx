@@ -9,7 +9,7 @@ import {
   CircularProgress,
 } from '@mui/material';
 import { Delete, Cancel } from '@mui/icons-material';
-import type { Post } from '@/types';
+import type { Post } from '@/shared/types';
 
 interface DeletePostDialogProps {
   open: boolean;

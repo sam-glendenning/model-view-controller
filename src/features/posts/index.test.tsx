@@ -9,7 +9,7 @@ import { render } from '@/test/utils';
 import PostComponent from './index';
 import userEvent, { type UserEvent } from '@testing-library/user-event';
 import { mockPosts } from '@/mocks/data';
-import type { Post } from '@/types';
+import type { Post } from '@/shared/types';
 
 describe('Post component', () => {
   const mockOnPostDeleted = jest.fn();

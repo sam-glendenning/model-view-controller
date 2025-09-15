@@ -9,7 +9,7 @@ import {
   CircularProgress,
 } from '@mui/material';
 import { Save, Cancel, Delete } from '@mui/icons-material';
-import type { Post } from '@/types';
+import type { Post } from '@/shared/types';
 
 export interface PostEditComponentProps {
   postData: Post;

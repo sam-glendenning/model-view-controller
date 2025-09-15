@@ -1,10 +1,10 @@
 import React from 'react';
-import { useUpdatePostController } from '@/controllers/useUpdatePostController';
-import { useDeletePostController } from '@/controllers/useDeletePostController';
-import { PostViewComponent } from './view/PostViewComponent';
-import { PostEditComponent } from './edit/PostEditComponent';
-import { DeletePostDialog } from './delete/DeletePostDialog';
-import type { Post } from '@/types';
+import { useUpdatePostController } from '@/features/posts/edit/useUpdatePostController';
+import { useDeletePostController } from '@/features/posts/delete/useDeletePostController';
+import { PostViewComponent } from '@/features/posts/view/PostViewComponent';
+import { PostEditComponent } from '@/features/posts/edit/PostEditComponent';
+import { DeletePostDialog } from '@/features/posts/delete/DeletePostDialog';
+import type { Post } from '@/shared/types';
 
 interface PostComponentProps {
   postData: Post;

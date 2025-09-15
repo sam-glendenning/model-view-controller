@@ -1,5 +1,5 @@
 import { http, HttpResponse } from 'msw';
-import type { Post, User } from '@/types';
+import type { Post, User } from '@/shared/types';
 import { mockUsers, mockPosts } from './data';
 
 // Create isolated copies for each test handler call to prevent mutations

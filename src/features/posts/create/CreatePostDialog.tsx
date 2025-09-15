@@ -8,7 +8,7 @@ import {
   DialogActions,
   Button,
 } from '@mui/material';
-import type { Post } from '@/types';
+import type { Post } from '@/shared/types';
 
 interface CreatePostDialogProps {
   // Dialog state
