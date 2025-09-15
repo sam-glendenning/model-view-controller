@@ -4,6 +4,7 @@ import {
   GetPostsParams,
   UsersQueryResponse,
   PostsQueryResponse,
+  CreatePostMutationResponse,
   UpdatePostMutationResponse,
   DeletePostMutationResponse,
 } from '@/shared/types';
@@ -80,7 +81,9 @@ class ApiService {
     }
   };
 
-  createPost = async (postData: Omit<Post, 'id'>): Promise<Post> => {
+  createPost = async (
+    postData: Omit<Post, 'id'>,
+  ): Promise<CreatePostMutationResponse> => {
     try {
       const response = await this.api.post<Post>('/posts', postData);
       return response.data;
