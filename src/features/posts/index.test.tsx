@@ -154,7 +154,7 @@ describe('Post component', () => {
 
       await waitFor(() => {
         expect(mockOnPostDeleted).toHaveBeenCalledWith(
-          expect.objectContaining({ id: 1 }),
+          expect.objectContaining({ id: '1' }),
         );
       });
     });

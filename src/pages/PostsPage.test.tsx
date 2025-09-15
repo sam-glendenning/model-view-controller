@@ -82,7 +82,7 @@ describe('PostsPage Integration Tests', () => {
     // Wait for success message
     await waitFor(() => {
       expect(
-        screen.getByText(/Post \d+ created successfully!/),
+        screen.getByText(/Post 123456789 created successfully!/),
       ).toBeInTheDocument();
     });
 
@@ -320,7 +320,7 @@ describe('PostsPage Integration Tests', () => {
         // Add delay to test loading state
         await new Promise(resolve => setTimeout(resolve, 500));
         return HttpResponse.json({
-          id: 101,
+          id: '123456789',
           title: 'New Test Post',
           body: 'New test post body',
           userId: 1,
@@ -364,7 +364,7 @@ describe('PostsPage Integration Tests', () => {
     // Wait for success message
     await waitFor(() => {
       expect(
-        screen.getByText(/Post \d+ created successfully!/),
+        screen.getByText(/Post 123456789 created successfully!/),
       ).toBeInTheDocument();
     });
 

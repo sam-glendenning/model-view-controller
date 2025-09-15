@@ -23,7 +23,7 @@ describe('useGetPostsController', () => {
     expect(result.current.posts).toHaveLength(5);
     expect(result.current.posts![0]).toEqual(
       expect.objectContaining({
-        id: 1,
+        id: '1',
         title: 'Test Post Title',
         body: 'This is a test post body with some content to display.',
       }),
@@ -80,7 +80,7 @@ describe('useGetPostsController', () => {
     // Simulate post deletion
     act(() => {
       result.current.onPostDeleted({
-        id: 1,
+        id: '1',
         userId: 1,
         title: 'Test Post Title',
         body: 'This is a test post body with some content to display.',
@@ -104,7 +104,7 @@ describe('useGetPostsController', () => {
     // Simulate post update
     act(() => {
       result.current.onPostUpdated({
-        id: 1,
+        id: '1',
         userId: 1,
         title: 'Updated Test Post Title',
         body: 'This is an updated test post body.',
@@ -128,7 +128,7 @@ describe('useGetPostsController', () => {
     // Simulate post creation
     act(() => {
       result.current.onPostCreated({
-        id: 4,
+        id: '4',
         userId: 1,
         title: 'New Test Post',
         body: 'This is a newly created test post.',

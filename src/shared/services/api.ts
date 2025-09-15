@@ -4,7 +4,6 @@ import {
   GetPostsParams,
   UsersQueryResponse,
   PostsQueryResponse,
-  CreatePostMutationResponse,
   UpdatePostMutationResponse,
   DeletePostMutationResponse,
 } from '@/shared/types';
@@ -81,12 +80,9 @@ class ApiService {
     }
   };
 
-  createPost = async (postData: Post): Promise<CreatePostMutationResponse> => {
+  createPost = async (postData: Omit<Post, 'id'>): Promise<Post> => {
     try {
-      const response = await this.api.post<CreatePostMutationResponse>(
-        '/posts',
-        postData,
-      );
+      const response = await this.api.post<Post>('/posts', postData);
       return response.data;
     } catch (error) {
       console.error('Error creating post:', error);
@@ -108,7 +104,7 @@ class ApiService {
     }
   };
 
-  deletePost = async (id: number): Promise<DeletePostMutationResponse> => {
+  deletePost = async (id: string): Promise<DeletePostMutationResponse> => {
     try {
       await this.api.delete(`/posts/${id}`);
     } catch (error) {

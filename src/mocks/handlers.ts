@@ -1,6 +1,7 @@
 import { http, HttpResponse, delay } from 'msw';
 import type { Post } from '@/shared/types';
 import { mockUsers, mockPosts } from './data';
+import { v4 as uuidv4 } from 'uuid';
 
 // Artificial delay function
 const artificialDelay = () => delay(1000);
@@ -51,7 +52,7 @@ export const handlers = [
     'https://jsonplaceholder.typicode.com/posts/:id',
     async ({ params }) => {
       await artificialDelay();
-      const id = parseInt(params.id as string);
+      const id = params.id as string;
       const post = mockPosts.find(p => p.id === id);
 
       if (!post) {
@@ -67,11 +68,10 @@ export const handlers = [
     async ({ request }) => {
       await artificialDelay();
       const newPost = (await request.json()) as Omit<Post, 'id'>;
-      // Generate a unique ID that doesn't conflict with existing posts
-      const maxId = Math.max(...mockPosts.map(p => p.id));
+      // Generate a unique UUID for the new post
       const post: Post = {
         ...newPost,
-        id: maxId + 1,
+        id: uuidv4(),
       };
 
       mockPosts.push(post);
@@ -83,7 +83,7 @@ export const handlers = [
     'https://jsonplaceholder.typicode.com/posts/:id',
     async ({ params, request }) => {
       await artificialDelay();
-      const id = parseInt(params.id as string);
+      const id = params.id as string;
       const updatedData = (await request.json()) as Partial<Post>;
       const postIndex = mockPosts.findIndex(p => p.id === id);
 
@@ -100,7 +100,7 @@ export const handlers = [
     'https://jsonplaceholder.typicode.com/posts/:id',
     async ({ params }) => {
       await artificialDelay();
-      const id = parseInt(params.id as string);
+      const id = params.id as string;
       const postIndex = mockPosts.findIndex(p => p.id === id);
 
       if (postIndex === -1) {

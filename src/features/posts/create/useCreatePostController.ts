@@ -10,7 +10,7 @@ const EMPTY_POST: Omit<Post, 'id'> = {
 
 interface CreatePostDialogController {
   // State
-  postData: Post;
+  postData: Omit<Post, 'id'>;
   isCreatePostDialogOpen: boolean;
 
   // Computed
@@ -40,15 +40,13 @@ export const useCreatePostController = ({
 
   // Local state
   const [isCreatePostDialogOpen, setIsCreatePostDialogOpen] = useState(false);
-  const [postData, setPostData] = useState<Post>({
+  const [postData, setPostData] = useState<Omit<Post, 'id'>>({
     ...EMPTY_POST,
-    id: 100000, // #TODO Generate unique ID
   });
 
   const resetPostData = useCallback(() => {
     setPostData({
       ...EMPTY_POST,
-      id: 100000, // generator func here
     });
   }, []);
 
@@ -79,8 +77,8 @@ export const useCreatePostController = ({
 
   const confirmCreate = useCallback(async () => {
     try {
-      await createPost(postData);
-      onPostCreated?.(postData);
+      const createdPost = await createPost(postData);
+      onPostCreated?.(createdPost);
       setIsCreatePostDialogOpen(false);
       resetPostData();
     } catch (error) {

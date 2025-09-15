@@ -25,7 +25,7 @@ describe('useUpdatePostController', () => {
     );
 
     expect(result.current.formData).toEqual({
-      id: 1,
+      id: '1',
       title: 'Test Post Title',
       body: 'This is a test post body with some content to display.',
       userId: 1,

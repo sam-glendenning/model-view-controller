@@ -1,6 +1,7 @@
 import { http, HttpResponse } from 'msw';
 import type { Post, User } from '@/shared/types';
 import { mockUsers, mockPosts } from './data';
+import { v4 as uuidv4 } from 'uuid';
 
 // Create isolated copies for each test handler call to prevent mutations
 const getIsolatedMockPosts = (): Post[] =>
@@ -50,7 +51,7 @@ export const testHandlers = [
   http.get(
     'https://jsonplaceholder.typicode.com/posts/:id',
     async ({ params }) => {
-      const id = parseInt(params.id as string);
+      const id = params.id as string;
       const posts = getIsolatedMockPosts();
       const post = posts.find(p => p.id === id);
 
@@ -66,12 +67,10 @@ export const testHandlers = [
     'https://jsonplaceholder.typicode.com/posts',
     async ({ request }) => {
       const newPost = (await request.json()) as Omit<Post, 'id'>;
-      const posts = getIsolatedMockPosts();
-      // Generate a unique ID that doesn't conflict with existing posts
-      const maxId = Math.max(...posts.map(p => p.id));
+      // Generate a unique UUID for the new post
       const post: Post = {
         ...newPost,
-        id: maxId + 1,
+        id: uuidv4(),
       };
 
       // Return the new post WITHOUT mutating global state
@@ -82,7 +81,7 @@ export const testHandlers = [
   http.put(
     'https://jsonplaceholder.typicode.com/posts/:id',
     async ({ params, request }) => {
-      const id = parseInt(params.id as string);
+      const id = params.id as string;
       const updatedData = (await request.json()) as Partial<Post>;
       const posts = getIsolatedMockPosts();
       const postIndex = posts.findIndex(p => p.id === id);
@@ -100,7 +99,7 @@ export const testHandlers = [
   http.delete(
     'https://jsonplaceholder.typicode.com/posts/:id',
     async ({ params }) => {
-      const id = parseInt(params.id as string);
+      const id = params.id as string;
       const posts = getIsolatedMockPosts();
       const postIndex = posts.findIndex(p => p.id === id);
 

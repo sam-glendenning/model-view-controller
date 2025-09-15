@@ -4,7 +4,7 @@ import type { Post, UpdatePostMutationResponse } from '@/shared/types';
 
 const queryKeys = {
   posts: ['posts'] as const,
-  post: (id: number) => ['posts', id] as const,
+  post: (id: string) => ['posts', id] as const,
   userPosts: (userId: number) => ['posts', 'user', userId] as const,
 };
 

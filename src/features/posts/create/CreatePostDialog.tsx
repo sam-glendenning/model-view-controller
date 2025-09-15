@@ -16,7 +16,7 @@ interface CreatePostDialogProps {
   onClose: () => void;
 
   // Form data
-  postData: Post;
+  postData: Omit<Post, 'id'>;
   onTitleChange: (title: string) => void;
   onBodyChange: (body: string) => void;
   onUserIdChange: (userId: number) => void;

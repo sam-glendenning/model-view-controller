@@ -24,7 +24,7 @@ export interface User {
 
 // Post Model
 export interface Post {
-  id: number;
+  id: string;
   userId: number;
   title: string;
   body: string;
