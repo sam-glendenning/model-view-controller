@@ -1,6 +1,6 @@
 import React from 'react';
-import { usePostUpdateController } from '@/controllers/usePostUpdateController';
-import { usePostDeleteController } from '@/controllers/usePostDeleteController';
+import { useUpdatePostController } from '@/controllers/useUpdatePostController';
+import { useDeletePostController } from '@/controllers/useDeletePostController';
 import { PostViewComponent } from './view/PostViewComponent';
 import { PostEditComponent } from './edit/PostEditComponent';
 import { DeletePostDialog } from './delete/DeletePostDialog';
@@ -28,7 +28,7 @@ const PostComponent: React.FC<PostComponentProps> = ({
     updateBody,
     updateUserId,
     updatePost,
-  } = usePostUpdateController({ postData, onPostUpdated });
+  } = useUpdatePostController({ postData, onPostUpdated });
 
   const {
     isDeletePostDialogOpen,
@@ -36,7 +36,7 @@ const PostComponent: React.FC<PostComponentProps> = ({
     showDeletePostDialog,
     hideDeletePostDialog,
     confirmDelete,
-  } = usePostDeleteController({
+  } = useDeletePostController({
     postData,
     onPostDeleted,
   });
@@ -45,7 +45,7 @@ const PostComponent: React.FC<PostComponentProps> = ({
     <div>
       {isEditingPost ? (
         <PostEditComponent
-          formData={formData}
+          postData={formData}
           onTitleChange={updateTitle}
           onBodyChange={updateBody}
           onUserIdChange={updateUserId}

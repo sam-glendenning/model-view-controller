@@ -15,7 +15,7 @@ describe('PostEditComponent', () => {
 
   it('renders correctly', () => {
     const props: PostEditComponentProps = {
-      formData: mockPost,
+      postData: mockPost,
       onTitleChange: jest.fn(),
       onBodyChange: jest.fn(),
       onUserIdChange: jest.fn(),

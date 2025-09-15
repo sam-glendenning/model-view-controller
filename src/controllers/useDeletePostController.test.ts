@@ -2,11 +2,11 @@ import { renderHook, act } from '@testing-library/react-hooks';
 import { waitFor } from '@testing-library/react';
 import { http, HttpResponse } from 'msw';
 import { server } from '@/test/mocks/server';
-import { usePostDeleteController } from './usePostDeleteController';
+import { useDeletePostController } from './useDeletePostController';
 import { mockPosts } from '@/mocks/data';
 import { createControllerHookWrapper as createWrapper } from '@/test/utils';
 
-describe('usePostDeleteController', () => {
+describe('useDeletePostController', () => {
   const mockOnPostDeleted = jest.fn();
   const mockPost = mockPosts[0];
 
@@ -18,7 +18,7 @@ describe('usePostDeleteController', () => {
     const wrapper = createWrapper();
     const { result } = renderHook(
       () =>
-        usePostDeleteController({
+        useDeletePostController({
           postData: mockPost,
           onPostDeleted: mockOnPostDeleted,
         }),
@@ -33,7 +33,7 @@ describe('usePostDeleteController', () => {
     const wrapper = createWrapper();
     const { result } = renderHook(
       () =>
-        usePostDeleteController({
+        useDeletePostController({
           postData: mockPost,
           onPostDeleted: mockOnPostDeleted,
         }),
@@ -59,7 +59,7 @@ describe('usePostDeleteController', () => {
     const wrapper = createWrapper();
     const { result } = renderHook(
       () =>
-        usePostDeleteController({
+        useDeletePostController({
           postData: mockPost,
           onPostDeleted: mockOnPostDeleted,
         }),
@@ -89,7 +89,7 @@ describe('usePostDeleteController', () => {
     const wrapper = createWrapper();
     const { result } = renderHook(
       () =>
-        usePostDeleteController({
+        useDeletePostController({
           postData: mockPost,
           onPostDeleted: mockOnPostDeleted,
         }),

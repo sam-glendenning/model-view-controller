@@ -20,15 +20,15 @@ interface PostUpdateController {
   updatePost: () => Promise<void>;
 }
 
-export interface UsePostUpdateControllerProps {
+export interface useUpdatePostControllerProps {
   postData: Post;
   onPostUpdated?: (updatedPost: Post) => void;
 }
 
-export const usePostUpdateController = ({
+export const useUpdatePostController = ({
   postData,
   onPostUpdated,
-}: UsePostUpdateControllerProps): PostUpdateController => {
+}: useUpdatePostControllerProps): PostUpdateController => {
   // Mutation hook
   const { mutateAsync: mutatePost, isPending: isUpdating } = useUpdatePost();
 

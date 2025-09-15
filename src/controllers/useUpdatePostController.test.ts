@@ -1,11 +1,11 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import { http, HttpResponse } from 'msw';
 import { server } from '@/test/mocks/server';
-import { usePostUpdateController } from './usePostUpdateController';
+import { useUpdatePostController } from './useUpdatePostController';
 import { mockPosts } from '@/mocks/data';
 import { createControllerHookWrapper as createWrapper } from '@/test/utils';
 
-describe('usePostUpdateController', () => {
+describe('useUpdatePostController', () => {
   const mockOnPostUpdated = jest.fn();
   const mockPost = mockPosts[0];
 
@@ -17,7 +17,7 @@ describe('usePostUpdateController', () => {
     const wrapper = createWrapper();
     const { result } = renderHook(
       () =>
-        usePostUpdateController({
+        useUpdatePostController({
           postData: mockPost,
           onPostUpdated: mockOnPostUpdated,
         }),
@@ -37,7 +37,7 @@ describe('usePostUpdateController', () => {
     const wrapper = createWrapper();
     const { result } = renderHook(
       () =>
-        usePostUpdateController({
+        useUpdatePostController({
           postData: mockPost,
           onPostUpdated: mockOnPostUpdated,
         }),
@@ -63,7 +63,7 @@ describe('usePostUpdateController', () => {
     const wrapper = createWrapper();
     const { result } = renderHook(
       () =>
-        usePostUpdateController({
+        useUpdatePostController({
           postData: mockPost,
           onPostUpdated: mockOnPostUpdated,
         }),
@@ -97,7 +97,7 @@ describe('usePostUpdateController', () => {
     const wrapper = createWrapper();
     const { result } = renderHook(
       () =>
-        usePostUpdateController({
+        useUpdatePostController({
           postData: mockPost,
           onPostUpdated: mockOnPostUpdated,
         }),
@@ -133,7 +133,7 @@ describe('usePostUpdateController', () => {
     const wrapper = createWrapper();
     const { result } = renderHook(
       () =>
-        usePostUpdateController({
+        useUpdatePostController({
           postData: mockPost,
           onPostUpdated: mockOnPostUpdated,
         }),
@@ -157,7 +157,7 @@ describe('usePostUpdateController', () => {
     const wrapper = createWrapper();
     const { result } = renderHook(
       () =>
-        usePostUpdateController({
+        useUpdatePostController({
           postData: mockPost,
           onPostUpdated: mockOnPostUpdated,
         }),

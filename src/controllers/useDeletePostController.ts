@@ -15,15 +15,15 @@ interface PostDeleteController {
   confirmDelete: () => Promise<void>;
 }
 
-export interface UsePostDeleteControllerProps {
+export interface useDeletePostControllerProps {
   postData: Post;
   onPostDeleted?: (deletedPost: Post) => void;
 }
 
-export const usePostDeleteController = ({
+export const useDeletePostController = ({
   postData,
   onPostDeleted,
-}: UsePostDeleteControllerProps): PostDeleteController => {
+}: useDeletePostControllerProps): PostDeleteController => {
   // Local state
   const [isDeletePostDialogOpen, setIsDeletePostDialogOpen] = useState(false);
 
