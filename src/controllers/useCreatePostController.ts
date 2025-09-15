@@ -34,7 +34,7 @@ interface UseCreatePostControllerProps {
 export const useCreatePostController = ({
   onPostCreated,
   onPostCreationError,
-}: UseCreatePostControllerProps = {}): CreatePostDialogController => {
+}: UseCreatePostControllerProps): CreatePostDialogController => {
   // Mutation hook
   const { mutateAsync: createPost, isPending: isCreating } = useCreatePost();
 

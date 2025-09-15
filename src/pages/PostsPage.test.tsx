@@ -250,4 +250,152 @@ describe('PostsPage Integration Tests', () => {
     // Reset handlers
     server.resetHandlers();
   });
+
+  it('should cancel create dialog', async () => {
+    createView();
+
+    // Wait for posts to load
+    await waitFor(() => {
+      expect(screen.queryByRole('progressbar')).not.toBeInTheDocument();
+    });
+
+    // Open create dialog
+    const openCreatePostDialogButton = screen.getByRole('button', {
+      name: 'add post',
+    });
+    await user.click(openCreatePostDialogButton);
+
+    await waitFor(() => {
+      expect(screen.getByRole('dialog')).toBeInTheDocument();
+    });
+    const dialog = screen.getByRole('dialog');
+
+    // Fill form partially
+    const titleInput = within(dialog).getByRole('textbox', { name: 'Title' });
+    await user.type(titleInput, 'New Test Post');
+
+    // Cancel the dialog
+    const cancelButton = within(dialog).getByRole('button', { name: 'Cancel' });
+    await user.click(cancelButton);
+
+    // Verify dialog is closed
+    await waitFor(() => {
+      expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+    });
+  });
+
+  it('should cancel edit operation', async () => {
+    createView();
+
+    // Wait for posts to load
+    await waitFor(() => {
+      expect(screen.queryByRole('progressbar')).not.toBeInTheDocument();
+    });
+
+    // Find and click edit button for first post
+    const editButtons = screen.getAllByRole('button', { name: 'edit post' });
+    await user.click(editButtons[0]);
+
+    // Edit the title
+    const titleInput = screen.getByRole('textbox', { name: 'Title' });
+    await user.clear(titleInput);
+    await user.type(titleInput, 'Updated Test Post Title');
+
+    // Cancel editing
+    const cancelButton = screen.getByRole('button', { name: 'Cancel' });
+    await user.click(cancelButton);
+
+    // Verify we're back to view mode (edit button should be visible again)
+    await waitFor(() => {
+      expect(
+        screen.getAllByRole('button', { name: 'edit post' }).length,
+      ).toBeGreaterThan(0);
+    });
+  });
+
+  it('should handle delayed loading states in create dialog', async () => {
+    // Mock delayed API response
+    server.use(
+      http.post('https://jsonplaceholder.typicode.com/posts', async () => {
+        // Add delay to test loading state
+        await new Promise(resolve => setTimeout(resolve, 500));
+        return HttpResponse.json({
+          id: 101,
+          title: 'New Test Post',
+          body: 'New test post body',
+          userId: 1,
+        });
+      }),
+    );
+
+    createView();
+
+    // Wait for posts to load
+    await waitFor(() => {
+      expect(screen.queryByRole('progressbar')).not.toBeInTheDocument();
+    });
+
+    // Open create dialog
+    const openCreatePostDialogButton = screen.getByRole('button', {
+      name: 'add post',
+    });
+    await user.click(openCreatePostDialogButton);
+
+    await waitFor(() => {
+      expect(screen.getByRole('dialog')).toBeInTheDocument();
+    });
+    const dialog = screen.getByRole('dialog');
+
+    // Fill form
+    const titleInput = within(dialog).getByRole('textbox', { name: 'Title' });
+    const bodyInput = within(dialog).getByRole('textbox', { name: 'Content' });
+
+    await user.type(titleInput, 'New Test Post');
+    await user.type(bodyInput, 'New test post body');
+
+    // Submit form and check loading state
+    const createButton = within(dialog).getByRole('button', { name: 'Create' });
+
+    await act(async () => await user.click(createButton));
+
+    // Check that button shows loading state (disabled)
+    expect(createButton).toBeDisabled();
+
+    // Wait for success message
+    await waitFor(() => {
+      expect(
+        screen.getByText(/Post \d+ created successfully!/),
+      ).toBeInTheDocument();
+    });
+
+    // Reset handlers
+    server.resetHandlers();
+  });
+
+  it('should handle empty post list state', async () => {
+    // Mock empty API response
+    server.use(
+      http.get('https://jsonplaceholder.typicode.com/posts', () => {
+        return HttpResponse.json([]);
+      }),
+    );
+
+    createView();
+
+    // Wait for posts to load
+    await waitFor(() => {
+      expect(screen.queryByRole('progressbar')).not.toBeInTheDocument();
+    });
+
+    // Should not show any posts
+    expect(screen.queryByText('Test Post Title')).not.toBeInTheDocument();
+
+    // Should still show the add post button
+    expect(
+      screen.getByRole('button', { name: 'add post' }),
+    ).toBeInTheDocument();
+
+    // Reset handlers
+    server.resetHandlers();
+  });
 });
