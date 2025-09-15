@@ -20,7 +20,7 @@ interface PostUpdateController {
   updatePost: () => Promise<void>;
 }
 
-export interface useUpdatePostControllerProps {
+interface useUpdatePostControllerProps {
   postData: Post;
   onPostUpdated?: (updatedPost: Post) => void;
 }

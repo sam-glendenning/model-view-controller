@@ -15,7 +15,7 @@ interface PostDeleteController {
   confirmDelete: () => Promise<void>;
 }
 
-export interface useDeletePostControllerProps {
+interface useDeletePostControllerProps {
   postData: Post;
   onPostDeleted?: (deletedPost: Post) => void;
 }

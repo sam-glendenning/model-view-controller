@@ -82,4 +82,4 @@ const customRender = (ui: ReactElement, options: CustomRenderOptions = {}) => {
   return render(ui, { wrapper: Wrapper, ...renderOptions });
 };
 
-export { customRender as render, createTestQueryClient };
+export { customRender as render };

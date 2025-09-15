@@ -26,7 +26,7 @@ interface CreatePostDialogController {
   confirmCreate: () => Promise<void>;
 }
 
-export interface UseCreatePostControllerProps {
+interface UseCreatePostControllerProps {
   onPostCreated?: (createdPost: Post) => void;
 }
 
