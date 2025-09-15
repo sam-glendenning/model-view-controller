@@ -104,22 +104,23 @@ export const App: React.FC = () => {
 
               <Box sx={{ mb: 4 }}>
                 <Typography variant="body1" sx={{ mb: 2 }}>
-                  This application showcases the MVC pattern with:
+                  This application showcases the MVC pattern with feature-based
+                  organization:
                 </Typography>
                 <Box
                   component="ul"
-                  sx={{ textAlign: 'left', maxWidth: 400, mx: 'auto' }}
+                  sx={{ textAlign: 'left', maxWidth: 450, mx: 'auto' }}
                 >
                   <li>
                     <strong>Model:</strong> TypeScript interfaces and API
-                    services
+                    services with UUID support
                   </li>
                   <li>
-                    <strong>View:</strong> React components (dumb UI components)
+                    <strong>View:</strong> React components organized by feature
                   </li>
                   <li>
                     <strong>Controller:</strong> Custom hooks with TanStack
-                    Query
+                    Query for state management
                   </li>
                 </Box>
               </Box>
@@ -174,7 +175,8 @@ export const App: React.FC = () => {
               <Box sx={{ mt: 4 }}>
                 <Typography variant="body2" color="text.secondary">
                   Built with React 17, TypeScript 5, Material-UI 5, TanStack
-                  Query v4, and Axios
+                  Query v4, MSW v2, UUID v13, ESLint v9, Node v24, Jest v29,
+                  Vite v7 and Axios v1
                 </Typography>
               </Box>
             </Paper>
