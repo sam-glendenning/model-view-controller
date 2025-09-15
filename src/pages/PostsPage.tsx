@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Container,
   Typography,
@@ -9,9 +9,10 @@ import {
   CircularProgress,
 } from '@mui/material';
 import { Add } from '@mui/icons-material';
-import { PostComponent } from '@/components/PostComponent';
-import { usePostsController } from '@/controllers/usePostsController';
-import { CreatePostDialog } from '@/components/CreatePostDialog';
+import Post from '@/components/post';
+import { useGetPostsController } from '@/controllers/useGetPostsController';
+import { CreatePostDialog } from '@/components/post/create/CreatePostDialog';
+import { useCreatePostController } from '@/controllers/useCreatePostController';
 
 export const PostsPage: React.FC = () => {
   const {
@@ -20,25 +21,34 @@ export const PostsPage: React.FC = () => {
     postsError,
     snackbar,
     closeSnackbar,
-    showSuccessMessage,
     showErrorMessage,
     onPostDeleted,
     onPostUpdated,
-  } = usePostsController();
+    onPostCreated,
+  } = useGetPostsController();
 
-  const [isCreateDialogOpen, setIsCreateDialogOpen] = useState<boolean>(false);
-
-  const handleOpenCreateDialog = () => {
-    setIsCreateDialogOpen(true);
-  };
-
-  const handleCloseCreateDialog = () => {
-    setIsCreateDialogOpen(false);
-  };
+  const {
+    postData,
+    isCreatePostDialogOpen,
+    hideCreatePostDialog,
+    updateTitle,
+    updateBody,
+    updateUserId,
+    confirmCreate,
+    isCreating,
+    showCreatePostDialog,
+  } = useCreatePostController({
+    onPostCreated,
+    onPostCreationError: (_error: Error) =>
+      showErrorMessage('Failed to create post'),
+  });
 
   if (postsLoading) {
     return (
-      <Container maxWidth="md" sx={{ py: 4, display: 'flex', justifyContent: 'center' }}>
+      <Container
+        maxWidth="md"
+        sx={{ py: 4, display: 'flex', justifyContent: 'center' }}
+      >
         <CircularProgress />
       </Container>
     );
@@ -66,30 +76,32 @@ export const PostsPage: React.FC = () => {
         </Typography>
       </Box>
 
-      <Box>
-        {posts?.map((post) => (
-          <PostComponent
-            key={post.id}
-            post={post}
-            onPostDeleted={onPostDeleted}
-            onPostUpdated={onPostUpdated}
-          />
-        ))}
-      </Box>
+      {posts && posts?.length > 0 && (
+        <Box>
+          {posts.map(post => (
+            <Post
+              key={post.id}
+              postData={post}
+              onPostDeleted={onPostDeleted}
+              onPostUpdated={onPostUpdated}
+            />
+          ))}
+        </Box>
+      )}
 
-      <Fab
-        color="primary"
-        aria-label="add post"
-        onClick={handleOpenCreateDialog}
-      >
+      <Fab color="primary" aria-label="add post" onClick={showCreatePostDialog}>
         <Add />
       </Fab>
 
-      <CreatePostDialog 
-        isOpen={isCreateDialogOpen} 
-        onClose={handleCloseCreateDialog}
-        onSuccess={showSuccessMessage}
-        onError={showErrorMessage}
+      <CreatePostDialog
+        open={isCreatePostDialogOpen}
+        onClose={hideCreatePostDialog}
+        postData={postData}
+        onTitleChange={updateTitle}
+        onBodyChange={updateBody}
+        onUserIdChange={updateUserId}
+        onSubmit={confirmCreate}
+        isCreating={isCreating}
       />
 
       <Snackbar

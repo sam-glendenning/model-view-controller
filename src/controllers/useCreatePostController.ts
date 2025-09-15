@@ -28,10 +28,12 @@ interface CreatePostDialogController {
 
 interface UseCreatePostControllerProps {
   onPostCreated?: (createdPost: Post) => void;
+  onPostCreationError?: (error: Error) => void;
 }
 
 export const useCreatePostController = ({
   onPostCreated,
+  onPostCreationError,
 }: UseCreatePostControllerProps = {}): CreatePostDialogController => {
   // Mutation hook
   const { mutateAsync: createPost, isPending: isCreating } = useCreatePost();
@@ -76,11 +78,15 @@ export const useCreatePostController = ({
   }, []);
 
   const confirmCreate = useCallback(async () => {
-    await createPost(postData);
-    onPostCreated?.(postData);
-    setIsCreatePostDialogOpen(false);
-    resetPostData();
-  }, [createPost, postData, resetPostData, onPostCreated]);
+    try {
+      await createPost(postData);
+      onPostCreated?.(postData);
+      setIsCreatePostDialogOpen(false);
+      resetPostData();
+    } catch (error) {
+      onPostCreationError?.(error as Error);
+    }
+  }, [createPost, postData, resetPostData, onPostCreated, onPostCreationError]);
 
   return {
     // State

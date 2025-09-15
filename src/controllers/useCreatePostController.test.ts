@@ -79,13 +79,21 @@ describe('useCreatePostController', () => {
   });
 
   it('should handle form submission error', async () => {
+    const mockOnPostCreationError = jest.fn();
+
     server.use(
       http.post('https://jsonplaceholder.typicode.com/posts', () => {
         return new HttpResponse(null, { status: 500 });
       }),
     );
 
-    const { result } = createHook();
+    const { result } = renderHook(
+      () =>
+        useCreatePostController({
+          onPostCreationError: mockOnPostCreationError,
+        }),
+      { wrapper: createWrapper() },
+    );
 
     act(() => {
       result.current.showCreatePostDialog();
@@ -95,8 +103,10 @@ describe('useCreatePostController', () => {
     });
 
     await act(async () => {
-      await expect(result.current.confirmCreate()).rejects.toThrow();
+      await result.current.confirmCreate();
     });
+
+    expect(mockOnPostCreationError).toHaveBeenCalledWith(expect.any(Error));
 
     // Reset handlers
     server.resetHandlers();
