@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useUpdatePost } from './useUpdatePost';
 import type { Post } from '@/shared/types';
 

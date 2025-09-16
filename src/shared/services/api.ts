@@ -1,16 +1,16 @@
 import axios, { type AxiosInstance, type AxiosResponse } from 'axios';
 import type {
-  Post,
-  GetPostsParams,
-  UsersQueryResponse,
-  PostsQueryResponse,
   CreatePostMutationResponse,
-  UpdatePostMutationResponse,
   DeletePostMutationResponse,
+  GetPostsParams,
+  Post,
+  PostsQueryResponse,
+  UpdatePostMutationResponse,
+  UsersQueryResponse,
 } from '@/shared/types';
 
 class ApiService {
-  private api: AxiosInstance;
+  private readonly api: AxiosInstance;
 
   constructor() {
     // Initialize axios instance
@@ -34,7 +34,7 @@ class ApiService {
       },
       error => {
         console.error('❌ Request error:', error);
-        return Promise.reject(error);
+        return Promise.reject(new Error(String(error)));
       },
     );
 
@@ -43,9 +43,11 @@ class ApiService {
       (response: AxiosResponse) => {
         return response;
       },
-      error => {
-        console.error('❌ API Error:', error.response?.data || error.message);
-        return Promise.reject(error);
+      (error: unknown) => {
+        const errorMessage =
+          error instanceof Error ? error.message : 'Unknown error occurred';
+        console.error('❌ API Error:', errorMessage);
+        return Promise.reject(new Error(errorMessage));
       },
     );
   }

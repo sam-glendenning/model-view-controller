@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { useGetPosts } from './useGetPosts';
 import type { Post, SnackbarState } from '@/shared/types';
 

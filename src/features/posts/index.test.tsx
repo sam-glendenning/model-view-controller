@@ -1,8 +1,8 @@
 import {
+  act,
+  fireEvent,
   screen,
   waitFor,
-  fireEvent,
-  act,
   within,
 } from '@testing-library/react';
 import { render } from '@/test/utils';

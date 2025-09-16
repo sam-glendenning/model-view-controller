@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Typography, Box } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import { UsersList } from '@/features/users/UsersList';
 import { useGetUsers } from '@/features/users/useGetUsers';
 

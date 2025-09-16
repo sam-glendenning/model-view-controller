@@ -1,6 +1,6 @@
-import { http, HttpResponse, delay } from 'msw';
+import { HttpResponse, delay, http } from 'msw';
 import type { Post } from '@/shared/types';
-import { mockUsers, mockPosts } from './data';
+import { mockPosts, mockUsers } from './data';
 import { v4 as uuidv4 } from 'uuid';
 
 // Artificial delay function

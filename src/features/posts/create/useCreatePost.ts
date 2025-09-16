@@ -14,8 +14,8 @@ export const useCreatePost = () => {
     mutationFn: (postData: Omit<Post, 'id'>) => apiService.createPost(postData),
     onSuccess: newPost => {
       // Invalidate and refetch posts
-      queryClient.invalidateQueries({ queryKey: queryKeys.posts });
-      queryClient.invalidateQueries({
+      void queryClient.invalidateQueries({ queryKey: queryKeys.posts });
+      void queryClient.invalidateQueries({
         queryKey: queryKeys.userPosts(newPost.userId),
       });
 

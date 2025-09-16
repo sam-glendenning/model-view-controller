@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography, Box, Alert } from '@mui/material';
+import { Alert, Box, Grid, Typography } from '@mui/material';
 import { UserCard } from './UserCard';
 import type { User } from '@/shared/types';
 

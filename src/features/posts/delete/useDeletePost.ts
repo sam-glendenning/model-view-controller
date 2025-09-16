@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiService } from '@/shared/services/api';
-import type { Post, DeletePostMutationResponse } from '@/shared/types';
+import type { DeletePostMutationResponse, Post } from '@/shared/types';
 
 const queryKeys = {
   posts: ['posts'] as const,
@@ -21,7 +21,7 @@ export const useDeletePost = () => {
       });
 
       // Remove from all user posts caches
-      queryClient.invalidateQueries({ queryKey: ['posts', 'user'] });
+      void queryClient.invalidateQueries({ queryKey: ['posts', 'user'] });
     },
     onError: error => {
       console.error('Failed to delete post:', error);

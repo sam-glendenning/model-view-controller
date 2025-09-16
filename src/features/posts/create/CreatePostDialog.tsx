@@ -1,12 +1,12 @@
 import React from 'react';
 import {
-  Dialog,
-  DialogTitle,
-  DialogContent,
   Box,
-  TextField,
-  DialogActions,
   Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  TextField,
 } from '@mui/material';
 import type { Post } from '@/shared/types';
 
@@ -71,13 +71,20 @@ export const CreatePostDialog: React.FC<CreatePostDialogProps> = ({
             fullWidth
             variant="outlined"
             value={postData.userId}
-            onChange={e => onUserIdChange(parseInt(e.target.value) ?? 1)}
+            onChange={e => {
+              const parsed = parseInt(e.target.value);
+              onUserIdChange(Number.isNaN(parsed) ? 1 : parsed);
+            }}
           />
         </Box>
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose}>Cancel</Button>
-        <Button onClick={onSubmit} variant="contained" disabled={isCreating}>
+        <Button
+          onClick={() => void onSubmit()}
+          variant="contained"
+          disabled={isCreating}
+        >
           Create
         </Button>
       </DialogActions>

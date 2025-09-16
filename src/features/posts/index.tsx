@@ -52,7 +52,7 @@ const PostComponent: React.FC<PostComponentProps> = ({
           onTitleChange={updateTitle}
           onBodyChange={updateBody}
           onUserIdChange={updateUserId}
-          onSave={updatePost}
+          onSave={() => void updatePost()}
           onCancel={cancelEditing}
           onDelete={showDeletePostDialog}
           isSaveButtonDisabled={isUpdateSaveButtonDisabled}
@@ -70,7 +70,7 @@ const PostComponent: React.FC<PostComponentProps> = ({
       <DeletePostDialog
         open={isDeletePostDialogOpen}
         postData={postData}
-        confirmPostDelete={confirmDelete}
+        confirmPostDelete={() => void confirmDelete()}
         cancelPostDelete={hideDeletePostDialog}
         isDeleting={isDeleting}
       />

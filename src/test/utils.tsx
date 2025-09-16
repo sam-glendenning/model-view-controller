@@ -1,11 +1,11 @@
 import React, { type ReactElement } from 'react';
 import {
-  render,
   type RenderOptions,
   type RenderResult,
+  render,
 } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
+import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 
 // Create a test theme
 const testTheme = createTheme({

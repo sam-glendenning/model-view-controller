@@ -1,6 +1,6 @@
-import { renderHook, act } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react-hooks';
 import { waitFor } from '@testing-library/react';
-import { http, HttpResponse } from 'msw';
+import { HttpResponse, http } from 'msw';
 import { server } from '@/test/mocks/server';
 import { useDeletePostController } from './useDeletePostController';
 import { mockPosts } from '@/mocks/data';

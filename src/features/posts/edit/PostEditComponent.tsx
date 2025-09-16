@@ -1,14 +1,14 @@
 import React from 'react';
 import {
-  Card,
-  CardContent,
-  CardActions,
-  Button,
-  TextField,
   Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
   CircularProgress,
+  TextField,
 } from '@mui/material';
-import { Save, Cancel, Delete } from '@mui/icons-material';
+import { Cancel, Delete, Save } from '@mui/icons-material';
 import type { Post } from '@/shared/types';
 
 export interface PostEditComponentProps {
@@ -63,7 +63,10 @@ export const PostEditComponent: React.FC<PostEditComponentProps> = ({
             label="User ID"
             type="number"
             value={postData.userId}
-            onChange={e => onUserIdChange(parseInt(e.target.value) ?? 1)}
+            onChange={e => {
+              const parsed = parseInt(e.target.value);
+              onUserIdChange(Number.isNaN(parsed) ? 1 : parsed);
+            }}
             disabled={isUpdating}
           />
         </Box>

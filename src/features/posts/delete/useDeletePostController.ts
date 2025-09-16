@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { useDeletePost } from './useDeletePost';
 import type { Post } from '@/shared/types';
 

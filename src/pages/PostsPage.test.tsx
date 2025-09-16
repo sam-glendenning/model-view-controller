@@ -1,9 +1,9 @@
-import { screen, waitFor, within, act } from '@testing-library/react';
+import { act, screen, waitFor, within } from '@testing-library/react';
 import userEvent, { type UserEvent } from '@testing-library/user-event';
 import { render } from '@/test/utils';
 import { PostsPage } from './PostsPage';
 import { server } from '@/test/mocks/server';
-import { http, HttpResponse } from 'msw';
+import { HttpResponse, http } from 'msw';
 
 describe('PostsPage Integration Tests', () => {
   let user: UserEvent;

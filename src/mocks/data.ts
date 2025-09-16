@@ -1,4 +1,4 @@
-import type { User, Post } from '@/shared/types';
+import type { Post, User } from '@/shared/types';
 
 // Mock data
 export const mockUsers: User[] = [

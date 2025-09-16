@@ -1,13 +1,13 @@
 import React from 'react';
 import {
+  Avatar,
+  Box,
   Card,
   CardContent,
-  Typography,
   Skeleton,
-  Box,
-  Avatar,
+  Typography,
 } from '@mui/material';
-import { Email, Phone, Language } from '@mui/icons-material';
+import { Email, Language, Phone } from '@mui/icons-material';
 import type { User } from '@/shared/types';
 
 interface UserCardProps {

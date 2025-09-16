@@ -1,67 +1,58 @@
-import { http, HttpResponse } from 'msw';
+import { HttpResponse, http } from 'msw';
 import type { Post, User } from '@/shared/types';
-import { mockUsers, mockPosts } from './data';
+import { mockPosts, mockUsers } from './data';
 import { v4 as uuidv4 } from 'uuid';
 
 // Create isolated copies for each test handler call to prevent mutations
 const getIsolatedMockPosts = (): Post[] =>
-  JSON.parse(JSON.stringify(mockPosts));
+  JSON.parse(JSON.stringify(mockPosts)) as Post[];
 const getIsolatedMockUsers = (): User[] =>
-  JSON.parse(JSON.stringify(mockUsers));
+  JSON.parse(JSON.stringify(mockUsers)) as User[];
 
 // Test handlers with no delay and NO shared state mutations
 export const testHandlers = [
   // Users
-  http.get('https://jsonplaceholder.typicode.com/users', async () => {
+  http.get('https://jsonplaceholder.typicode.com/users', () => {
     return HttpResponse.json(getIsolatedMockUsers());
   }),
 
-  http.get(
-    'https://jsonplaceholder.typicode.com/users/:id',
-    async ({ params }) => {
-      const id = parseInt(params['id'] as string);
-      const users = getIsolatedMockUsers();
-      const user = users.find(u => u.id === id);
+  http.get('https://jsonplaceholder.typicode.com/users/:id', ({ params }) => {
+    const id = parseInt(params['id'] as string);
+    const users = getIsolatedMockUsers();
+    const user = users.find(u => u.id === id);
 
-      if (!user) {
-        return new HttpResponse(null, { status: 404 });
-      }
+    if (!user) {
+      return new HttpResponse(null, { status: 404 });
+    }
 
-      return HttpResponse.json(user);
-    },
-  ),
+    return HttpResponse.json(user);
+  }),
 
   // Posts
-  http.get(
-    'https://jsonplaceholder.typicode.com/posts',
-    async ({ request }) => {
-      const url = new URL(request.url);
-      const userId = url.searchParams.get('userId');
-      const posts = getIsolatedMockPosts();
+  http.get('https://jsonplaceholder.typicode.com/posts', ({ request }) => {
+    const url = new URL(request.url);
+    const userId = url.searchParams.get('userId');
+    const posts = getIsolatedMockPosts();
 
-      if (userId) {
-        const filteredPosts = posts.filter(p => p.userId === parseInt(userId));
-        return HttpResponse.json(filteredPosts);
-      }
+    if (userId) {
+      const filteredPosts = posts.filter(p => p.userId === parseInt(userId));
+      return HttpResponse.json(filteredPosts);
+    }
 
-      return HttpResponse.json(posts);
-    },
-  ),
+    return HttpResponse.json(posts);
+  }),
 
-  http.get(
-    'https://jsonplaceholder.typicode.com/posts/:id',
-    async ({ params }) => {
-      const id = params['id'] as string;
-      const posts = getIsolatedMockPosts();
-      const post = posts.find(p => p.id === id);
+  http.get('https://jsonplaceholder.typicode.com/posts/:id', ({ params }) => {
+    const id = params['id'] as string;
+    const posts = getIsolatedMockPosts();
+    const post = posts.find(p => p.id === id);
 
-      if (!post) {
-        return new HttpResponse(null, { status: 404 });
-      }
+    if (!post) {
+      return new HttpResponse(null, { status: 404 });
+    }
 
-      return HttpResponse.json(post);
-    },
-  ),
+    return HttpResponse.json(post);
+  }),
 
   http.post(
     'https://jsonplaceholder.typicode.com/posts',
@@ -98,7 +89,7 @@ export const testHandlers = [
 
   http.delete(
     'https://jsonplaceholder.typicode.com/posts/:id',
-    async ({ params }) => {
+    ({ params }) => {
       const id = params['id'] as string;
       const posts = getIsolatedMockPosts();
       const postIndex = posts.findIndex(p => p.id === id);

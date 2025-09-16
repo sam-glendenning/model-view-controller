@@ -1,12 +1,12 @@
 import React from 'react';
 import {
-  Container,
-  Typography,
-  Box,
-  Fab,
   Alert,
-  Snackbar,
+  Box,
   CircularProgress,
+  Container,
+  Fab,
+  Snackbar,
+  Typography,
 } from '@mui/material';
 import { Add } from '@mui/icons-material';
 import Post from '@/features/posts';
@@ -76,7 +76,7 @@ export const PostsPage: React.FC = () => {
         </Typography>
       </Box>
 
-      {posts && posts?.length > 0 && (
+      {posts && posts.length > 0 && (
         <Box>
           {posts.map(post => (
             <Post

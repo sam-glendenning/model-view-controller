@@ -1,14 +1,14 @@
 import React from 'react';
 import {
+  Button,
+  CircularProgress,
   Dialog,
   DialogActions,
   DialogContent,
   DialogContentText,
   DialogTitle,
-  Button,
-  CircularProgress,
 } from '@mui/material';
-import { Delete, Cancel } from '@mui/icons-material';
+import { Cancel, Delete } from '@mui/icons-material';
 import type { Post } from '@/shared/types';
 
 interface DeletePostDialogProps {

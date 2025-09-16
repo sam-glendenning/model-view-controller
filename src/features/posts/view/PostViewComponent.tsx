@@ -1,15 +1,15 @@
 import React from 'react';
 import {
-  Card,
-  CardContent,
-  CardActions,
-  Typography,
-  Button,
   Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
   Chip,
   CircularProgress,
+  Typography,
 } from '@mui/material';
-import { Edit, Delete } from '@mui/icons-material';
+import { Delete, Edit } from '@mui/icons-material';
 import type { Post } from '@/shared/types';
 
 export interface PostViewComponentProps {
