@@ -1,43 +1,77 @@
 # Dependencies
 node_modules/
+.yarn/
 yarn.lock
 package-lock.json
+pnpm-lock.yaml
 
 # Build outputs
 dist/
 build/
 .next/
 out/
+.output/
+.nuxt/
 
 # Coverage reports
 coverage/
+.nyc_output/
 
 # Cache directories
 .cache/
 .parcel-cache/
 .eslintcache
+.swc/
+.turbo/
+.vite/
 
 # Environment files
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env*
+!.env.example
 
 # Logs
 *.log
+logs/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
 
-# Generated files
+# Generated/compiled files
 *.min.js
 *.min.css
+*.tsbuildinfo
+*.d.ts
+public/mockServiceWorker.js
 
-# IDE files
+# IDE and editor files
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
 
 # OS files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+
+# Temporary files
+.tmp/
+.temp/
+
+# Documentation build output
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+
+# Storybook
+storybook-static/
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
