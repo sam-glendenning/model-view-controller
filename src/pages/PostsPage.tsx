@@ -40,7 +40,7 @@ export const PostsPage: React.FC = () => {
   } = useCreatePostController({
     onPostCreated,
     onPostCreationError: (_error: Error) =>
-      showErrorMessage('Failed to create post'),
+      { showErrorMessage('Failed to create post'); },
   });
 
   if (postsLoading) {

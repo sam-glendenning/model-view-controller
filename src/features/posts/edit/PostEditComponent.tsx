@@ -44,7 +44,7 @@ export const PostEditComponent: React.FC<PostEditComponentProps> = ({
             fullWidth
             label="Title"
             value={postData.title}
-            onChange={e => onTitleChange(e.target.value)}
+            onChange={e => { onTitleChange(e.target.value); }}
             sx={{ mb: 2 }}
             disabled={isUpdating}
           />
@@ -54,7 +54,7 @@ export const PostEditComponent: React.FC<PostEditComponentProps> = ({
             multiline
             rows={4}
             value={postData.body}
-            onChange={e => onBodyChange(e.target.value)}
+            onChange={e => { onBodyChange(e.target.value); }}
             sx={{ mb: 2 }}
             disabled={isUpdating}
           />

@@ -24,7 +24,6 @@ const config: Linter.Config[] = [
       ecmaVersion: 2022,
       globals: {
         ...globals.browser,
-        ...globals.node,
         ...globals.es2022,
       },
       parser: tsParser,
@@ -45,56 +44,26 @@ const config: Linter.Config[] = [
       'react-refresh': reactRefresh,
     },
     rules: {
+      // Use recommended rule sets as base
       ...js.configs.recommended.rules,
       ...tseslint.configs.recommended.rules,
-      ...tseslint.configs['recommended-type-checked'].rules,
-      ...reactHooks.configs.recommended.rules,
+      ...tseslint.configs['strict-type-checked'].rules,
+      ...reactHooks.configs['recommended-latest'].rules,
 
-      // React specific rules
+      // Only essential customizations
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
       ],
-
-      // TypeScript specific rules
       '@typescript-eslint/no-unused-vars': [
         'error',
-        {
-          argsIgnorePattern: '^_',
-          varsIgnorePattern: '^_',
-          caughtErrorsIgnorePattern: '^_',
-        },
+        { argsIgnorePattern: '^_' },
       ],
-      '@typescript-eslint/no-explicit-any': 'warn',
-      '@typescript-eslint/prefer-nullish-coalescing': 'error',
-      '@typescript-eslint/prefer-optional-chain': 'error',
-      '@typescript-eslint/no-unnecessary-condition': 'error',
-      '@typescript-eslint/no-unnecessary-type-assertion': 'error',
-      '@typescript-eslint/prefer-readonly': 'error',
-      '@typescript-eslint/switch-exhaustiveness-check': 'error',
       '@typescript-eslint/consistent-type-imports': [
         'error',
         { prefer: 'type-imports', fixStyle: 'inline-type-imports' },
       ],
-      '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
-      '@typescript-eslint/array-type': ['error', { default: 'array-simple' }],
-      '@typescript-eslint/no-confusing-void-expression': [
-        'error',
-        { ignoreArrowShorthand: true },
-      ],
-
-      // General code quality rules
-      'prefer-const': 'error',
-      'no-var': 'error',
-      'object-shorthand': 'error',
-      'prefer-template': 'error',
-      'prefer-destructuring': ['error', { object: true, array: false }],
       'no-console': ['warn', { allow: ['warn', 'error'] }],
-      'no-debugger': 'error',
-
-      // Import/export rules
-      'no-duplicate-imports': 'error',
-      'sort-imports': ['error', { ignoreDeclarationSort: true }],
     },
   },
   {
@@ -123,13 +92,7 @@ const config: Linter.Config[] = [
     rules: {
       ...js.configs.recommended.rules,
       ...tseslint.configs.recommended.rules,
-      // Allow console in config files
       'no-console': 'off',
-      '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/no-unused-vars': [
-        'error',
-        { argsIgnorePattern: '^_' },
-      ],
     },
   },
   {
@@ -146,20 +109,9 @@ const config: Linter.Config[] = [
       },
     },
     rules: {
-      // Relax some rules for test files
-      '@typescript-eslint/no-explicit-any': 'off',
+      // Minimal relaxations for test files
       '@typescript-eslint/no-non-null-assertion': 'off',
-      '@typescript-eslint/no-unnecessary-condition': 'off',
       'no-console': 'off',
-
-      // Test-specific rules
-      '@typescript-eslint/no-unused-vars': [
-        'error',
-        {
-          argsIgnorePattern: '^_',
-          varsIgnorePattern: '^_|^(render|screen|fireEvent|waitFor|act)$',
-        },
-      ],
     },
   },
 ];

@@ -49,7 +49,7 @@ export const CreatePostDialog: React.FC<CreatePostDialogProps> = ({
             fullWidth
             variant="outlined"
             value={postData.title}
-            onChange={e => onTitleChange(e.target.value)}
+            onChange={e => { onTitleChange(e.target.value); }}
             sx={{ mb: 2 }}
           />
           <TextField
@@ -61,7 +61,7 @@ export const CreatePostDialog: React.FC<CreatePostDialogProps> = ({
             rows={4}
             variant="outlined"
             value={postData.body}
-            onChange={e => onBodyChange(e.target.value)}
+            onChange={e => { onBodyChange(e.target.value); }}
             sx={{ mb: 2 }}
           />
           <TextField

@@ -84,24 +84,15 @@ export const handlers = [
     async ({ params, request }) => {
       await artificialDelay();
       const id = params['id'] as string;
-      const updatedData = (await request.json()) as Partial<Post>;
+      const updatedData = (await request.json()) as Post;
       const postIndex = mockPosts.findIndex(p => p.id === id);
 
       if (postIndex === -1) {
         return new HttpResponse(null, { status: 404 });
       }
 
-      const existingPost = mockPosts[postIndex]!;
-
-      const updatedPost: Post = {
-        id: existingPost.id,
-        userId: updatedData.userId ?? existingPost.userId,
-        title: updatedData.title ?? existingPost.title,
-        body: updatedData.body ?? existingPost.body,
-      };
-
-      mockPosts[postIndex] = updatedPost;
-      return HttpResponse.json(updatedPost);
+      mockPosts[postIndex] = { ...updatedData };
+      return HttpResponse.json(updatedData);
     },
   ),
 

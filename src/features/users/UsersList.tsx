@@ -33,7 +33,13 @@ export const UsersList: React.FC<UsersListProps> = ({
 
   const renderLoadingSkeletons = () => {
     return Array.from({ length: 6 }, (_, index) => (
-      <Grid item xs={12} sm={6} md={compact ? 6 : 4} key={`skeleton-${index}`}>
+      <Grid
+        item
+        xs={12}
+        sm={6}
+        md={compact ? 6 : 4}
+        key={`skeleton-${String(index)}`}
+      >
         <UserCard isLoading={true} compact={compact} />
       </Grid>
     ));

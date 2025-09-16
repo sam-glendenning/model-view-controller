@@ -53,7 +53,7 @@ export const PostViewComponent: React.FC<PostViewComponentProps> = ({
           </Typography>
 
           <Chip
-            label={`User ${postData.userId}`}
+            label={`User ${String(postData.userId)}`}
             size="small"
             color="secondary"
             variant="outlined"

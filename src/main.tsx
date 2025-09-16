@@ -10,7 +10,7 @@ worker
   .then(() => {
     console.warn('🔶 MSW: Mock API is running with 1000ms artificial delays');
   })
-  .catch(error => {
+  .catch((error: unknown) => {
     console.error('Failed to start MSW worker:', error);
   })
   .finally(() => {

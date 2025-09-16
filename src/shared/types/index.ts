@@ -44,6 +44,7 @@ export type PostsQueryResponse = Post[];
 // Mutation Response types
 export type CreatePostMutationResponse = Post;
 export type UpdatePostMutationResponse = Post;
+// eslint-disable-next-line @typescript-eslint/no-invalid-void-type
 export type DeletePostMutationResponse = void;
 
 // Snackbar state type

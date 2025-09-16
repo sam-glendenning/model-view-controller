@@ -77,7 +77,7 @@ describe('PostsPage Integration Tests', () => {
     // Submit form
     const createButton = within(dialog).getByRole('button', { name: 'Create' });
 
-    await act(async () => await user.click(createButton));
+    await act(async () => { await user.click(createButton); });
 
     // Wait for success message
     await waitFor(() => {
@@ -115,7 +115,7 @@ describe('PostsPage Integration Tests', () => {
 
     // Save changes
     const saveButton = screen.getByRole('button', { name: 'Save' });
-    await act(async () => await user.click(saveButton));
+    await act(async () => { await user.click(saveButton); });
 
     // Wait for success message
     await waitFor(() => {
@@ -152,7 +152,7 @@ describe('PostsPage Integration Tests', () => {
     });
 
     // Confirm deletion
-    await act(async () => await user.click(confirmDeleteButton));
+    await act(async () => { await user.click(confirmDeleteButton); });
 
     // Wait for success message
     await waitFor(() => {
@@ -187,7 +187,7 @@ describe('PostsPage Integration Tests', () => {
     const confirmDeleteButton = within(dialog).getByRole('button', {
       name: 'Confirm',
     });
-    await act(async () => await user.click(confirmDeleteButton));
+    await act(async () => { await user.click(confirmDeleteButton); });
 
     // Wait for success message
     await waitFor(() => {
@@ -243,7 +243,7 @@ describe('PostsPage Integration Tests', () => {
 
     // Submit form
     const createButton = within(dialog).getByRole('button', { name: 'Create' });
-    await act(async () => await user.click(createButton));
+    await act(async () => { await user.click(createButton); });
 
     // Wait for error message
     await waitFor(() => {
@@ -360,7 +360,7 @@ describe('PostsPage Integration Tests', () => {
     // Submit form and check loading state
     const createButton = within(dialog).getByRole('button', { name: 'Create' });
 
-    await act(async () => await user.click(createButton));
+    await act(async () => { await user.click(createButton); });
 
     // Check that button shows loading state (disabled)
     expect(createButton).toBeDisabled();
