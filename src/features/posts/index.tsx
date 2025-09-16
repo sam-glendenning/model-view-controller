@@ -28,7 +28,10 @@ const PostComponent: React.FC<PostComponentProps> = ({
     updateBody,
     updateUserId,
     updatePost,
-  } = useUpdatePostController({ postData, onPostUpdated });
+  } = useUpdatePostController({
+    postData,
+    ...(onPostUpdated && { onPostUpdated }),
+  });
 
   const {
     isDeletePostDialogOpen,
@@ -38,7 +41,7 @@ const PostComponent: React.FC<PostComponentProps> = ({
     confirmDelete,
   } = useDeletePostController({
     postData,
-    onPostDeleted,
+    ...(onPostDeleted && { onPostDeleted }),
   });
 
   return (

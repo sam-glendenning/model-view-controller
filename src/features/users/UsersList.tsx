@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Typography, Box, Alert } from '@mui/material';
 import { UserCard } from './UserCard';
-import { User } from '@/shared/types';
+import type { User } from '@/shared/types';
 
 interface UsersListProps {
   users?: User[];

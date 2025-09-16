@@ -1,5 +1,5 @@
-import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import {
+import axios, { type AxiosInstance, type AxiosResponse } from 'axios';
+import type {
   Post,
   GetPostsParams,
   UsersQueryResponse,

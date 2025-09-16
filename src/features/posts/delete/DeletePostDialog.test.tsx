@@ -10,7 +10,7 @@ describe('DeletePostDialog', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
-    mockPost = { ...mockPosts[0] };
+    mockPost = mockPosts[0]!;
   });
 
   it('renders correctly', () => {

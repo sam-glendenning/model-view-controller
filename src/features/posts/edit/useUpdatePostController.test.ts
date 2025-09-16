@@ -7,7 +7,7 @@ import { createControllerHookWrapper as createWrapper } from '@/test/utils';
 
 describe('useUpdatePostController', () => {
   const mockOnPostUpdated = jest.fn();
-  const mockPost = mockPosts[0];
+  const mockPost = mockPosts[0]!;
 
   beforeEach(() => {
     jest.clearAllMocks();

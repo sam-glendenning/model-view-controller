@@ -4,12 +4,16 @@ import type { Post } from '@/shared/types';
 import { mockPosts } from '@/mocks/data';
 
 describe('CreatePostDialog', () => {
-  let mockPost: Post;
+  let mockPost: Omit<Post, 'id'>;
 
   beforeEach(() => {
     jest.clearAllMocks();
 
-    mockPost = { ...mockPosts[0] };
+    mockPost = {
+      title: mockPosts[0]!.title,
+      body: mockPosts[0]!.body,
+      userId: mockPosts[0]!.userId,
+    };
   });
 
   it('renders correctly', () => {

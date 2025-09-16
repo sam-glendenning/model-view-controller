@@ -38,4 +38,5 @@ const config: Config = {
   resolver: '<rootDir>/msw-resolver.js',
 };
 
-export default config;
+// Use CommonJS export for Jest compatibility
+module.exports = config;

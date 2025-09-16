@@ -4,7 +4,30 @@
     "skipLibCheck": true,
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2022",
+    "strict": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "verbatimModuleSyntax": false,
+    "forceConsistentCasingInFileNames": true,
+
+    // Node.js specific settings
+    "types": ["node"],
+
+    // Build tool optimizations
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "outDir": "./dist/types"
   },
-  "include": ["vite.config.ts"]
+  "include": [
+    "vite.config.ts",
+    "jest.config.ts",
+    "eslint.config.ts",
+    "*.config.ts",
+    "*.config.js"
+  ],
+  "exclude": ["node_modules", "dist"]
 }

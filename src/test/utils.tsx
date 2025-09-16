@@ -1,5 +1,9 @@
-import React, { ReactElement } from 'react';
-import { render, type RenderOptions } from '@testing-library/react';
+import React, { type ReactElement } from 'react';
+import {
+  render,
+  type RenderOptions,
+  type RenderResult,
+} from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
 
@@ -72,11 +76,16 @@ interface CustomRenderOptions extends Omit<RenderOptions, 'wrapper'> {
   queryClient?: QueryClient;
 }
 
-const customRender = (ui: ReactElement, options: CustomRenderOptions = {}) => {
+const customRender = (
+  ui: ReactElement,
+  options: CustomRenderOptions = {},
+): RenderResult => {
   const { queryClient, ...renderOptions } = options;
 
   const Wrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-    <AllTheProviders queryClient={queryClient}>{children}</AllTheProviders>
+    <AllTheProviders {...(queryClient && { queryClient })}>
+      {children}
+    </AllTheProviders>
   );
 
   return render(ui, { wrapper: Wrapper, ...renderOptions });

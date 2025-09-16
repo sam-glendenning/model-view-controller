@@ -105,7 +105,8 @@ describe('PostsPage Integration Tests', () => {
 
     // Find and click edit button for first post
     const editButtons = screen.getAllByRole('button', { name: 'edit post' });
-    await user.click(editButtons[0]);
+    expect(editButtons.length).toBeGreaterThan(0);
+    await user.click(editButtons[0]!);
 
     // Edit the title
     const titleInput = screen.getByRole('textbox', { name: 'Title' });
@@ -136,7 +137,8 @@ describe('PostsPage Integration Tests', () => {
     const deleteButtons = screen.getAllByRole('button', {
       name: 'delete post',
     });
-    await user.click(deleteButtons[0]);
+    expect(deleteButtons.length).toBeGreaterThan(0);
+    await user.click(deleteButtons[0]!);
 
     // Wait for delete confirmation dialog
     await waitFor(() => {
@@ -172,7 +174,8 @@ describe('PostsPage Integration Tests', () => {
     const deleteButtons = screen.getAllByRole('button', {
       name: 'delete post',
     });
-    await user.click(deleteButtons[0]);
+    expect(deleteButtons.length).toBeGreaterThan(0);
+    await user.click(deleteButtons[0]!);
 
     // Wait for delete confirmation dialog
     await waitFor(() => {
@@ -294,7 +297,8 @@ describe('PostsPage Integration Tests', () => {
 
     // Find and click edit button for first post
     const editButtons = screen.getAllByRole('button', { name: 'edit post' });
-    await user.click(editButtons[0]);
+    expect(editButtons.length).toBeGreaterThan(0);
+    await user.click(editButtons[0]!);
 
     // Edit the title
     const titleInput = screen.getByRole('textbox', { name: 'Title' });

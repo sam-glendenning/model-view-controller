@@ -8,7 +8,7 @@ import { createControllerHookWrapper as createWrapper } from '@/test/utils';
 
 describe('useDeletePostController', () => {
   const mockOnPostDeleted = jest.fn();
-  const mockPost = mockPosts[0];
+  const mockPost = mockPosts[0]!;
 
   beforeEach(() => {
     jest.clearAllMocks();

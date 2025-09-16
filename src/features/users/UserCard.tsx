@@ -8,7 +8,7 @@ import {
   Avatar,
 } from '@mui/material';
 import { Email, Phone, Language } from '@mui/icons-material';
-import { User } from '@/shared/types';
+import type { User } from '@/shared/types';
 
 interface UserCardProps {
   user?: User;

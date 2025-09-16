@@ -32,7 +32,7 @@ describe('Post component', () => {
 
     // Create a fresh mock post for each test
     // No need to reset mockPosts array since test handlers use isolated copies
-    mockPost = { ...mockPosts[0] };
+    mockPost = mockPosts[0]!;
   });
 
   describe('editing', () => {

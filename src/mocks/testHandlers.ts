@@ -19,7 +19,7 @@ export const testHandlers = [
   http.get(
     'https://jsonplaceholder.typicode.com/users/:id',
     async ({ params }) => {
-      const id = parseInt(params.id as string);
+      const id = parseInt(params['id'] as string);
       const users = getIsolatedMockUsers();
       const user = users.find(u => u.id === id);
 
@@ -51,7 +51,7 @@ export const testHandlers = [
   http.get(
     'https://jsonplaceholder.typicode.com/posts/:id',
     async ({ params }) => {
-      const id = params.id as string;
+      const id = params['id'] as string;
       const posts = getIsolatedMockPosts();
       const post = posts.find(p => p.id === id);
 
@@ -81,7 +81,7 @@ export const testHandlers = [
   http.put(
     'https://jsonplaceholder.typicode.com/posts/:id',
     async ({ params, request }) => {
-      const id = params.id as string;
+      const id = params['id'] as string;
       const updatedData = (await request.json()) as Partial<Post>;
       const posts = getIsolatedMockPosts();
       const postIndex = posts.findIndex(p => p.id === id);
@@ -99,7 +99,7 @@ export const testHandlers = [
   http.delete(
     'https://jsonplaceholder.typicode.com/posts/:id',
     async ({ params }) => {
-      const id = params.id as string;
+      const id = params['id'] as string;
       const posts = getIsolatedMockPosts();
       const postIndex = posts.findIndex(p => p.id === id);
 

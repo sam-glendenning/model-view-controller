@@ -18,7 +18,7 @@ export const handlers = [
     'https://jsonplaceholder.typicode.com/users/:id',
     async ({ params }) => {
       await artificialDelay();
-      const id = parseInt(params.id as string);
+      const id = parseInt(params['id'] as string);
       const user = mockUsers.find(u => u.id === id);
 
       if (!user) {
@@ -52,7 +52,7 @@ export const handlers = [
     'https://jsonplaceholder.typicode.com/posts/:id',
     async ({ params }) => {
       await artificialDelay();
-      const id = params.id as string;
+      const id = params['id'] as string;
       const post = mockPosts.find(p => p.id === id);
 
       if (!post) {
@@ -83,7 +83,7 @@ export const handlers = [
     'https://jsonplaceholder.typicode.com/posts/:id',
     async ({ params, request }) => {
       await artificialDelay();
-      const id = params.id as string;
+      const id = params['id'] as string;
       const updatedData = (await request.json()) as Partial<Post>;
       const postIndex = mockPosts.findIndex(p => p.id === id);
 
@@ -91,8 +91,17 @@ export const handlers = [
         return new HttpResponse(null, { status: 404 });
       }
 
-      mockPosts[postIndex] = { ...mockPosts[postIndex], ...updatedData };
-      return HttpResponse.json(mockPosts[postIndex]);
+      const existingPost = mockPosts[postIndex]!;
+
+      const updatedPost: Post = {
+        id: existingPost.id,
+        userId: updatedData.userId ?? existingPost.userId,
+        title: updatedData.title ?? existingPost.title,
+        body: updatedData.body ?? existingPost.body,
+      };
+
+      mockPosts[postIndex] = updatedPost;
+      return HttpResponse.json(updatedPost);
     },
   ),
 
@@ -100,7 +109,7 @@ export const handlers = [
     'https://jsonplaceholder.typicode.com/posts/:id',
     async ({ params }) => {
       await artificialDelay();
-      const id = params.id as string;
+      const id = params['id'] as string;
       const postIndex = mockPosts.findIndex(p => p.id === id);
 
       if (postIndex === -1) {

@@ -4,7 +4,7 @@ import type { Post, SnackbarState } from '@/shared/types';
 
 interface useGetPostsControllerProps {
   // Data
-  posts?: Post[];
+  posts: Post[] | undefined;
   postsLoading: boolean;
   postsError: Error | null;
 

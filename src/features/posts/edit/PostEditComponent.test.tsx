@@ -10,7 +10,7 @@ describe('PostEditComponent', () => {
   let mockPost: Post;
 
   beforeEach(() => {
-    mockPost = { ...mockPosts[0] };
+    mockPost = mockPosts[0]!;
   });
 
   it('renders correctly', () => {
