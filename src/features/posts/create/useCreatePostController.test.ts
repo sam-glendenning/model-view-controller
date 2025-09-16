@@ -13,7 +13,7 @@ describe('useCreatePostController', () => {
         useCreatePostController({
           onPostCreated: mockOnPostCreated,
         }),
-      { wrapper: createWrapper() },
+      { wrapper: createWrapper() }
     );
 
   beforeEach(() => {
@@ -68,13 +68,13 @@ describe('useCreatePostController', () => {
         title: 'Test Title',
         body: 'Test Body',
         userId: 1,
-      }),
+      })
     );
     expect(result.current.isCreatePostDialogOpen).toBe(false);
 
     // Check we reset back to the default values
     expect(result.current.postData).toEqual(
-      expect.objectContaining({ title: '', body: '', userId: 1 }),
+      expect.objectContaining({ title: '', body: '', userId: 1 })
     );
   });
 
@@ -84,7 +84,7 @@ describe('useCreatePostController', () => {
     server.use(
       http.post('https://jsonplaceholder.typicode.com/posts', () => {
         return new HttpResponse(null, { status: 500 });
-      }),
+      })
     );
 
     const { result } = renderHook(
@@ -92,7 +92,7 @@ describe('useCreatePostController', () => {
         useCreatePostController({
           onPostCreationError: mockOnPostCreationError,
         }),
-      { wrapper: createWrapper() },
+      { wrapper: createWrapper() }
     );
 
     act(() => {

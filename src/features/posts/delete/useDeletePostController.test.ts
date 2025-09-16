@@ -22,7 +22,7 @@ describe('useDeletePostController', () => {
           postData: mockPost,
           onPostDeleted: mockOnPostDeleted,
         }),
-      { wrapper },
+      { wrapper }
     );
 
     expect(result.current.isDeletePostDialogOpen).toBe(false);
@@ -37,7 +37,7 @@ describe('useDeletePostController', () => {
           postData: mockPost,
           onPostDeleted: mockOnPostDeleted,
         }),
-      { wrapper },
+      { wrapper }
     );
 
     expect(result.current.isDeletePostDialogOpen).toBe(false);
@@ -63,7 +63,7 @@ describe('useDeletePostController', () => {
           postData: mockPost,
           onPostDeleted: mockOnPostDeleted,
         }),
-      { wrapper },
+      { wrapper }
     );
 
     await act(async () => {
@@ -96,7 +96,7 @@ describe('useDeletePostController', () => {
           onPostDeleted: mockOnPostDeleted,
           onPostDeletionError: mockOnPostDeletionError,
         }),
-      { wrapper },
+      { wrapper }
     );
 
     await act(async () => {

@@ -23,7 +23,7 @@ describe('Post component', () => {
         postData={mockPost}
         onPostDeleted={mockOnPostDeleted}
         onPostUpdated={mockOnPostUpdated}
-      />,
+      />
     );
 
   beforeEach(() => {
@@ -44,7 +44,7 @@ describe('Post component', () => {
 
       await waitFor(() => {
         expect(
-          screen.getByRole('button', { name: 'Save' }),
+          screen.getByRole('button', { name: 'Save' })
         ).toBeInTheDocument();
       });
     });
@@ -57,7 +57,7 @@ describe('Post component', () => {
 
       await waitFor(() => {
         expect(
-          screen.getByRole('button', { name: 'Save' }),
+          screen.getByRole('button', { name: 'Save' })
         ).toBeInTheDocument();
       });
 
@@ -66,10 +66,10 @@ describe('Post component', () => {
 
       await waitFor(() => {
         expect(
-          screen.getByRole('button', { name: 'edit post' }),
+          screen.getByRole('button', { name: 'edit post' })
         ).toBeInTheDocument();
         expect(
-          screen.queryByRole('button', { name: 'Save' }),
+          screen.queryByRole('button', { name: 'Save' })
         ).not.toBeInTheDocument();
       });
     });
@@ -82,7 +82,7 @@ describe('Post component', () => {
 
       await waitFor(() => {
         expect(
-          screen.getByRole('textbox', { name: 'Title' }),
+          screen.getByRole('textbox', { name: 'Title' })
         ).toBeInTheDocument();
       });
 
@@ -109,14 +109,14 @@ describe('Post component', () => {
             title: 'Updated Title',
             body: 'Updated Content',
             userId: 2,
-          }),
+          })
         );
       });
 
       // Wait for the component to return to view mode
       await waitFor(() => {
         expect(
-          screen.getByRole('button', { name: 'edit post' }),
+          screen.getByRole('button', { name: 'edit post' })
         ).toBeInTheDocument();
       });
     });
@@ -140,12 +140,12 @@ describe('Post component', () => {
 
       expect(
         within(screen.getByRole('dialog')).getByText(
-          'Are you sure you want to delete Test Post Title?',
-        ),
+          'Are you sure you want to delete Test Post Title?'
+        )
       ).toBeInTheDocument();
       const deleteConfirmButton = within(screen.getByRole('dialog')).getByRole(
         'button',
-        { name: 'Confirm' },
+        { name: 'Confirm' }
       );
 
       await act(async () => {
@@ -154,7 +154,7 @@ describe('Post component', () => {
 
       await waitFor(() => {
         expect(mockOnPostDeleted).toHaveBeenCalledWith(
-          expect.objectContaining({ id: '1' }),
+          expect.objectContaining({ id: '1' })
         );
       });
     });
@@ -172,7 +172,7 @@ describe('Post component', () => {
       });
       const cancelButton = within(screen.getByRole('dialog')).getByRole(
         'button',
-        { name: 'Cancel' },
+        { name: 'Cancel' }
       );
       await user.click(cancelButton);
 

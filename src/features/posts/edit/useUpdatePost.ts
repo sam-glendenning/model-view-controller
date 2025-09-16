@@ -20,7 +20,7 @@ export const useUpdatePost = () => {
       // Update the post in the posts list
       queryClient.setQueryData<Post[]>(queryKeys.posts, oldPosts => {
         return oldPosts?.map(post =>
-          post.id === updatedPost.id ? updatedPost : post,
+          post.id === updatedPost.id ? updatedPost : post
         );
       });
 
@@ -29,9 +29,9 @@ export const useUpdatePost = () => {
         queryKeys.userPosts(updatedPost.userId),
         oldPosts => {
           return oldPosts?.map(post =>
-            post.id === updatedPost.id ? updatedPost : post,
+            post.id === updatedPost.id ? updatedPost : post
           );
-        },
+        }
       );
     },
     onError: error => {

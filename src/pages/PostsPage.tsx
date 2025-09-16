@@ -39,8 +39,9 @@ export const PostsPage: React.FC = () => {
     showCreatePostDialog,
   } = useCreatePostController({
     onPostCreated,
-    onPostCreationError: (_error: Error) =>
-      { showErrorMessage('Failed to create post'); },
+    onPostCreationError: (_error: Error) => {
+      showErrorMessage('Failed to create post');
+    },
   });
 
   if (postsLoading) {

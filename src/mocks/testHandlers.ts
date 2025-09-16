@@ -66,7 +66,7 @@ export const testHandlers = [
 
       // Return the new post WITHOUT mutating global state
       return HttpResponse.json(post, { status: 201 });
-    },
+    }
   ),
 
   http.put(
@@ -84,7 +84,7 @@ export const testHandlers = [
       // Create updated post WITHOUT mutating global state
       const updatedPost = { ...posts[postIndex], ...updatedData };
       return HttpResponse.json(updatedPost);
-    },
+    }
   ),
 
   http.delete(
@@ -100,6 +100,6 @@ export const testHandlers = [
 
       // Return success WITHOUT mutating global state
       return new HttpResponse(null, { status: 200 });
-    },
+    }
   ),
 ];

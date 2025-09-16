@@ -78,7 +78,7 @@ interface CustomRenderOptions extends Omit<RenderOptions, 'wrapper'> {
 
 const customRender = (
   ui: ReactElement,
-  options: CustomRenderOptions = {},
+  options: CustomRenderOptions = {}
 ): RenderResult => {
   const { queryClient, ...renderOptions } = options;
 

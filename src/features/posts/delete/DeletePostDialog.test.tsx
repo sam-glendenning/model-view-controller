@@ -21,7 +21,7 @@ describe('DeletePostDialog', () => {
         isDeleting={false}
         confirmPostDelete={mockConfirmPostDelete}
         cancelPostDelete={mockCancelPostDelete}
-      />,
+      />
     );
 
     expect(baseElement).toMatchSnapshot();

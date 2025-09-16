@@ -159,14 +159,18 @@ export const App: React.FC = () => {
                 <Button
                   variant="contained"
                   size="large"
-                  onClick={() => { setCurrentView('posts'); }}
+                  onClick={() => {
+                    setCurrentView('posts');
+                  }}
                 >
                   View Posts
                 </Button>
                 <Button
                   variant="outlined"
                   size="large"
-                  onClick={() => { setCurrentView('users'); }}
+                  onClick={() => {
+                    setCurrentView('users');
+                  }}
                 >
                   View Users
                 </Button>
@@ -230,21 +234,35 @@ export const App: React.FC = () => {
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
               <Button
                 color="inherit"
-                onClick={() => { setCurrentView('home'); }}
+                onClick={() => {
+                  setCurrentView('home');
+                }}
                 sx={{ display: { xs: 'none', sm: 'inline-flex' } }}
               >
                 Home
               </Button>
-              <Button color="inherit" onClick={() => { setCurrentView('posts'); }}>
+              <Button
+                color="inherit"
+                onClick={() => {
+                  setCurrentView('posts');
+                }}
+              >
                 Posts
               </Button>
-              <Button color="inherit" onClick={() => { setCurrentView('users'); }}>
+              <Button
+                color="inherit"
+                onClick={() => {
+                  setCurrentView('users');
+                }}
+              >
                 Users
               </Button>
 
               <IconButton
                 color="inherit"
-                onClick={() => { setDarkMode(!darkMode); }}
+                onClick={() => {
+                  setDarkMode(!darkMode);
+                }}
                 aria-label="toggle dark mode"
               >
                 {darkMode ? <Brightness7 /> : <Brightness4 />}

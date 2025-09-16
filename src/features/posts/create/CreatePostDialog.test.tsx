@@ -27,7 +27,7 @@ describe('CreatePostDialog', () => {
         onSubmit={jest.fn()}
         onClose={jest.fn()}
         isCreating={false}
-      />,
+      />
     );
 
     expect(baseElement).toMatchSnapshot();

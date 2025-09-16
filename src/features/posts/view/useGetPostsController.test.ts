@@ -26,7 +26,7 @@ describe('useGetPostsController', () => {
         id: '1',
         title: 'Test Post Title',
         body: 'This is a test post body with some content to display.',
-      }),
+      })
     );
   });
 
@@ -89,7 +89,7 @@ describe('useGetPostsController', () => {
 
     expect(result.current.snackbar.open).toBe(true);
     expect(result.current.snackbar.message).toBe(
-      'Post 1 deleted successfully!',
+      'Post 1 deleted successfully!'
     );
     expect(result.current.snackbar.severity).toBe('success');
   });
@@ -113,7 +113,7 @@ describe('useGetPostsController', () => {
 
     expect(result.current.snackbar.open).toBe(true);
     expect(result.current.snackbar.message).toBe(
-      'Post 1 updated successfully!',
+      'Post 1 updated successfully!'
     );
     expect(result.current.snackbar.severity).toBe('success');
   });
@@ -137,7 +137,7 @@ describe('useGetPostsController', () => {
 
     expect(result.current.snackbar.open).toBe(true);
     expect(result.current.snackbar.message).toBe(
-      'Post 4 created successfully!',
+      'Post 4 created successfully!'
     );
     expect(result.current.snackbar.severity).toBe('success');
   });

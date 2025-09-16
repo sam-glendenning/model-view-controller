@@ -35,7 +35,7 @@ describe('PostsPage Integration Tests', () => {
     server.use(
       http.get('https://jsonplaceholder.typicode.com/posts', () => {
         return new HttpResponse(null, { status: 500 });
-      }),
+      })
     );
 
     createView();
@@ -77,12 +77,14 @@ describe('PostsPage Integration Tests', () => {
     // Submit form
     const createButton = within(dialog).getByRole('button', { name: 'Create' });
 
-    await act(async () => { await user.click(createButton); });
+    await act(async () => {
+      await user.click(createButton);
+    });
 
     // Wait for success message
     await waitFor(() => {
       expect(
-        screen.getByText(/Post 123456789 created successfully!/),
+        screen.getByText(/Post 123456789 created successfully!/)
       ).toBeInTheDocument();
     });
 
@@ -115,12 +117,14 @@ describe('PostsPage Integration Tests', () => {
 
     // Save changes
     const saveButton = screen.getByRole('button', { name: 'Save' });
-    await act(async () => { await user.click(saveButton); });
+    await act(async () => {
+      await user.click(saveButton);
+    });
 
     // Wait for success message
     await waitFor(() => {
       expect(
-        screen.getByText(/Post 1 updated successfully!/),
+        screen.getByText(/Post 1 updated successfully!/)
       ).toBeInTheDocument();
     });
   });
@@ -152,12 +156,14 @@ describe('PostsPage Integration Tests', () => {
     });
 
     // Confirm deletion
-    await act(async () => { await user.click(confirmDeleteButton); });
+    await act(async () => {
+      await user.click(confirmDeleteButton);
+    });
 
     // Wait for success message
     await waitFor(() => {
       expect(
-        screen.getByText(/Post 1 deleted successfully!/),
+        screen.getByText(/Post 1 deleted successfully!/)
       ).toBeInTheDocument();
     });
   });
@@ -187,12 +193,14 @@ describe('PostsPage Integration Tests', () => {
     const confirmDeleteButton = within(dialog).getByRole('button', {
       name: 'Confirm',
     });
-    await act(async () => { await user.click(confirmDeleteButton); });
+    await act(async () => {
+      await user.click(confirmDeleteButton);
+    });
 
     // Wait for success message
     await waitFor(() => {
       expect(
-        screen.getByText(/Post 1 deleted successfully!/),
+        screen.getByText(/Post 1 deleted successfully!/)
       ).toBeInTheDocument();
     });
 
@@ -203,7 +211,7 @@ describe('PostsPage Integration Tests', () => {
     // Wait for snackbar to disappear
     await waitFor(() => {
       expect(
-        screen.queryByText(/Post 1 deleted successfully!/),
+        screen.queryByText(/Post 1 deleted successfully!/)
       ).not.toBeInTheDocument();
     });
   });
@@ -213,7 +221,7 @@ describe('PostsPage Integration Tests', () => {
     server.use(
       http.post('https://jsonplaceholder.typicode.com/posts', () => {
         return new HttpResponse(null, { status: 500 });
-      }),
+      })
     );
 
     createView();
@@ -243,7 +251,9 @@ describe('PostsPage Integration Tests', () => {
 
     // Submit form
     const createButton = within(dialog).getByRole('button', { name: 'Create' });
-    await act(async () => { await user.click(createButton); });
+    await act(async () => {
+      await user.click(createButton);
+    });
 
     // Wait for error message
     await waitFor(() => {
@@ -312,7 +322,7 @@ describe('PostsPage Integration Tests', () => {
     // Verify we're back to view mode (edit button should be visible again)
     await waitFor(() => {
       expect(
-        screen.getAllByRole('button', { name: 'edit post' }).length,
+        screen.getAllByRole('button', { name: 'edit post' }).length
       ).toBeGreaterThan(0);
     });
   });
@@ -329,7 +339,7 @@ describe('PostsPage Integration Tests', () => {
           body: 'New test post body',
           userId: 1,
         });
-      }),
+      })
     );
 
     createView();
@@ -360,7 +370,9 @@ describe('PostsPage Integration Tests', () => {
     // Submit form and check loading state
     const createButton = within(dialog).getByRole('button', { name: 'Create' });
 
-    await act(async () => { await user.click(createButton); });
+    await act(async () => {
+      await user.click(createButton);
+    });
 
     // Check that button shows loading state (disabled)
     expect(createButton).toBeDisabled();
@@ -368,7 +380,7 @@ describe('PostsPage Integration Tests', () => {
     // Wait for success message
     await waitFor(() => {
       expect(
-        screen.getByText(/Post 123456789 created successfully!/),
+        screen.getByText(/Post 123456789 created successfully!/)
       ).toBeInTheDocument();
     });
 
@@ -381,7 +393,7 @@ describe('PostsPage Integration Tests', () => {
     server.use(
       http.get('https://jsonplaceholder.typicode.com/posts', () => {
         return HttpResponse.json([]);
-      }),
+      })
     );
 
     createView();
@@ -396,7 +408,7 @@ describe('PostsPage Integration Tests', () => {
 
     // Should still show the add post button
     expect(
-      screen.getByRole('button', { name: 'add post' }),
+      screen.getByRole('button', { name: 'add post' })
     ).toBeInTheDocument();
 
     // Reset handlers

@@ -26,7 +26,7 @@ export const handlers = [
       }
 
       return HttpResponse.json(user);
-    },
+    }
   ),
 
   // Posts
@@ -39,13 +39,13 @@ export const handlers = [
 
       if (userId) {
         const filteredPosts = mockPosts.filter(
-          p => p.userId === parseInt(userId),
+          p => p.userId === parseInt(userId)
         );
         return HttpResponse.json(filteredPosts);
       }
 
       return HttpResponse.json(mockPosts);
-    },
+    }
   ),
 
   http.get(
@@ -60,7 +60,7 @@ export const handlers = [
       }
 
       return HttpResponse.json(post);
-    },
+    }
   ),
 
   http.post(
@@ -76,7 +76,7 @@ export const handlers = [
 
       mockPosts.push(post);
       return HttpResponse.json(post, { status: 201 });
-    },
+    }
   ),
 
   http.put(
@@ -93,7 +93,7 @@ export const handlers = [
 
       mockPosts[postIndex] = { ...updatedData };
       return HttpResponse.json(updatedData);
-    },
+    }
   ),
 
   http.delete(
@@ -109,6 +109,6 @@ export const handlers = [
 
       mockPosts.splice(postIndex, 1);
       return new HttpResponse(null, { status: 200 });
-    },
+    }
   ),
 ];

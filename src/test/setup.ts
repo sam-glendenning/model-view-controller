@@ -2,7 +2,9 @@ import '@testing-library/jest-dom';
 import { server } from './mocks/server';
 
 // Start server before all tests
-beforeAll(() => { server.listen({ onUnhandledRequest: 'error' }); });
+beforeAll(() => {
+  server.listen({ onUnhandledRequest: 'error' });
+});
 
 // Clean up after each test case (e.g. clearing jsdom)
 afterEach(() => {
@@ -10,4 +12,6 @@ afterEach(() => {
 });
 
 // Clean up after all tests are done (e.g. closing database connections, etc.)
-afterAll(() => { server.close(); });
+afterAll(() => {
+  server.close();
+});

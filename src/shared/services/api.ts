@@ -35,7 +35,7 @@ class ApiService {
       error => {
         console.error('❌ Request error:', error);
         return Promise.reject(new Error(String(error)));
-      },
+      }
     );
 
     // Response interceptor for logging and error handling
@@ -48,7 +48,7 @@ class ApiService {
           error instanceof Error ? error.message : 'Unknown error occurred';
         console.error('❌ API Error:', errorMessage);
         return Promise.reject(new Error(errorMessage));
-      },
+      }
     );
   }
 
@@ -84,7 +84,7 @@ class ApiService {
   };
 
   createPost = async (
-    postData: Omit<Post, 'id'>,
+    postData: Omit<Post, 'id'>
   ): Promise<CreatePostMutationResponse> => {
     try {
       const response = await this.api.post<Post>('/posts', postData);
@@ -100,7 +100,7 @@ class ApiService {
       const { id, ...updateData } = postData;
       const response = await this.api.put<UpdatePostMutationResponse>(
         `/posts/${id}`,
-        updateData,
+        updateData
       );
       return response.data;
     } catch (error) {

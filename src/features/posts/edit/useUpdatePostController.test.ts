@@ -21,7 +21,7 @@ describe('useUpdatePostController', () => {
           postData: mockPost,
           onPostUpdated: mockOnPostUpdated,
         }),
-      { wrapper },
+      { wrapper }
     );
 
     expect(result.current.formData).toEqual({
@@ -41,7 +41,7 @@ describe('useUpdatePostController', () => {
           postData: mockPost,
           onPostUpdated: mockOnPostUpdated,
         }),
-      { wrapper },
+      { wrapper }
     );
 
     expect(result.current.isEditingPost).toBe(false);
@@ -67,7 +67,7 @@ describe('useUpdatePostController', () => {
           postData: mockPost,
           onPostUpdated: mockOnPostUpdated,
         }),
-      { wrapper },
+      { wrapper }
     );
 
     act(() => {
@@ -101,7 +101,7 @@ describe('useUpdatePostController', () => {
           postData: mockPost,
           onPostUpdated: mockOnPostUpdated,
         }),
-      { wrapper },
+      { wrapper }
     );
 
     act(() => {
@@ -118,7 +118,7 @@ describe('useUpdatePostController', () => {
       expect.objectContaining({
         title: 'Updated Title',
         body: 'Updated Body',
-      }),
+      })
     );
     expect(result.current.isEditingPost).toBe(false);
   });
@@ -129,7 +129,7 @@ describe('useUpdatePostController', () => {
     server.use(
       http.put('https://jsonplaceholder.typicode.com/posts/1', () => {
         return new HttpResponse(null, { status: 500 });
-      }),
+      })
     );
 
     const wrapper = createWrapper();
@@ -140,7 +140,7 @@ describe('useUpdatePostController', () => {
           onPostUpdated: mockOnPostUpdated,
           onPostUpdateError: mockOnPostUpdateError,
         }),
-      { wrapper },
+      { wrapper }
     );
 
     act(() => {
@@ -167,7 +167,7 @@ describe('useUpdatePostController', () => {
           postData: mockPost,
           onPostUpdated: mockOnPostUpdated,
         }),
-      { wrapper },
+      { wrapper }
     );
 
     act(() => {
