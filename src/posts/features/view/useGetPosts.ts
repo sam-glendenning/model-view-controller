@@ -1,16 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
 import { apiService } from '@/shared/services/api';
-import type { PostsQueryResponse } from './types';
 
 const queryKeys = {
   posts: ['posts'] as const,
 };
 
 export const useGetPosts = () => {
-  return useQuery<PostsQueryResponse, Error>({
+  return useQuery({
     queryKey: queryKeys.posts,
     queryFn: () => apiService.getPosts(),
     staleTime: 1 * 60 * 1000, // 1 minute
-    cacheTime: 5 * 60 * 1000, // 5 minutes
+    gcTime: 5 * 60 * 1000, // 5 minutes
   });
 };

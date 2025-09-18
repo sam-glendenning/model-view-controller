@@ -20,7 +20,15 @@ export const UsersPage: React.FC = () => {
       <UsersList
         users={users}
         isLoading={isLoading}
-        error={error ? String(error) : null}
+        error={
+          error
+            ? typeof error === 'string'
+              ? error
+              : error instanceof Error && error.message
+                ? error.message
+                : JSON.stringify(error)
+            : null
+        }
         title="All Users"
       />
     </Container>

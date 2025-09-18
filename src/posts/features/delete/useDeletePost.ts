@@ -1,7 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiService } from '@/shared/services/api';
 import type { Post } from '@/posts/types';
-import type { DeletePostMutationResponse } from './types';
 
 const queryKeys = {
   posts: ['posts'] as const,
@@ -11,7 +10,7 @@ const queryKeys = {
 export const useDeletePost = () => {
   const queryClient = useQueryClient();
 
-  return useMutation<DeletePostMutationResponse, Error, string>({
+  return useMutation({
     mutationFn: (id: string) => apiService.deletePost(id),
     onSuccess: (_, deletedId) => {
       // Remove the post from all relevant caches
