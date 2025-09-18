@@ -56,7 +56,7 @@
     "paths": {
       "@/*": ["src/*"],
       "@/test/*": ["src/test/*"],
-      "@/mocks/*": ["src/mocks/*"],
+      "@/mocks/*": ["src/shared/mocks/*"],
       "@/features/*": ["src/features/*"],
       "@/shared/*": ["src/shared/*"],
       "@/pages/*": ["src/pages/*"],

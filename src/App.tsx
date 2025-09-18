@@ -15,8 +15,8 @@ import {
 import { Brightness4, Brightness7 } from '@mui/icons-material';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { PostsPage } from './pages/PostsPage';
-import { UsersPage } from './pages/UsersPage';
+import { PostsPage } from './posts/pages/PostsPage';
+import { UsersPage } from './users/pages/UsersPage';
 
 // Create a MUI theme
 const getTheme = (mode: 'light' | 'dark') =>

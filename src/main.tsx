@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import { App } from './App';
-import { worker } from './mocks/browser';
+import { worker } from './shared/mocks/browser';
 
 // Start MSW worker before rendering the app
 worker
