@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiService } from '@/shared/services/api';
-import type { DeletePostMutationResponse, Post } from '@/shared/types';
+import type { Post } from '@/features/posts/types';
+import type { DeletePostMutationResponse } from './types';
 
 const queryKeys = {
   posts: ['posts'] as const,

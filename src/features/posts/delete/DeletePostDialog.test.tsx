@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { DeletePostDialog } from './DeletePostDialog';
 import { mockPosts } from '@/mocks/data';
-import type { Post } from '@/shared/types';
+import type { Post } from '@/features/posts/types';
 
 describe('DeletePostDialog', () => {
   const mockConfirmPostDelete = jest.fn();

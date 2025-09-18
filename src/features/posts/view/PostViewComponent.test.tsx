@@ -3,7 +3,7 @@ import {
   PostViewComponent,
   type PostViewComponentProps,
 } from './PostViewComponent';
-import type { Post } from '@/shared/types';
+import type { Post } from '@/features/posts/types';
 import { mockPosts } from '@/mocks/data';
 
 describe('PostViewComponent', () => {

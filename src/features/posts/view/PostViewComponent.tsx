@@ -10,7 +10,7 @@ import {
   Typography,
 } from '@mui/material';
 import { Delete, Edit } from '@mui/icons-material';
-import type { Post } from '@/shared/types';
+import type { Post } from '@/features/posts/types';
 
 export interface PostViewComponentProps {
   postData: Post;

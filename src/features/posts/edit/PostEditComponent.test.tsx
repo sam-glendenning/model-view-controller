@@ -4,7 +4,7 @@ import {
   type PostEditComponentProps,
 } from './PostEditComponent';
 import { mockPosts } from '@/mocks/data';
-import type { Post } from '@/shared/types';
+import type { Post } from '@/features/posts/types';
 
 describe('PostEditComponent', () => {
   let mockPost: Post;

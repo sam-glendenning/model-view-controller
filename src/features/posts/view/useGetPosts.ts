@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { apiService } from '@/shared/services/api';
-import type { PostsQueryResponse } from '@/shared/types';
+import type { PostsQueryResponse } from './types';
 
 const queryKeys = {
   posts: ['posts'] as const,

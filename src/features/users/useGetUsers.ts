@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { apiService } from '@/shared/services/api';
-import type { UsersQueryResponse } from '@/shared/types';
+import type { UsersQueryResponse } from './types';
 
 // Query Keys
 const queryKeys = {

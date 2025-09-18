@@ -1,5 +1,6 @@
 import { HttpResponse, http } from 'msw';
-import type { Post, User } from '@/shared/types';
+import type { Post } from '@/features/posts/types';
+import type { User } from '@/features/users/types';
 import { mockPosts, mockUsers } from './data';
 import { v4 as uuidv4 } from 'uuid';
 

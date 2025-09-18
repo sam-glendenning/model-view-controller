@@ -8,7 +8,7 @@ import {
   DialogTitle,
   TextField,
 } from '@mui/material';
-import type { Post } from '@/shared/types';
+import type { Post } from '@/features/posts/types';
 
 interface CreatePostDialogProps {
   // Dialog state

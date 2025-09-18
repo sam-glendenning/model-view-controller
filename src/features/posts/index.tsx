@@ -4,7 +4,7 @@ import { useDeletePostController } from '@/features/posts/delete/useDeletePostCo
 import { PostViewComponent } from '@/features/posts/view/PostViewComponent';
 import { PostEditComponent } from '@/features/posts/edit/PostEditComponent';
 import { DeletePostDialog } from '@/features/posts/delete/DeletePostDialog';
-import type { Post } from '@/shared/types';
+import type { Post } from '@/features/posts/types';
 
 interface PostComponentProps {
   postData: Post;

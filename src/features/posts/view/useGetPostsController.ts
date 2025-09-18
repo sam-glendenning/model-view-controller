@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 import { useGetPosts } from './useGetPosts';
-import type { Post, SnackbarState } from '@/shared/types';
+import type { Post } from '@/features/posts/types';
+import type { SnackbarState } from './types';
 
 interface useGetPostsControllerProps {
   // Data

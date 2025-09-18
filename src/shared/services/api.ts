@@ -1,13 +1,13 @@
 import axios, { type AxiosInstance, type AxiosResponse } from 'axios';
+import type { Post } from '@/features/posts/types';
 import type {
-  CreatePostMutationResponse,
-  DeletePostMutationResponse,
   GetPostsParams,
-  Post,
   PostsQueryResponse,
-  UpdatePostMutationResponse,
-  UsersQueryResponse,
-} from '@/shared/types';
+} from '@/features/posts/view/types';
+import type { UsersQueryResponse } from '@/features/users/types';
+import type { CreatePostMutationResponse } from '@/features/posts/create/types';
+import type { DeletePostMutationResponse } from '@/features/posts/delete/types';
+import type { UpdatePostMutationResponse } from '@/features/posts/edit/types';
 
 class ApiService {
   private readonly api: AxiosInstance;

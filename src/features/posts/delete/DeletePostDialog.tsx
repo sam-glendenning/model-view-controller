@@ -9,7 +9,7 @@ import {
   DialogTitle,
 } from '@mui/material';
 import { Cancel, Delete } from '@mui/icons-material';
-import type { Post } from '@/shared/types';
+import type { Post } from '@/features/posts/types';
 
 interface DeletePostDialogProps {
   open: boolean;

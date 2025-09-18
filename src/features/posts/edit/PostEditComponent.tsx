@@ -9,7 +9,7 @@ import {
   TextField,
 } from '@mui/material';
 import { Cancel, Delete, Save } from '@mui/icons-material';
-import type { Post } from '@/shared/types';
+import type { Post } from '@/features/posts/types';
 
 export interface PostEditComponentProps {
   postData: Post;
