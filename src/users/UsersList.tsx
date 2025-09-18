@@ -34,10 +34,7 @@ export const UsersList: React.FC<UsersListProps> = ({
   const renderLoadingSkeletons = () => {
     return Array.from({ length: 6 }, (_, index) => (
       <Grid
-        item
-        xs={12}
-        sm={6}
-        md={compact ? 6 : 4}
+        size={{ xs: 12, sm: 6, md: compact ? 6 : 4 }}
         key={`skeleton-${String(index)}`}
       >
         <UserCard isLoading={true} compact={compact} />
@@ -55,14 +52,14 @@ export const UsersList: React.FC<UsersListProps> = ({
         {isLoading && renderLoadingSkeletons()}
 
         {!isLoading && users.length === 0 && (
-          <Grid item xs={12}>
+          <Grid size={{ xs: 12 }}>
             <Alert severity="info">{emptyMessage}</Alert>
           </Grid>
         )}
 
         {!isLoading &&
           users.map(user => (
-            <Grid item xs={12} sm={6} md={compact ? 6 : 4} key={user.id}>
+            <Grid size={{ xs: 12, sm: 6, md: compact ? 6 : 4 }} key={user.id}>
               <UserCard user={user} compact={compact} />
             </Grid>
           ))}

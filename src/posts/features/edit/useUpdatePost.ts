@@ -1,7 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiService } from '@/shared/services/api';
 import type { Post } from '@/posts/types';
-import type { UpdatePostMutationResponse } from './types';
 
 const queryKeys = {
   posts: ['posts'] as const,
@@ -12,7 +11,7 @@ const queryKeys = {
 export const useUpdatePost = () => {
   const queryClient = useQueryClient();
 
-  return useMutation<UpdatePostMutationResponse, Error, Post>({
+  return useMutation({
     mutationFn: (postData: Post) => apiService.updatePost(postData),
     onSuccess: updatedPost => {
       // Update the specific post in cache

@@ -1,7 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiService } from '@/shared/services/api';
 import type { Post } from '@/posts/types';
-import type { CreatePostMutationResponse } from './types';
 
 const queryKeys = {
   posts: ['posts'] as const,
@@ -11,7 +10,7 @@ const queryKeys = {
 export const useCreatePost = () => {
   const queryClient = useQueryClient();
 
-  return useMutation<CreatePostMutationResponse, Error, Omit<Post, 'id'>>({
+  return useMutation({
     mutationFn: (postData: Omit<Post, 'id'>) => apiService.createPost(postData),
     onSuccess: newPost => {
       // Invalidate and refetch posts

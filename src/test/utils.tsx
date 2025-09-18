@@ -20,7 +20,7 @@ const createTestQueryClient = () =>
     defaultOptions: {
       queries: {
         retry: false,
-        cacheTime: 0,
+        gcTime: 0,
         staleTime: 0,
         // Force immediate updates in tests
         refetchOnWindowFocus: false,
@@ -42,7 +42,7 @@ export const createControllerHookWrapper = () => {
     defaultOptions: {
       queries: {
         retry: false,
-        cacheTime: 0,
+        gcTime: 0,
         staleTime: 0,
       },
       mutations: {

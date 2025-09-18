@@ -1,6 +1,10 @@
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { App } from './App';
 import { worker } from './shared/mocks/browser';
+
+const domNode = document.getElementById('root');
+// @ts-expect-error invalid type
+const root = createRoot(domNode);
 
 // Start MSW worker before rendering the app
 worker
@@ -14,5 +18,5 @@ worker
     console.error('Failed to start MSW worker:', error);
   })
   .finally(() => {
-    ReactDOM.render(<App />, document.getElementById('root'));
+    root.render(<App />);
   });

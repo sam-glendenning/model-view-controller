@@ -1,10 +1,7 @@
 import axios, { type AxiosInstance, type AxiosResponse } from 'axios';
 import type { Post } from '@/posts/types';
-import type { GetPostsParams, PostsQueryResponse } from '@/posts/features/view';
+import type { GetPostsParams } from '@/posts/features/view';
 import type { UsersQueryResponse } from '@/users/types';
-import type { CreatePostMutationResponse } from '@/posts/features/create';
-import type { DeletePostMutationResponse } from '@/posts/features/delete';
-import type { UpdatePostMutationResponse } from '@/posts/features/edit';
 
 class ApiService {
   private readonly api: AxiosInstance;
@@ -61,7 +58,7 @@ class ApiService {
   };
 
   // Post endpoints
-  getPosts = async (params?: GetPostsParams): Promise<PostsQueryResponse> => {
+  getPosts = async (params?: GetPostsParams): Promise<Post[]> => {
     try {
       const queryParams = new URLSearchParams();
       if (params?.userId)
@@ -72,7 +69,7 @@ class ApiService {
       const url = `/posts${
         queryParams.toString() ? `?${queryParams.toString()}` : ''
       }`;
-      const response = await this.api.get<PostsQueryResponse>(url);
+      const response = await this.api.get<Post[]>(url);
       return response.data;
     } catch (error) {
       console.error('Error fetching posts:', error);
@@ -80,9 +77,7 @@ class ApiService {
     }
   };
 
-  createPost = async (
-    postData: Omit<Post, 'id'>
-  ): Promise<CreatePostMutationResponse> => {
+  createPost = async (postData: Omit<Post, 'id'>): Promise<Post> => {
     try {
       const response = await this.api.post<Post>('/posts', postData);
       return response.data;
@@ -92,13 +87,10 @@ class ApiService {
     }
   };
 
-  updatePost = async (postData: Post): Promise<UpdatePostMutationResponse> => {
+  updatePost = async (postData: Post): Promise<Post> => {
     try {
       const { id, ...updateData } = postData;
-      const response = await this.api.put<UpdatePostMutationResponse>(
-        `/posts/${id}`,
-        updateData
-      );
+      const response = await this.api.put<Post>(`/posts/${id}`, updateData);
       return response.data;
     } catch (error) {
       console.error(`Error updating post ${postData.id}:`, error);
@@ -106,7 +98,7 @@ class ApiService {
     }
   };
 
-  deletePost = async (id: string): Promise<DeletePostMutationResponse> => {
+  deletePost = async (id: string): Promise<void> => {
     try {
       await this.api.delete(`/posts/${id}`);
     } catch (error) {
