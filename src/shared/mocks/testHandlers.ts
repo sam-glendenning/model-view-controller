@@ -82,8 +82,13 @@ export const testHandlers = [
         return new HttpResponse(null, { status: 404 });
       }
 
+      const existingPost = posts[postIndex];
+      if (!existingPost) {
+        return new HttpResponse(null, { status: 404 });
+      }
+
       // Create updated post WITHOUT mutating global state
-      const updatedPost = { ...posts[postIndex], ...updatedData };
+      const updatedPost: Post = { ...existingPost, ...updatedData, id };
       return HttpResponse.json(updatedPost);
     }
   ),

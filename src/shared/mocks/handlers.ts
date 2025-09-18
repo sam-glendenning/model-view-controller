@@ -84,15 +84,22 @@ export const handlers = [
     async ({ params, request }) => {
       await artificialDelay();
       const id = params['id'] as string;
-      const updatedData = (await request.json()) as Post;
+      const updatedData = (await request.json()) as Partial<Post>;
       const postIndex = mockPosts.findIndex(p => p.id === id);
 
       if (postIndex === -1) {
         return new HttpResponse(null, { status: 404 });
       }
 
-      mockPosts[postIndex] = { ...updatedData };
-      return HttpResponse.json(updatedData);
+      const existingPost = mockPosts[postIndex];
+      if (!existingPost) {
+        return new HttpResponse(null, { status: 404 });
+      }
+
+      // Update the post with the new data while preserving the id
+      const updatedPost: Post = { ...existingPost, ...updatedData, id };
+      mockPosts[postIndex] = updatedPost;
+      return HttpResponse.json(updatedPost);
     }
   ),
 
