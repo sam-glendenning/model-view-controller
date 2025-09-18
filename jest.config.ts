@@ -55,6 +55,7 @@ const config: Config = {
       {
         tsconfig: {
           jsx: 'react-jsx',
+          verbatimModuleSyntax: false,
         },
       },
     ],

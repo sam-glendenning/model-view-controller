@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`DeletePostDialog renders correctly 1`] = `
 <body
@@ -8,60 +8,62 @@ exports[`DeletePostDialog renders correctly 1`] = `
     aria-hidden="true"
   />
   <div
-    class="MuiDialog-root MuiModal-root css-zw3mfo-MuiModal-root-MuiDialog-root"
+    class="MuiDialog-root MuiModal-root css-1424xw8-MuiModal-root-MuiDialog-root"
     role="presentation"
   >
     <div
       aria-hidden="true"
-      class="MuiBackdrop-root MuiModal-backdrop css-yiavyu-MuiBackdrop-root-MuiDialog-backdrop"
-      style="opacity: 1; webkit-transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+      class="MuiBackdrop-root MuiModal-backdrop css-1cennmq-MuiBackdrop-root-MuiDialog-backdrop"
+      style="opacity: 1; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
     />
     <div
       data-testid="sentinelStart"
       tabindex="0"
     />
     <div
-      class="MuiDialog-container MuiDialog-scrollPaper css-hz1bth-MuiDialog-container"
+      class="MuiDialog-container MuiDialog-scrollPaper css-19do60a-MuiDialog-container"
       role="presentation"
-      style="opacity: 1; webkit-transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+      style="opacity: 1; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
       tabindex="-1"
     >
       <div
         aria-describedby="confirmation-dialog-description"
         aria-labelledby="confirmation-dialog-title"
-        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation24 MuiDialog-paper MuiDialog-paperScrollPaper MuiDialog-paperWidthSm css-1t1j96h-MuiPaper-root-MuiDialog-paper"
+        aria-modal="true"
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation24 MuiDialog-paper MuiDialog-paperScrollPaper MuiDialog-paperWidthSm css-10d30g3-MuiPaper-root-MuiDialog-paper"
         role="dialog"
+        style="--Paper-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12);"
       >
         <h2
-          class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-bdhsul-MuiTypography-root-MuiDialogTitle-root"
+          class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-rvoa5x-MuiTypography-root-MuiDialogTitle-root"
           id="confirmation-dialog-title"
         >
           Delete Post
         </h2>
         <div
-          class="MuiDialogContent-root css-ypiqx9-MuiDialogContent-root"
+          class="MuiDialogContent-root css-kw13he-MuiDialogContent-root"
         >
           <p
-            class="MuiTypography-root MuiDialogContentText-root MuiTypography-body1 MuiDialogContentText-root css-qfso29-MuiTypography-root-MuiDialogContentText-root"
+            class="MuiTypography-root MuiDialogContentText-root MuiTypography-body1 MuiDialogContentText-root css-ujudvl-MuiTypography-root-MuiDialogContentText-root"
             id="confirmation-dialog-description"
           >
             Are you sure you want to delete Test Post Title?
           </p>
         </div>
         <div
-          class="MuiDialogActions-root MuiDialogActions-spacing css-rgpb1g-MuiDialogActions-root"
+          class="MuiDialogActions-root MuiDialogActions-spacing css-s92rvs-MuiDialogActions-root"
         >
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-1rwt2y5-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorPrimary css-1blvszr-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >
             <span
-              class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeMedium css-1d6wzja-MuiButton-startIcon"
+              class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeMedium css-1sh91j5-MuiButton-startIcon"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
                 data-testid="CancelIcon"
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -72,21 +74,18 @@ exports[`DeletePostDialog renders correctly 1`] = `
               </svg>
             </span>
             Cancel
-            <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            />
           </button>
           <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedError MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorError Mui-focusVisible MuiButton-root MuiButton-contained MuiButton-containedError MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorError css-1sszw6i-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedError MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorError Mui-focusVisible MuiButton-root MuiButton-contained MuiButton-containedError MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorError css-1f7qp0x-MuiButtonBase-root-MuiButton-root"
             tabindex="0"
             type="button"
           >
             <span
-              class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeMedium css-1d6wzja-MuiButton-startIcon"
+              class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeMedium css-1sh91j5-MuiButton-startIcon"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
                 data-testid="DeleteIcon"
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -98,17 +97,8 @@ exports[`DeletePostDialog renders correctly 1`] = `
             </span>
             Confirm
             <span
-              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-            >
-              <span
-                class="css-y4cjyz-MuiTouchRipple-ripple MuiTouchRipple-ripple MuiTouchRipple-rippleVisible MuiTouchRipple-ripplePulsate"
-                style="width: 1px; height: 1px; top: -0.5px; left: -0.5px;"
-              >
-                <span
-                  class="MuiTouchRipple-child MuiTouchRipple-childPulsate"
-                />
-              </span>
-            </span>
+              class="MuiTouchRipple-root css-r3djoj-MuiTouchRipple-root"
+            />
           </button>
         </div>
       </div>
