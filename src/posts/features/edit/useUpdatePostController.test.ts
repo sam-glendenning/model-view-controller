@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react';
 import { HttpResponse, http } from 'msw';
 import { server } from '@/test/mocks/server';
 import { useUpdatePostController } from './useUpdatePostController';

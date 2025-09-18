@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react';
 import { waitFor } from '@testing-library/react';
 import { useGetPostsController } from './useGetPostsController';
 import { createControllerHookWrapper as createWrapper } from '@/test/utils';

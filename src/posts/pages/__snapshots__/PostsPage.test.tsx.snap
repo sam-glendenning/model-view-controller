@@ -1,20 +1,20 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`PostsPage Integration Tests renders correctly 1`] = `
 <div>
   <div
-    class="MuiContainer-root MuiContainer-maxWidthLg css-1sqq6so-MuiContainer-root"
+    class="MuiContainer-root MuiContainer-maxWidthLg css-xsov46-MuiContainer-root"
   >
     <div
       class="MuiBox-root css-1yjvs5a"
     >
       <h1
-        class="MuiTypography-root MuiTypography-h3 MuiTypography-gutterBottom css-1mktp8m-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-h3 MuiTypography-gutterBottom css-uynfxu-MuiTypography-root"
       >
         Posts Management
       </h1>
       <h6
-        class="MuiTypography-root MuiTypography-h6 css-1jgmn5n-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-h6 css-gt8k4n-MuiTypography-root"
       >
         Demonstrating MVC architecture with React, TanStack Query, and Material-UI
       </h6>
@@ -24,10 +24,11 @@ exports[`PostsPage Integration Tests renders correctly 1`] = `
     >
       <div>
         <div
-          class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation2 MuiCard-root css-okv3ew-MuiPaper-root-MuiCard-root"
+          class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation2 MuiCard-root css-1ypifsw-MuiPaper-root-MuiCard-root"
+          style="--Paper-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);"
         >
           <div
-            class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
+            class="MuiCardContent-root css-1lt5qva-MuiCardContent-root"
           >
             <div
               class="MuiBox-root css-0"
@@ -36,30 +37,30 @@ exports[`PostsPage Integration Tests renders correctly 1`] = `
                 class="MuiBox-root css-21y1cj"
               >
                 <h3
-                  class="MuiTypography-root MuiTypography-h6 css-yxjt1e-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-h6 css-1vjfruo-MuiTypography-root"
                 >
                   Test Post Title
                 </h3>
                 <div
-                  class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorPrimary MuiChip-outlinedPrimary css-1y6wsfa-MuiChip-root"
+                  class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorPrimary MuiChip-outlinedPrimary css-19gasz3-MuiChip-root"
                 >
                   <span
-                    class="MuiChip-label MuiChip-labelSmall css-rrn746-MuiChip-label"
+                    class="MuiChip-label MuiChip-labelSmall css-19m61dl-MuiChip-label"
                   >
                     Post #1
                   </span>
                 </div>
               </div>
               <p
-                class="MuiTypography-root MuiTypography-body2 css-eb0ott-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-body2 css-19b5ozw-MuiTypography-root"
               >
                 This is a test post body with some content to display.
               </p>
               <div
-                class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorSecondary MuiChip-outlinedSecondary css-1sr0oy8-MuiChip-root"
+                class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorSecondary MuiChip-outlinedSecondary css-1klajg7-MuiChip-root"
               >
                 <span
-                  class="MuiChip-label MuiChip-labelSmall css-rrn746-MuiChip-label"
+                  class="MuiChip-label MuiChip-labelSmall css-19m61dl-MuiChip-label"
                 >
                   User 1
                 </span>
@@ -67,50 +68,47 @@ exports[`PostsPage Integration Tests renders correctly 1`] = `
             </div>
           </div>
           <div
-            class="MuiCardActions-root MuiCardActions-spacing css-1j9t6id-MuiCardActions-root"
+            class="MuiCardActions-root MuiCardActions-spacing css-15xmi91-MuiCardActions-root"
           >
             <div
               class="MuiBox-root css-1i27l4i"
             >
               <button
                 aria-label="edit post"
-                class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary css-1k23hlb-MuiButtonBase-root-MuiButton-root"
+                class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary css-wyro15-MuiButtonBase-root-MuiButton-root"
                 tabindex="0"
                 type="button"
               >
                 <span
-                  class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeSmall css-y6rp3m-MuiButton-startIcon"
+                  class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeSmall css-d8i980-MuiButton-startIcon"
                 >
                   <svg
                     aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
                     data-testid="EditIcon"
                     focusable="false"
                     viewBox="0 0 24 24"
                   >
                     <path
-                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75z"
+                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75z"
                     />
                   </svg>
                 </span>
                 Edit
-                <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
               </button>
             </div>
             <button
               aria-label="delete post"
-              class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorError MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorError css-1ir7th6-MuiButtonBase-root-MuiButton-root"
+              class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorError MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorError css-1vvreb9-MuiButtonBase-root-MuiButton-root"
               tabindex="0"
               type="button"
             >
               <span
-                class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeSmall css-y6rp3m-MuiButton-startIcon"
+                class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeSmall css-d8i980-MuiButton-startIcon"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
                   data-testid="DeleteIcon"
                   focusable="false"
                   viewBox="0 0 24 24"
@@ -121,19 +119,17 @@ exports[`PostsPage Integration Tests renders correctly 1`] = `
                 </svg>
               </span>
               Delete
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
             </button>
           </div>
         </div>
       </div>
       <div>
         <div
-          class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation2 MuiCard-root css-okv3ew-MuiPaper-root-MuiCard-root"
+          class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation2 MuiCard-root css-1ypifsw-MuiPaper-root-MuiCard-root"
+          style="--Paper-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);"
         >
           <div
-            class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
+            class="MuiCardContent-root css-1lt5qva-MuiCardContent-root"
           >
             <div
               class="MuiBox-root css-0"
@@ -142,30 +138,30 @@ exports[`PostsPage Integration Tests renders correctly 1`] = `
                 class="MuiBox-root css-21y1cj"
               >
                 <h3
-                  class="MuiTypography-root MuiTypography-h6 css-yxjt1e-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-h6 css-1vjfruo-MuiTypography-root"
                 >
                   Another Test Post
                 </h3>
                 <div
-                  class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorPrimary MuiChip-outlinedPrimary css-1y6wsfa-MuiChip-root"
+                  class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorPrimary MuiChip-outlinedPrimary css-19gasz3-MuiChip-root"
                 >
                   <span
-                    class="MuiChip-label MuiChip-labelSmall css-rrn746-MuiChip-label"
+                    class="MuiChip-label MuiChip-labelSmall css-19m61dl-MuiChip-label"
                   >
                     Post #2
                   </span>
                 </div>
               </div>
               <p
-                class="MuiTypography-root MuiTypography-body2 css-eb0ott-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-body2 css-19b5ozw-MuiTypography-root"
               >
                 This is another test post with different content.
               </p>
               <div
-                class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorSecondary MuiChip-outlinedSecondary css-1sr0oy8-MuiChip-root"
+                class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorSecondary MuiChip-outlinedSecondary css-1klajg7-MuiChip-root"
               >
                 <span
-                  class="MuiChip-label MuiChip-labelSmall css-rrn746-MuiChip-label"
+                  class="MuiChip-label MuiChip-labelSmall css-19m61dl-MuiChip-label"
                 >
                   User 1
                 </span>
@@ -173,50 +169,47 @@ exports[`PostsPage Integration Tests renders correctly 1`] = `
             </div>
           </div>
           <div
-            class="MuiCardActions-root MuiCardActions-spacing css-1j9t6id-MuiCardActions-root"
+            class="MuiCardActions-root MuiCardActions-spacing css-15xmi91-MuiCardActions-root"
           >
             <div
               class="MuiBox-root css-1i27l4i"
             >
               <button
                 aria-label="edit post"
-                class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary css-1k23hlb-MuiButtonBase-root-MuiButton-root"
+                class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary css-wyro15-MuiButtonBase-root-MuiButton-root"
                 tabindex="0"
                 type="button"
               >
                 <span
-                  class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeSmall css-y6rp3m-MuiButton-startIcon"
+                  class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeSmall css-d8i980-MuiButton-startIcon"
                 >
                   <svg
                     aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
                     data-testid="EditIcon"
                     focusable="false"
                     viewBox="0 0 24 24"
                   >
                     <path
-                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75z"
+                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75z"
                     />
                   </svg>
                 </span>
                 Edit
-                <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
               </button>
             </div>
             <button
               aria-label="delete post"
-              class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorError MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorError css-1ir7th6-MuiButtonBase-root-MuiButton-root"
+              class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorError MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorError css-1vvreb9-MuiButtonBase-root-MuiButton-root"
               tabindex="0"
               type="button"
             >
               <span
-                class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeSmall css-y6rp3m-MuiButton-startIcon"
+                class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeSmall css-d8i980-MuiButton-startIcon"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
                   data-testid="DeleteIcon"
                   focusable="false"
                   viewBox="0 0 24 24"
@@ -227,19 +220,17 @@ exports[`PostsPage Integration Tests renders correctly 1`] = `
                 </svg>
               </span>
               Delete
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
             </button>
           </div>
         </div>
       </div>
       <div>
         <div
-          class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation2 MuiCard-root css-okv3ew-MuiPaper-root-MuiCard-root"
+          class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation2 MuiCard-root css-1ypifsw-MuiPaper-root-MuiCard-root"
+          style="--Paper-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);"
         >
           <div
-            class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
+            class="MuiCardContent-root css-1lt5qva-MuiCardContent-root"
           >
             <div
               class="MuiBox-root css-0"
@@ -248,30 +239,30 @@ exports[`PostsPage Integration Tests renders correctly 1`] = `
                 class="MuiBox-root css-21y1cj"
               >
                 <h3
-                  class="MuiTypography-root MuiTypography-h6 css-yxjt1e-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-h6 css-1vjfruo-MuiTypography-root"
                 >
                   Jane's Post
                 </h3>
                 <div
-                  class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorPrimary MuiChip-outlinedPrimary css-1y6wsfa-MuiChip-root"
+                  class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorPrimary MuiChip-outlinedPrimary css-19gasz3-MuiChip-root"
                 >
                   <span
-                    class="MuiChip-label MuiChip-labelSmall css-rrn746-MuiChip-label"
+                    class="MuiChip-label MuiChip-labelSmall css-19m61dl-MuiChip-label"
                   >
                     Post #3
                   </span>
                 </div>
               </div>
               <p
-                class="MuiTypography-root MuiTypography-body2 css-eb0ott-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-body2 css-19b5ozw-MuiTypography-root"
               >
                 A post written by Jane Smith about various topics.
               </p>
               <div
-                class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorSecondary MuiChip-outlinedSecondary css-1sr0oy8-MuiChip-root"
+                class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorSecondary MuiChip-outlinedSecondary css-1klajg7-MuiChip-root"
               >
                 <span
-                  class="MuiChip-label MuiChip-labelSmall css-rrn746-MuiChip-label"
+                  class="MuiChip-label MuiChip-labelSmall css-19m61dl-MuiChip-label"
                 >
                   User 2
                 </span>
@@ -279,50 +270,47 @@ exports[`PostsPage Integration Tests renders correctly 1`] = `
             </div>
           </div>
           <div
-            class="MuiCardActions-root MuiCardActions-spacing css-1j9t6id-MuiCardActions-root"
+            class="MuiCardActions-root MuiCardActions-spacing css-15xmi91-MuiCardActions-root"
           >
             <div
               class="MuiBox-root css-1i27l4i"
             >
               <button
                 aria-label="edit post"
-                class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary css-1k23hlb-MuiButtonBase-root-MuiButton-root"
+                class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary css-wyro15-MuiButtonBase-root-MuiButton-root"
                 tabindex="0"
                 type="button"
               >
                 <span
-                  class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeSmall css-y6rp3m-MuiButton-startIcon"
+                  class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeSmall css-d8i980-MuiButton-startIcon"
                 >
                   <svg
                     aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
                     data-testid="EditIcon"
                     focusable="false"
                     viewBox="0 0 24 24"
                   >
                     <path
-                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75z"
+                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75z"
                     />
                   </svg>
                 </span>
                 Edit
-                <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
               </button>
             </div>
             <button
               aria-label="delete post"
-              class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorError MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorError css-1ir7th6-MuiButtonBase-root-MuiButton-root"
+              class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorError MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorError css-1vvreb9-MuiButtonBase-root-MuiButton-root"
               tabindex="0"
               type="button"
             >
               <span
-                class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeSmall css-y6rp3m-MuiButton-startIcon"
+                class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeSmall css-d8i980-MuiButton-startIcon"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
                   data-testid="DeleteIcon"
                   focusable="false"
                   viewBox="0 0 24 24"
@@ -333,19 +321,17 @@ exports[`PostsPage Integration Tests renders correctly 1`] = `
                 </svg>
               </span>
               Delete
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
             </button>
           </div>
         </div>
       </div>
       <div>
         <div
-          class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation2 MuiCard-root css-okv3ew-MuiPaper-root-MuiCard-root"
+          class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation2 MuiCard-root css-1ypifsw-MuiPaper-root-MuiCard-root"
+          style="--Paper-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);"
         >
           <div
-            class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
+            class="MuiCardContent-root css-1lt5qva-MuiCardContent-root"
           >
             <div
               class="MuiBox-root css-0"
@@ -354,30 +340,30 @@ exports[`PostsPage Integration Tests renders correctly 1`] = `
                 class="MuiBox-root css-21y1cj"
               >
                 <h3
-                  class="MuiTypography-root MuiTypography-h6 css-yxjt1e-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-h6 css-1vjfruo-MuiTypography-root"
                 >
                   Understanding React Hooks
                 </h3>
                 <div
-                  class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorPrimary MuiChip-outlinedPrimary css-1y6wsfa-MuiChip-root"
+                  class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorPrimary MuiChip-outlinedPrimary css-19gasz3-MuiChip-root"
                 >
                   <span
-                    class="MuiChip-label MuiChip-labelSmall css-rrn746-MuiChip-label"
+                    class="MuiChip-label MuiChip-labelSmall css-19m61dl-MuiChip-label"
                   >
                     Post #4
                   </span>
                 </div>
               </div>
               <p
-                class="MuiTypography-root MuiTypography-body2 css-eb0ott-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-body2 css-19b5ozw-MuiTypography-root"
               >
                 React Hooks have revolutionized how we write components. This post explores the most commonly used hooks and their practical applications.
               </p>
               <div
-                class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorSecondary MuiChip-outlinedSecondary css-1sr0oy8-MuiChip-root"
+                class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorSecondary MuiChip-outlinedSecondary css-1klajg7-MuiChip-root"
               >
                 <span
-                  class="MuiChip-label MuiChip-labelSmall css-rrn746-MuiChip-label"
+                  class="MuiChip-label MuiChip-labelSmall css-19m61dl-MuiChip-label"
                 >
                   User 1
                 </span>
@@ -385,50 +371,47 @@ exports[`PostsPage Integration Tests renders correctly 1`] = `
             </div>
           </div>
           <div
-            class="MuiCardActions-root MuiCardActions-spacing css-1j9t6id-MuiCardActions-root"
+            class="MuiCardActions-root MuiCardActions-spacing css-15xmi91-MuiCardActions-root"
           >
             <div
               class="MuiBox-root css-1i27l4i"
             >
               <button
                 aria-label="edit post"
-                class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary css-1k23hlb-MuiButtonBase-root-MuiButton-root"
+                class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary css-wyro15-MuiButtonBase-root-MuiButton-root"
                 tabindex="0"
                 type="button"
               >
                 <span
-                  class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeSmall css-y6rp3m-MuiButton-startIcon"
+                  class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeSmall css-d8i980-MuiButton-startIcon"
                 >
                   <svg
                     aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
                     data-testid="EditIcon"
                     focusable="false"
                     viewBox="0 0 24 24"
                   >
                     <path
-                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75z"
+                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75z"
                     />
                   </svg>
                 </span>
                 Edit
-                <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
               </button>
             </div>
             <button
               aria-label="delete post"
-              class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorError MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorError css-1ir7th6-MuiButtonBase-root-MuiButton-root"
+              class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorError MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorError css-1vvreb9-MuiButtonBase-root-MuiButton-root"
               tabindex="0"
               type="button"
             >
               <span
-                class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeSmall css-y6rp3m-MuiButton-startIcon"
+                class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeSmall css-d8i980-MuiButton-startIcon"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
                   data-testid="DeleteIcon"
                   focusable="false"
                   viewBox="0 0 24 24"
@@ -439,19 +422,17 @@ exports[`PostsPage Integration Tests renders correctly 1`] = `
                 </svg>
               </span>
               Delete
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
             </button>
           </div>
         </div>
       </div>
       <div>
         <div
-          class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation2 MuiCard-root css-okv3ew-MuiPaper-root-MuiCard-root"
+          class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation2 MuiCard-root css-1ypifsw-MuiPaper-root-MuiCard-root"
+          style="--Paper-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);"
         >
           <div
-            class="MuiCardContent-root css-46bh2p-MuiCardContent-root"
+            class="MuiCardContent-root css-1lt5qva-MuiCardContent-root"
           >
             <div
               class="MuiBox-root css-0"
@@ -460,30 +441,30 @@ exports[`PostsPage Integration Tests renders correctly 1`] = `
                 class="MuiBox-root css-21y1cj"
               >
                 <h3
-                  class="MuiTypography-root MuiTypography-h6 css-yxjt1e-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-h6 css-1vjfruo-MuiTypography-root"
                 >
                   Building Scalable APIs
                 </h3>
                 <div
-                  class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorPrimary MuiChip-outlinedPrimary css-1y6wsfa-MuiChip-root"
+                  class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorPrimary MuiChip-outlinedPrimary css-19gasz3-MuiChip-root"
                 >
                   <span
-                    class="MuiChip-label MuiChip-labelSmall css-rrn746-MuiChip-label"
+                    class="MuiChip-label MuiChip-labelSmall css-19m61dl-MuiChip-label"
                   >
                     Post #5
                   </span>
                 </div>
               </div>
               <p
-                class="MuiTypography-root MuiTypography-body2 css-eb0ott-MuiTypography-root"
+                class="MuiTypography-root MuiTypography-body2 css-19b5ozw-MuiTypography-root"
               >
                 A comprehensive guide to building APIs that can handle growth and maintain performance as your application scales.
               </p>
               <div
-                class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorSecondary MuiChip-outlinedSecondary css-1sr0oy8-MuiChip-root"
+                class="MuiChip-root MuiChip-outlined MuiChip-sizeSmall MuiChip-colorSecondary MuiChip-outlinedSecondary css-1klajg7-MuiChip-root"
               >
                 <span
-                  class="MuiChip-label MuiChip-labelSmall css-rrn746-MuiChip-label"
+                  class="MuiChip-label MuiChip-labelSmall css-19m61dl-MuiChip-label"
                 >
                   User 2
                 </span>
@@ -491,50 +472,47 @@ exports[`PostsPage Integration Tests renders correctly 1`] = `
             </div>
           </div>
           <div
-            class="MuiCardActions-root MuiCardActions-spacing css-1j9t6id-MuiCardActions-root"
+            class="MuiCardActions-root MuiCardActions-spacing css-15xmi91-MuiCardActions-root"
           >
             <div
               class="MuiBox-root css-1i27l4i"
             >
               <button
                 aria-label="edit post"
-                class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary css-1k23hlb-MuiButtonBase-root-MuiButton-root"
+                class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorPrimary css-wyro15-MuiButtonBase-root-MuiButton-root"
                 tabindex="0"
                 type="button"
               >
                 <span
-                  class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeSmall css-y6rp3m-MuiButton-startIcon"
+                  class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeSmall css-d8i980-MuiButton-startIcon"
                 >
                   <svg
                     aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
                     data-testid="EditIcon"
                     focusable="false"
                     viewBox="0 0 24 24"
                   >
                     <path
-                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75z"
+                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75z"
                     />
                   </svg>
                 </span>
                 Edit
-                <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
               </button>
             </div>
             <button
               aria-label="delete post"
-              class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorError MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorError css-1ir7th6-MuiButtonBase-root-MuiButton-root"
+              class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorError MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-sizeSmall MuiButton-outlinedSizeSmall MuiButton-colorError css-1vvreb9-MuiButtonBase-root-MuiButton-root"
               tabindex="0"
               type="button"
             >
               <span
-                class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeSmall css-y6rp3m-MuiButton-startIcon"
+                class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeSmall css-d8i980-MuiButton-startIcon"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
                   data-testid="DeleteIcon"
                   focusable="false"
                   viewBox="0 0 24 24"
@@ -545,9 +523,6 @@ exports[`PostsPage Integration Tests renders correctly 1`] = `
                 </svg>
               </span>
               Delete
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
             </button>
           </div>
         </div>
@@ -555,13 +530,13 @@ exports[`PostsPage Integration Tests renders correctly 1`] = `
     </div>
     <button
       aria-label="add post"
-      class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeLarge MuiFab-primary MuiFab-root MuiFab-circular MuiFab-sizeLarge MuiFab-primary css-1fo2sjy-MuiButtonBase-root-MuiFab-root"
+      class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeLarge MuiFab-primary MuiFab-root MuiFab-circular MuiFab-sizeLarge MuiFab-primary css-6vxf02-MuiButtonBase-root-MuiFab-root"
       tabindex="0"
       type="button"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
         data-testid="AddIcon"
         focusable="false"
         viewBox="0 0 24 24"
@@ -570,9 +545,6 @@ exports[`PostsPage Integration Tests renders correctly 1`] = `
           d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6z"
         />
       </svg>
-      <span
-        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-      />
     </button>
   </div>
 </div>
