@@ -24,7 +24,7 @@ export const UsersPage: React.FC = () => {
           error
             ? typeof error === 'string'
               ? error
-              : error instanceof Error && error.message
+              : error instanceof Error
                 ? error.message
                 : JSON.stringify(error)
             : null
