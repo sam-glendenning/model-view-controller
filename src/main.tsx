@@ -5,6 +5,9 @@ import { worker } from './shared/mocks/browser';
 const domNode = document.getElementById('root');
 // @ts-expect-error invalid type
 const root = createRoot(domNode);
+if (!domNode) {
+  throw new Error("Root element with id 'root' not found in the DOM.");
+}
 
 // Start MSW worker before rendering the app
 worker
