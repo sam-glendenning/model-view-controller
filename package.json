@@ -62,7 +62,7 @@
     "typescript": "5.9.2",
     "vite": "7.1.7"
   },
-  "packageManager": "yarn@4.10.1",
+  "packageManager": "yarn@4.10.2",
   "msw": {
     "workerDirectory": [
       "public"

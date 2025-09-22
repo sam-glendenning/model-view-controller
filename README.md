@@ -34,17 +34,17 @@ This project showcases an **industry-standard feature-based MVC architecture** i
 
 ## 🛠️ Tech Stack
 
-- **React** 17 - Modern React with hooks and concurrent features
-- **TypeScript** 5 - Strict type safety and advanced type patterns
-- **Material-UI** 5 - Comprehensive component library with theming
-- **TanStack Query** v4 - Powerful server state management
+- **React** v19 - Modern React with hooks and concurrent features
+- **TypeScript** v5 - Strict type safety and advanced type patterns
+- **Material-UI** v7 - Comprehensive component library with theming
+- **TanStack Query** v5 - Powerful server state management
 - **Axios** v1 - HTTP client with interceptors
 - **UUID** v13 - Unique identifier generation for posts
-- **Jest** v29 - Testing framework with MSW integration
+- **Jest** v30 - Testing framework with MSW integration
 - **React Testing Library** - Component testing utilities
 - **MSW** v2 - Mock Service Worker for API testing
-- **Vite** - Fast build tool and development server
-- **Yarn** 4 - Modern package manager with PnP
+- **Vite** v7 - Fast build tool and development server
+- **Yarn** v4 - Modern package manager with PnP
 
 ## 🚀 Getting Started
 
