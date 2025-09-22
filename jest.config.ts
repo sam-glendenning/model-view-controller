@@ -59,11 +59,22 @@ const config: Config = {
         },
       },
     ],
+    '^.+\\.(js|jsx)$': [
+      'ts-jest',
+      {
+        useESM: false,
+        tsconfig: {
+          allowJs: true,
+          jsx: 'react-jsx',
+          verbatimModuleSyntax: false,
+        },
+      },
+    ],
   },
 
-  // Node modules handling
+  // Node modules handling - Transform ES modules for Jest compatibility
   transformIgnorePatterns: [
-    'node_modules/(?!(axios|@mui|@emotion|@tanstack|msw|uuid)/)',
+    'node_modules/(?!(msw|@mswjs|until-async|@open-draft|@bundled-es-modules)/)',
   ],
 
   // Test environment configuration
