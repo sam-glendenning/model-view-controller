@@ -6,7 +6,6 @@ const domNode = document.getElementById('root');
 if (!domNode) {
   throw new Error("Root element with id 'root' not found in the DOM.");
 }
-// @ts-expect-error invalid type
 const root = createRoot(domNode);
 
 // Start MSW worker before rendering the app
