@@ -179,7 +179,7 @@ export const App: React.FC = () => {
               <Box sx={{ mt: 4 }}>
                 <Typography variant="body2" color="text.secondary">
                   Built with React v19, TypeScript v5, Material-UI v7, TanStack
-                  Query v5, MSW v2, UUID v13, ESLint v9, Node v24, Jest v30,
+                  Query v5, MSW v2, UUID v13, ESLint v9, Node v24, Vitest v3,
                   Vite v7 and Axios v1
                 </Typography>
               </Box>

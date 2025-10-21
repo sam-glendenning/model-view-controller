@@ -1,1 +1,1 @@
-export const v4 = jest.fn(() => '123456789');
+export const v4 = vi.fn(() => '123456789');

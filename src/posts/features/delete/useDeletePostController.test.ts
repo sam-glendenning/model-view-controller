@@ -7,11 +7,11 @@ import { mockPosts } from '@/shared/mocks/data';
 import { createControllerHookWrapper as createWrapper } from '@/test/utils';
 
 describe('useDeletePostController', () => {
-  const mockOnPostDeleted = jest.fn();
+  const mockOnPostDeleted = vi.fn();
   const mockPost = mockPosts[0]!;
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('should initialize with correct default state', () => {
@@ -77,7 +77,7 @@ describe('useDeletePostController', () => {
   });
 
   it('should handle post deletion error', async () => {
-    const mockOnPostDeletionError = jest.fn();
+    const mockOnPostDeletionError = vi.fn();
 
     // Mock a network error
     const errorHandlers = [

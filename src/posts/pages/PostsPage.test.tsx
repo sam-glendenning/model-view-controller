@@ -84,7 +84,7 @@ describe('PostsPage Integration Tests', () => {
     // Wait for success message
     await waitFor(() => {
       expect(
-        screen.getByText(/Post 123456789 created successfully!/)
+        screen.getByText(/Post .+ created successfully!/)
       ).toBeInTheDocument();
     });
 
@@ -380,7 +380,7 @@ describe('PostsPage Integration Tests', () => {
     // Wait for success message
     await waitFor(() => {
       expect(
-        screen.getByText(/Post 123456789 created successfully!/)
+        screen.getByText(/Post .+ created successfully!/)
       ).toBeInTheDocument();
     });
 

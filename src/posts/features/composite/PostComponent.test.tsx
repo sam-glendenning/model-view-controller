@@ -12,8 +12,8 @@ import { mockPosts } from '@/shared/mocks/data';
 import type { Post } from '@/posts/types';
 
 describe('PostComponent (Composite)', () => {
-  const mockOnPostDeleted = jest.fn();
-  const mockOnPostUpdated = jest.fn();
+  const mockOnPostDeleted = vi.fn();
+  const mockOnPostUpdated = vi.fn();
   let user: UserEvent;
   let mockPost: Post;
 
@@ -27,7 +27,7 @@ describe('PostComponent (Composite)', () => {
     );
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
     user = userEvent.setup();
 
     // Create a fresh mock post for each test

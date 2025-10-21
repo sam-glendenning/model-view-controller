@@ -1,4 +1,6 @@
-import '@testing-library/jest-dom';
+/// <reference types="vitest/globals" />
+
+import '@testing-library/jest-dom/vitest';
 import { server } from './mocks/server';
 
 // Start server before all tests

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`PostViewComponent renders correctly 1`] = `
+exports[`PostViewComponent > renders correctly 1`] = `
 <DocumentFragment>
   <div
     class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation2 MuiCard-root css-1ypifsw-MuiPaper-root-MuiCard-root"

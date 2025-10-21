@@ -7,7 +7,7 @@ describe('CreatePostDialog', () => {
   let mockPost: Omit<Post, 'id'>;
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
 
     mockPost = {
       title: mockPosts[0]!.title,
@@ -21,11 +21,11 @@ describe('CreatePostDialog', () => {
       <CreatePostDialog
         open={true}
         postData={mockPost}
-        onTitleChange={jest.fn()}
-        onBodyChange={jest.fn()}
-        onUserIdChange={jest.fn()}
-        onSubmit={jest.fn()}
-        onClose={jest.fn()}
+        onTitleChange={vi.fn()}
+        onBodyChange={vi.fn()}
+        onUserIdChange={vi.fn()}
+        onSubmit={vi.fn()}
+        onClose={vi.fn()}
         isCreating={false}
       />
     );

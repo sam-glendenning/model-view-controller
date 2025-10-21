@@ -4,12 +4,12 @@ import { mockPosts } from '@/shared/mocks/data';
 import type { Post } from '@/posts/types';
 
 describe('DeletePostDialog', () => {
-  const mockConfirmPostDelete = jest.fn();
-  const mockCancelPostDelete = jest.fn();
+  const mockConfirmPostDelete = vi.fn();
+  const mockCancelPostDelete = vi.fn();
   let mockPost: Post;
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
     mockPost = mockPosts[0]!;
   });
 

@@ -16,8 +16,8 @@ describe('PostViewComponent', () => {
   it('renders correctly', () => {
     const props: PostViewComponentProps = {
       postData: mockPost,
-      onEditClick: jest.fn(),
-      onDeleteClick: jest.fn(),
+      onEditClick: vi.fn(),
+      onDeleteClick: vi.fn(),
       isDeleting: false,
     };
     const { asFragment } = render(<PostViewComponent {...props} />);

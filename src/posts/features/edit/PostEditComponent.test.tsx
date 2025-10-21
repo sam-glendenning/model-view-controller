@@ -16,12 +16,12 @@ describe('PostEditComponent', () => {
   it('renders correctly', () => {
     const props: PostEditComponentProps = {
       postData: mockPost,
-      onTitleChange: jest.fn(),
-      onBodyChange: jest.fn(),
-      onUserIdChange: jest.fn(),
-      onSave: jest.fn(),
-      onCancel: jest.fn(),
-      onDelete: jest.fn(),
+      onTitleChange: vi.fn(),
+      onBodyChange: vi.fn(),
+      onUserIdChange: vi.fn(),
+      onSave: vi.fn(),
+      onCancel: vi.fn(),
+      onDelete: vi.fn(),
       isSaveButtonDisabled: false,
       isUpdating: false,
       isDeleting: false,

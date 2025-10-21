@@ -6,11 +6,11 @@ import { mockPosts } from '@/shared/mocks/data';
 import { createControllerHookWrapper as createWrapper } from '@/test/utils';
 
 describe('useUpdatePostController', () => {
-  const mockOnPostUpdated = jest.fn();
+  const mockOnPostUpdated = vi.fn();
   const mockPost = mockPosts[0]!;
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('should initialize with post data', () => {
@@ -124,7 +124,7 @@ describe('useUpdatePostController', () => {
   });
 
   it('should handle form submission error', async () => {
-    const mockOnPostUpdateError = jest.fn();
+    const mockOnPostUpdateError = vi.fn();
 
     server.use(
       http.put('https://jsonplaceholder.typicode.com/posts/1', () => {

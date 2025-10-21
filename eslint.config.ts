@@ -4,6 +4,7 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
+import vitest from '@vitest/eslint-plugin';
 import type { Linter } from 'eslint';
 
 const config: Linter.Config[] = [
@@ -25,6 +26,7 @@ const config: Linter.Config[] = [
       globals: {
         ...globals.browser,
         ...globals.es2022,
+        ...globals.vitest,
       },
       parser: tsParser,
       parserOptions: {
@@ -67,12 +69,7 @@ const config: Linter.Config[] = [
     },
   },
   {
-    files: [
-      '*.config.{ts,js}',
-      'vite.config.ts',
-      'jest.config.ts',
-      'eslint.config.ts',
-    ],
+    files: ['*.config.{ts,js}', 'vite.config.ts', 'eslint.config.ts'],
     languageOptions: {
       ecmaVersion: 2022,
       globals: {
@@ -105,10 +102,15 @@ const config: Linter.Config[] = [
     languageOptions: {
       globals: {
         ...globals.browser,
-        ...globals.jest,
+        ...globals.vitest,
       },
     },
+    plugins: {
+      // @ts-expect-error - Plugin type compatibility issues
+      vitest,
+    },
     rules: {
+      ...vitest.configs.recommended.rules,
       // Minimal relaxations for test files
       '@typescript-eslint/no-non-null-assertion': 'off',
       'no-console': 'off',

@@ -5,7 +5,7 @@ import { useCreatePostController } from './useCreatePostController';
 import { createControllerHookWrapper as createWrapper } from '@/test/utils';
 
 describe('useCreatePostController', () => {
-  const mockOnPostCreated = jest.fn();
+  const mockOnPostCreated = vi.fn();
 
   const createHook = () =>
     renderHook(
@@ -17,7 +17,7 @@ describe('useCreatePostController', () => {
     );
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('should initialise with correct default state', () => {
@@ -79,7 +79,7 @@ describe('useCreatePostController', () => {
   });
 
   it('should handle form submission error', async () => {
-    const mockOnPostCreationError = jest.fn();
+    const mockOnPostCreationError = vi.fn();
 
     server.use(
       http.post('https://jsonplaceholder.typicode.com/posts', () => {

@@ -40,7 +40,7 @@ This project showcases an **industry-standard feature-based MVC architecture** i
 - **TanStack Query** v5 - Powerful server state management
 - **Axios** v1 - HTTP client with interceptors
 - **UUID** v13 - Unique identifier generation for posts
-- **Jest** v30 - Testing framework with MSW integration
+- **Vitest** v3 - Testing framework with MSW integration
 - **React Testing Library** - Component testing utilities
 - **MSW** v2 - Mock Service Worker for API testing
 - **Vite** v7 - Fast build tool and development server
@@ -87,7 +87,7 @@ This project includes a **Mock Service Worker (MSW)** setup with **UUID-based po
 
 - **Server-side Generation**: UUIDs generated in MSW handlers (realistic approach)
 - **String-based IDs**: Migrated from numeric to UUID string identifiers
-- **Test Compatibility**: Jest mocks handle UUID generation consistently
+- **Test Compatibility**: Vitest with MSW handles UUID generation consistently
 - **Production Ready**: Architecture supports real API UUID implementation
 
 ### Development vs Production
@@ -111,7 +111,7 @@ The mock API provides:
 
 - **Separate Test Handlers**: Isolated mock environment for tests
 - **UUID Mocking**: Consistent `'mocked-uuid-v4'` for predictable tests
-- **Jest Integration**: MSW configured for seamless test execution
+- **Vitest Integration**: MSW configured for seamless test execution with vitest
 
 ## 📁 Project Structure
 
@@ -137,9 +137,9 @@ src/
 │   ├── testHandlers.ts    # Test-specific handlers
 │   └── data.ts           # Mock data definitions
 ├── test/                  # Test configuration
-│   ├── setup.ts          # Jest and MSW setup
+│   ├── setup.ts          # Vitest and MSW setup
 │   ├── utils.tsx         # Test utilities
-│   └── __mocks__/        # Jest mocks (UUID, etc.)
+│   └── mocks/            # Test mocks and utilities
 ├── App.tsx               # Main application component
 └── main.tsx              # Application entry point
 ```
@@ -175,10 +175,12 @@ yarn test:coverage # Run with coverage report
 
 ### Test Architecture
 
+- **Vitest Framework**: Fast unit test framework with native ESM support
 - **MSW Integration**: Mock Service Worker for API testing
 - **UUID Mocking**: Predictable UUID generation in tests
 - **Feature Testing**: Tests organized by feature domains
 - **Integration Tests**: End-to-end workflows with realistic interactions
+- **React Testing Library**: Component testing with user-centric queries
 
 ## 📋 Available Scripts
 
@@ -190,7 +192,9 @@ yarn test:coverage # Run with coverage report
 
 ### Testing
 
-- `yarn test` - Run Jest test suite
+- `yarn test` - Run Vitest test suite
+- `yarn test:coverage` - Run tests with coverage report
+- `yarn test:ui` - Run tests with interactive UI
 - `yarn typecheck` - Run TypeScript compiler check
 
 ### Code Quality
@@ -225,7 +229,7 @@ This demo demonstrates:
 3. **UUID Implementation**: Server-side ID generation patterns and client-side handling
 4. **Advanced TypeScript**: Generic types, utility types, and strict type safety
 5. **Modern React Patterns**: Custom hooks, compound components, and context patterns
-6. **Testing Strategies**: MSW integration, UUID mocking, and feature-based test organization
+6. **Testing Strategies**: Vitest + MSW integration, UUID mocking, and feature-based test organization
 7. **State Management**: Server state vs client state with TanStack Query
 
 ## 🔄 Data Flow

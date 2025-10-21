@@ -14,7 +14,7 @@
     "forceConsistentCasingInFileNames": true,
 
     // Node.js specific settings
-    "types": ["node"],
+    "types": ["node", "vitest/globals"],
 
     // Build tool optimizations
     "noEmit": false,
@@ -24,7 +24,7 @@
   },
   "include": [
     "vite.config.ts",
-    "jest.config.ts",
+    "vitest.config.ts",
     "eslint.config.ts",
     "*.config.ts",
     "*.config.js"

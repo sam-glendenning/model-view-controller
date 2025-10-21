@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`PostsPage Integration Tests renders correctly 1`] = `
+exports[`PostsPage Integration Tests > renders correctly 1`] = `
 <div>
   <div
     class="MuiContainer-root MuiContainer-maxWidthLg css-xsov46-MuiContainer-root"
