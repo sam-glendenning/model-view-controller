@@ -25,19 +25,26 @@ export default defineConfig({
     sourcemap: true,
     rollupOptions: {
       output: {
-        manualChunks: {
-          // Separate vendor chunks for better caching
-          'react-vendor': ['react', 'react-dom'],
-          'mui-vendor': [
-            '@mui/material',
-            '@mui/icons-material',
-            '@emotion/react',
-            '@emotion/styled',
+        advancedChunks: {
+          groups: [
+            {
+              name: 'react-vendor',
+              test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+              priority: 20,
+            },
+            {
+              name: 'mui-vendor',
+              test: /[\\/]node_modules[\\/](@mui|@emotion)[\\/]/,
+              priority: 15,
+            },
+            {
+              name: 'query-vendor',
+              test: /[\\/]node_modules[\\/]@tanstack[\\/]react-query/,
+              priority: 10,
+            },
           ],
-          'query-vendor': [
-            '@tanstack/react-query',
-            '@tanstack/react-query-devtools',
-          ],
+          minSize: 20000,
+          minShareCount: 1,
         },
       },
     },
