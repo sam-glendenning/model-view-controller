@@ -331,8 +331,8 @@ describe('PostsPage Integration Tests', () => {
     // Mock delayed API response
     server.use(
       http.post('https://jsonplaceholder.typicode.com/posts', async () => {
-        // Add delay to test loading state
-        await new Promise(resolve => setTimeout(resolve, 500));
+        // Add minimal delay to test loading state
+        await new Promise(resolve => setTimeout(resolve, 100));
         return HttpResponse.json({
           id: '123456789',
           title: 'New Test Post',

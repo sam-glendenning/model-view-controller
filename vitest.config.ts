@@ -30,6 +30,19 @@ export default mergeConfig(
       testTimeout: 10_000,
       environment: 'jsdom',
       setupFiles: ['./src/test/setup.ts'],
+      // Run tests in parallel for better performance
+      pool: 'threads',
+      poolOptions: {
+        threads: {
+          singleThread: false,
+        },
+      },
+      // Reduce isolation overhead for faster tests
+      isolate: false,
+      // Cache test results for faster re-runs
+      cache: {
+        dir: 'node_modules/.vitest',
+      },
       environmentOptions: {
         jsdom: {
           resources: 'usable',
