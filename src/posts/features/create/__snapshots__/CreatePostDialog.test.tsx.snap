@@ -27,7 +27,7 @@ exports[`CreatePostDialog renders correctly 1`] = `
       tabindex="-1"
     >
       <div
-        aria-labelledby="«r0»"
+        aria-labelledby="_r_0_"
         aria-modal="true"
         class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation24 MuiDialog-paper MuiDialog-paperScrollPaper MuiDialog-paperWidthSm MuiDialog-paperFullWidth css-16htz67-MuiPaper-root-MuiDialog-paper"
         role="dialog"
@@ -35,7 +35,7 @@ exports[`CreatePostDialog renders correctly 1`] = `
       >
         <h2
           class="MuiTypography-root MuiTypography-h6 MuiDialogTitle-root css-rvoa5x-MuiTypography-root-MuiDialogTitle-root"
-          id="«r0»"
+          id="_r_0_"
         >
           Create New Post
         </h2>
@@ -51,8 +51,8 @@ exports[`CreatePostDialog renders correctly 1`] = `
               <label
                 class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled Mui-focused MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined css-113d811-MuiFormLabel-root-MuiInputLabel-root"
                 data-shrink="true"
-                for="«r1»"
-                id="«r1»-label"
+                for="_r_1_"
+                id="_r_1_-label"
               >
                 Title
               </label>
@@ -62,7 +62,7 @@ exports[`CreatePostDialog renders correctly 1`] = `
                 <input
                   aria-invalid="false"
                   class="MuiInputBase-input MuiOutlinedInput-input css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input"
-                  id="«r1»"
+                  id="_r_1_"
                   type="text"
                   value="Test Post Title"
                 />
@@ -86,8 +86,8 @@ exports[`CreatePostDialog renders correctly 1`] = `
               <label
                 class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined css-113d811-MuiFormLabel-root-MuiInputLabel-root"
                 data-shrink="true"
-                for="«r2»"
-                id="«r2»-label"
+                for="_r_2_"
+                id="_r_2_-label"
               >
                 Content
               </label>
@@ -97,7 +97,7 @@ exports[`CreatePostDialog renders correctly 1`] = `
                 <textarea
                   aria-invalid="false"
                   class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-w4nesw-MuiInputBase-input-MuiOutlinedInput-input"
-                  id="«r2»"
+                  id="_r_2_"
                   rows="4"
                   style="height: 0px; overflow: hidden;"
                 >
@@ -130,8 +130,8 @@ exports[`CreatePostDialog renders correctly 1`] = `
               <label
                 class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined css-113d811-MuiFormLabel-root-MuiInputLabel-root"
                 data-shrink="true"
-                for="«r3»"
-                id="«r3»-label"
+                for="_r_3_"
+                id="_r_3_-label"
               >
                 User ID
               </label>
@@ -141,7 +141,7 @@ exports[`CreatePostDialog renders correctly 1`] = `
                 <input
                   aria-invalid="false"
                   class="MuiInputBase-input MuiOutlinedInput-input css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input"
-                  id="«r3»"
+                  id="_r_3_"
                   type="number"
                   value="1"
                 />
