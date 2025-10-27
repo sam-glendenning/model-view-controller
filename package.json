@@ -54,7 +54,7 @@
     "jest-fixed-jsdom": "0.0.10",
     "jiti": "2.6.1",
     "jsdom": "27.0.1",
-    "lint-staged": "16.2.5",
+    "lint-staged": "16.2.6",
     "msw": "2.11.6",
     "prettier": "3.6.2",
     "ts-jest": "29.4.5",
